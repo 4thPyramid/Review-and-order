@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:review_app/src/features/onbording/presentation/widgets/on_boarding_bottom_section.dart';
+import 'package:review_app/src/features/intro/presentation/widgets/on_boarding_bottom_section.dart';
 
 class OnboardingItem extends StatelessWidget {
   final String image;

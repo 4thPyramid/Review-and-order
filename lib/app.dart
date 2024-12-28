@@ -1,7 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:review_app/core/routes/app_routers.dart';
+import 'package:review_app/core/theme/app_themes.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
+        theme: AppTheme.lightTheme,
         routerConfig: router,
         locale: const Locale('ar', ''),
         supportedLocales: const [
@@ -21,9 +23,9 @@ class MyApp extends StatelessWidget {
           Locale('en', ''),
         ],
         localizationsDelegates: const [
-          DefaultMaterialLocalizations.delegate,
-          DefaultWidgetsLocalizations.delegate,
-          DefaultCupertinoLocalizations.delegate
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
         ],
         localeResolutionCallback: (deviceLocale, supportedLocales) {
           return deviceLocale?.languageCode == 'ar'

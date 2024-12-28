@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:review_app/src/features/onbording/data/onbording_model.dart';
-import 'package:review_app/src/features/onbording/presentation/widgets/onboarding_item.dart';
+import 'package:review_app/src/features/intro/data/onbording_model.dart';
+import 'package:review_app/src/features/intro/presentation/widgets/onboarding_item.dart';
 
 class OnboardingBody extends StatelessWidget {
   const OnboardingBody({

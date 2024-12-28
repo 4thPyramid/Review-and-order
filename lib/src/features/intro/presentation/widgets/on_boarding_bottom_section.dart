@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:review_app/core/theme/app_colors.dart';
 import 'package:review_app/core/utils/app_styles.dart';
-import 'package:review_app/src/features/onbording/presentation/widgets/get_buttons.dart';
+import 'package:review_app/src/features/intro/presentation/widgets/get_buttons.dart';
 
 class OnBoardinBottomSection extends StatelessWidget {
   const OnBoardinBottomSection({

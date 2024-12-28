@@ -9,7 +9,11 @@ class CustomTextFormField extends StatelessWidget {
   final TextEditingController? controller;
   final FormFieldValidator<String>? validator;
   final int? maxLines;
+  final bool isPassword;
   final Widget? suffixIcon;
+  final Widget? prefixIcon;
+  final Color? fillColor;
+  final void Function()? toggeleObscure;
 
   const CustomTextFormField({
     super.key,
@@ -19,35 +23,55 @@ class CustomTextFormField extends StatelessWidget {
     this.validator,
     this.maxLines = 1,
     this.suffixIcon,
+    this.fillColor,
+    this.prefixIcon,
+    this.isPassword = false,
+    this.toggeleObscure,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.0.w),
+      padding: EdgeInsets.symmetric(horizontal: 8.0.w),
       child: TextFormField(
         controller: controller,
         obscureText: obscureText,
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(
-            vertical: 12.0.w,
-            horizontal: 12.0.w,
-          ),
-          hintText: hintText,
-          hintStyle: AppStyles.s12,
-          fillColor: AppColors.primaryColor,
-          filled: true,
-          suffixIcon: suffixIcon,
-          border: InputBorder.none,
-          enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: AppColors.primaryColor),
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: AppColors.primaryColor),
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-        ),
+            contentPadding: EdgeInsets.symmetric(
+              vertical: 18.0.w,
+              horizontal: 12.0.w,
+            ),
+            hintText: hintText,
+            hintStyle: AppStyles.s12,
+            fillColor: fillColor ?? AppColors.white,
+            filled: true,
+            suffixIcon: isPassword
+                ? IconButton(
+                    onPressed: toggeleObscure,
+                    icon: Visibility(
+                        visible: obscureText,
+                        replacement: const Icon(
+                          Icons.visibility_outlined,
+                        ),
+                        child: const Icon(Icons.visibility_off_outlined)),
+                    color: AppColors.grey,
+                  )
+                : null,
+            prefixIcon: prefixIcon,
+            border: InputBorder.none,
+            enabledBorder: OutlineInputBorder(
+              borderSide:
+                  const BorderSide(color: Color.fromARGB(255, 207, 205, 205)),
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: const BorderSide(color: AppColors.primaryColor),
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderSide: const BorderSide(color: AppColors.errorColor),
+              borderRadius: BorderRadius.circular(15.0),
+            )),
         validator: validator ?? (value) => null,
         maxLines: maxLines,
       ),
