@@ -1,4 +1,3 @@
-import 'package:flutter/src/widgets/framework.dart';
 
 abstract class AppStrings {
   static const appName = "دليل المدينه",
@@ -6,7 +5,7 @@ abstract class AppStrings {
       creatNewAccount = "انشاء حساب جديد !",
       welcom = "مرحبا بك  ",
       welcomBack = "مرحبا بعودتك !",
-      signInSuccessfully =
+         signInSuccessfully =
           ' لقد قمت بتسجيل الدخول بنجاح \n في تطبيق دليل المدينه',
       goToHome = "الذهاب الى الصفحه الرئيسية",
       signIn = "تسجيل الدخول",
@@ -85,5 +84,11 @@ abstract class AppStrings {
       uncompletedVisitsHint = "ادخل عدد الزيارات الغير مكتملة",
       save = "حفظ",
       invalidForm = "البيانات غير صحيحة",
-      passwordMismatch = "كلمة المرور غير متطابقة";
+      recognize = "تعرف على ", 
+      bestRestaurants = "افضل المطاعم القريبه منك",
+      passwordMismatch = "كلمة المرور غير متطابقة",
+      bestRestaurantsCafes = "افضل المطاعم والكافيهات",
+      extraSuggestion = "اقتراحات اضافيه",
+      searchFor = "ابحث عما تريد....";
+
 }

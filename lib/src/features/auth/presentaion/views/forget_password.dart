@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:review_app/core/common/functions/validator.dart';
 import 'package:review_app/core/common/widgets/custom_btn.dart';
 import 'package:review_app/core/theme/app_colors.dart';
-import 'package:review_app/src/features/auth/presentaion/componants/forget_password_form.dart';
+import 'package:review_app/src/features/auth/presentaion/components/forget_password_form.dart';
 import 'package:review_app/src/features/auth/presentaion/widgets/auth_text_form_widget.dart';
 import 'package:review_app/src/features/auth/presentaion/widgets/forget_password_tapbar.dart';
 import 'package:review_app/src/features/auth/presentaion/widgets/welcom_login_text.dart';

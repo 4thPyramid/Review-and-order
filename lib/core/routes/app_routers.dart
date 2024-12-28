@@ -9,6 +9,8 @@ import 'package:review_app/src/features/intro/presentation/view/lets_start_view.
 import 'package:review_app/src/features/intro/presentation/view/onboarding_view.dart';
 import 'package:review_app/src/splash_view.dart';
 
+import '../../src/features/bottom_navigation_bar_root.dart';
+
 final GoRouter router = GoRouter(
   routes: [
     GoRoute(
@@ -38,5 +40,7 @@ final GoRouter router = GoRouter(
       path: RouterNames.forgetPassword,
       builder: (context, state) => const ForgetPassword(),
     ),
+    GoRoute(path: RouterNames.bottomNavigationBarRoot,
+     builder: (context, state) => const BottomNavigationBarRoot()),
   ],
 );
