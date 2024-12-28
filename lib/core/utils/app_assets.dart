@@ -7,4 +7,5 @@ abstract class AppAssets {
 
   // icons
   static const String compleatedIcon = "assets/images/compleated_icon.png";
+  static const String successIcon = "assets/images/successIcon.svg";
 }

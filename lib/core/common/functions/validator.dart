@@ -74,6 +74,16 @@ class Validator {
     return null;
   }
 
+  static String? validatePhone(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'يرجى إدخال رقم الهاتف';
+    }
+    if (value.length < 10) {
+      return 'يرجى إدخال رقم هاتف صالح';
+    }
+    return null;
+  }
+
   static String? validateManagerCode(String? value) {
     if (value == null || value.isEmpty) {
       return 'يرجى إدخال كود المدير';

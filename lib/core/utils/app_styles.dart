@@ -21,7 +21,7 @@ class AppStyles {
     fontFamily: 'Cairo',
     fontSize: 18.0,
     fontWeight: FontWeight.w600,
-    color: Colors.black54,
+    color: AppColors.textColor,
   );
 
   static TextStyle s16 = TextStyle(
@@ -34,7 +34,7 @@ class AppStyles {
     fontFamily: 'Cairo',
     fontSize: 14.0.sp,
     fontWeight: FontWeight.w500,
-    color: AppColors.white,
+    color: AppColors.textColor,
   );
   static TextStyle s12 = TextStyle(
     fontFamily: 'Cairo',

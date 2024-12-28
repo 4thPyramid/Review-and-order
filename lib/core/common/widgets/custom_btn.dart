@@ -31,16 +31,20 @@ class CustomButton extends StatelessWidget {
         onTap: onPressed,
         child: Container(
           height: height ?? 60.h,
-          width: width ?? 242.59.w,
+          width: width ?? 263.59.w,
           decoration: BoxDecoration(
-            color: backgroundColor ?? AppColors.primaryColor,
-            borderRadius: borderRadius ?? BorderRadius.circular(10),
-          ),
+              color: backgroundColor ?? AppColors.primaryColor,
+              borderRadius: borderRadius ?? BorderRadius.circular(32),
+              border: Border.all(
+                color: AppColors.primaryColor,
+              )),
           child: Center(
-            child: Text(
-              text,
-              style: textStyle ?? AppStyles.s20,
-            ),
+            child: Text(text,
+                style: textStyle ??
+                    AppStyles.s16.copyWith(
+                      color: AppColors.white,
+                      fontWeight: FontWeight.w700,
+                    )),
           ),
         ),
       ),

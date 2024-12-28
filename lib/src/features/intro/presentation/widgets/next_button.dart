@@ -16,7 +16,7 @@ class NextButton extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           if (controller.page == 2) {
-            context.pushReplacement(RouterNames.login);
+            context.pushReplacement(RouterNames.letsStart);
           } else {
             controller.nextPage(
               duration: const Duration(milliseconds: 200),
