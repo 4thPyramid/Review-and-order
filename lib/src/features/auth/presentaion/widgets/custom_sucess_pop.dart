@@ -9,7 +9,7 @@ import '../../../../../core/utils/app_strings.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../core/utils/main_function.dart';
 
-showSucessPop(BuildContext context) {
+showSucessPop(BuildContext context, {required String message}) {
   customAlertDialog(
     marginHPadding: 20.h,
     marginVPadding: 20.h,
