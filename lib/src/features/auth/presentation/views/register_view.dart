@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:review_app/core/routes/router_names.dart';
 import 'package:review_app/core/utils/app_strings.dart';
-import 'package:review_app/src/features/auth/presentaion/components/register_form.dart';
-import 'package:review_app/src/features/auth/presentaion/widgets/have_an_account_widget.dart';
-import 'package:review_app/src/features/auth/presentaion/widgets/register_welcom.dart';
+import 'package:review_app/src/features/auth/presentation/components/register_form.dart';
+import 'package:review_app/src/features/auth/presentation/widgets/have_an_account_widget.dart';
+import 'package:review_app/src/features/auth/presentation/widgets/register_welcom.dart';
 
 class RegisterView extends StatelessWidget {
   const RegisterView({super.key});

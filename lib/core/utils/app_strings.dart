@@ -89,6 +89,7 @@ abstract class AppStrings {
       passwordMismatch = "كلمة المرور غير متطابقة",
       bestRestaurantsCafes = "افضل المطاعم والكافيهات",
       extraSuggestion = "اقتراحات اضافيه",
+      ratings = "التقيمات",
       searchFor = "ابحث عما تريد....";
 
 }

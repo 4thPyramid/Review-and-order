@@ -5,6 +5,7 @@ abstract class AppAssets {
   static const String onboarding3 = "assets/images/onboarding2.png";
   static const String onboardingSvg = "assets/images/onboarding1.svg";
   static const String profileImage = "assets/images/profileImage.png";
+  static const String mapImage = "assets/images/mapImage.png";
 
 
   // icons

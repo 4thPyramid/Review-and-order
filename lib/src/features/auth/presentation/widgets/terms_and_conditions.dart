@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:review_app/core/theme/app_colors.dart';
 import 'package:review_app/core/utils/app_styles.dart';
-import 'package:review_app/src/features/auth/presentaion/widgets/custom_check_box.dart';
+import 'package:review_app/src/features/auth/presentation/widgets/custom_check_box.dart';
 
 class TermsAndConditions extends StatelessWidget {
   const TermsAndConditions({super.key});

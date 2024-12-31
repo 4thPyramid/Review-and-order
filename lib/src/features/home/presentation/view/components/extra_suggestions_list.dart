@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../../../core/routes/router_names.dart';
 import '../widget/restaurant_card.dart';
 
 class ExtraSuggestions extends StatelessWidget {
@@ -12,9 +14,14 @@ class ExtraSuggestions extends StatelessWidget {
       shrinkWrap: true,
       itemCount: 5,
       itemBuilder: (BuildContext context, int index) {
-        return const Padding(
+        return  Padding(
           padding: EdgeInsets.symmetric(vertical: 10),
-          child: RestaurantCard(),
+          child: InkWell(
+            onTap: () {
+              context.go(RouterNames.placeDetailsView);
+            },
+
+            child: const RestaurantCard()),
         );
       },
     );

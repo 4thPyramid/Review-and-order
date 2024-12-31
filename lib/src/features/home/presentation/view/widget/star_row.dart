@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:review_app/core/utils/app_styles.dart';
 
 class StarRow extends StatelessWidget {
   const StarRow({
-    super.key,
+    super.key, this.itemSize,this.textStyle
   });
+final double? itemSize;
+final TextStyle?  textStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +20,7 @@ class StarRow extends StatelessWidget {
           direction: Axis.horizontal,
           allowHalfRating: true,
           itemCount: 4,
-          itemSize: 12,
+          itemSize:itemSize?? 12,
           itemBuilder: (context, _) => const Icon(
             Icons.star,
             color: Colors.amber,
@@ -29,10 +32,9 @@ class StarRow extends StatelessWidget {
         const SizedBox(width: 5),
         Text(
           '4.7 ',
-          style: TextStyle(
-            fontSize: 12.sp,
-            color: Colors.grey,
-          ),
+          style: textStyle??AppStyles.s12
+         
+          
         ),
       ],
     );

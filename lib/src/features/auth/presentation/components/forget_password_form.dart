@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:review_app/core/common/functions/validator.dart';
 import 'package:review_app/core/common/widgets/custom_btn.dart';
 import 'package:review_app/core/utils/app_strings.dart';
-import 'package:review_app/src/features/auth/presentaion/widgets/auth_text_form_widget.dart';
+import 'package:review_app/src/features/auth/presentation/widgets/auth_text_form_widget.dart';
 
 class ForgetPasswordForm extends StatelessWidget {
   ForgetPasswordForm({
