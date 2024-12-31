@@ -27,7 +27,7 @@ class ForgetPasswordForm extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            height: 100.h,
+            height: 120.h,
             child: TabBarView(
               controller: _tabController,
               children: [

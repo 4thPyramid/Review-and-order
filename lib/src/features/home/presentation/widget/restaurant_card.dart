@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:review_app/core/theme/app_colors.dart';
 import 'package:review_app/core/utils/app_image_view.dart';
 import 'package:review_app/core/utils/app_styles.dart';
-import 'package:review_app/src/features/home/presentation/view/widget/location_row.dart';
+import 'package:review_app/src/features/home/presentation/widget/location_row.dart';
 
-import '../../../../../../core/utils/app_assets.dart';
+import '../../../../../core/utils/app_assets.dart';
 import 'star_row.dart';
 
 class RestaurantCard extends StatelessWidget {
@@ -24,7 +24,7 @@ class RestaurantCard extends StatelessWidget {
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 5,
             blurRadius: 7,
-            offset: const Offset(0, 3), // changes position of shadow
+            offset: const Offset(0, 3), 
           ),
         ],
       ),

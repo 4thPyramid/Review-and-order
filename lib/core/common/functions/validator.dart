@@ -61,7 +61,7 @@ class Validator {
       return 'يرجى إدخال الاسم';
     }
     final parts = value.split(' ');
-    if (parts.length < 3) {
+    if (parts.length < 1) {
       return 'يرجى إدخال اسم ثلاثي ';
     }
     const pattern = r'^[a-zA-Zا-ي ]+$';

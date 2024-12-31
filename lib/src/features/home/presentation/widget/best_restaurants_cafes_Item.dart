@@ -4,7 +4,7 @@ import 'package:review_app/core/theme/app_colors.dart';
 import 'package:review_app/core/utils/app_assets.dart';
 import 'package:review_app/core/utils/app_image_view.dart';
 
-import '../../../../../../core/utils/app_styles.dart';
+import '../../../../../core/utils/app_styles.dart';
 import 'location_row.dart';
 import 'star_row.dart';
 
