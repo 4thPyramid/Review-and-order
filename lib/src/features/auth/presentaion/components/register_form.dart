@@ -11,8 +11,8 @@ import 'package:review_app/src/features/auth/presentaion/widgets/terms_and_condi
 
 import '../../../../../core/routes/router_names.dart';
 import '../../data/model/register_request.dart';
-import '../logic/register_cubit.dart';
-import '../logic/register_state.dart';
+import '../logic/register/register_cubit.dart';
+import '../logic/register/register_state.dart';
 
 class RegisterForm extends StatelessWidget {
   RegisterForm({super.key});
@@ -28,12 +28,9 @@ class RegisterForm extends StatelessWidget {
     return BlocConsumer<RegisterCubit, RegisterState>(
       listener: (context, state) {
         if (state is RegisterSuccessState) {
-          // إظهار رسالة نجاح
           showSucessPop(context, message: 'تم التسجيل بنجاح!');
-          context.go(
-              RouterNames.bottomNavigationBarRoot); // مثال للتوجيه بعد النجاح
+          context.go(RouterNames.bottomNavigationBarRoot);
         } else if (state is RegisterFailureState) {
-          // إظهار رسالة خطأ
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(state.errorMessage.message)),
           );
@@ -78,7 +75,6 @@ class RegisterForm extends StatelessWidget {
                   if (formKey.currentState!.validate()) {
                     final cubit = context.read<RegisterCubit>();
 
-                    // استدعاء الـ Cubit مع البيانات
                     cubit.register(
                       RegisterAuthData(
                         name: nameController.text,

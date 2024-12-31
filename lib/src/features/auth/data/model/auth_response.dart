@@ -7,6 +7,7 @@ class AuthResponse {
   final String message;
   final User user;
   final String token;
+  
 
   AuthResponse({
     required this.message,

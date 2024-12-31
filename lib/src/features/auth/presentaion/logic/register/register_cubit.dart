@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:review_app/src/features/auth/data/model/register_request.dart';
 
-import '../../../../../core/errors/error_model.dart';
-import '../../domain/usecase/register_use_case.dart';
+import '../../../../../../core/errors/error_model.dart';
+import '../../../domain/usecase/register_use_case.dart';
 import 'register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {

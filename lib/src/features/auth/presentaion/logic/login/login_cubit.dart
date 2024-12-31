@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:review_app/src/features/auth/presentaion/logic/login_state.dart';
+import 'package:review_app/src/features/auth/presentaion/logic/login/login_state.dart';
 
-import '../../../../../core/errors/error_model.dart';
-import '../../domain/usecase/login_use_case.dart';
+import '../../../../../../core/errors/error_model.dart';
+import '../../../domain/usecase/login_use_case.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   final LoginUseCase _loginUseCase;

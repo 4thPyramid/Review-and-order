@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
-import '../../../../../core/errors/error_model.dart';
-import '../../data/model/auth_response.dart';
+import '../../../../../../core/errors/error_model.dart';
+import '../../../data/model/auth_response.dart';
 
 @immutable
 sealed class LoginState {}

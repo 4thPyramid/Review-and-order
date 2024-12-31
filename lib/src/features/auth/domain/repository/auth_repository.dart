@@ -6,7 +6,10 @@ import '../../data/model/auth_response.dart';
 import '../../data/model/register_request.dart';
 
 abstract class IAuthRepository {
-  Future<Either<ErrorModel, AuthResponse>> login(String email, String password);
+  Future<Either<ErrorModel, AuthResponse>> login(
+    String email,
+    String password,
+  );
   Future<Either<ErrorModel, AuthResponse>> register(
       RegisterAuthData registerAuthData);
 }

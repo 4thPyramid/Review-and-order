@@ -9,8 +9,8 @@ import 'package:review_app/core/routes/router_names.dart';
 import 'package:review_app/core/utils/app_strings.dart';
 import 'package:review_app/src/features/auth/presentaion/widgets/auth_text_form_widget.dart';
 
-import '../logic/login_cubit.dart';
-import '../logic/login_state.dart';
+import '../logic/login/login_cubit.dart';
+import '../logic/login/login_state.dart';
 
 class LoginForm extends StatelessWidget {
   LoginForm({super.key});

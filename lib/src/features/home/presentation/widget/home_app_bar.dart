@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:review_app/core/utils/app_assets.dart';
 import 'package:review_app/core/utils/app_image_view.dart';
 
-import '../../../../../../core/theme/app_colors.dart';
-import '../../../../../../core/utils/app_strings.dart';
-import '../../../../../../core/utils/app_styles.dart';
+import '../../../../../core/theme/app_colors.dart';
+import '../../../../../core/utils/app_strings.dart';
+import '../../../../../core/utils/app_styles.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key});
