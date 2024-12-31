@@ -7,15 +7,13 @@ import 'package:review_app/core/common/widgets/custom_btn.dart';
 import 'package:review_app/core/common/widgets/custom_text_field_button.dart';
 import 'package:review_app/core/routes/router_names.dart';
 import 'package:review_app/core/utils/app_strings.dart';
-<<<<<<< HEAD:lib/src/features/auth/presentation/components/login_form.dart
 import 'package:review_app/src/features/auth/presentation/widgets/auth_text_form_widget.dart';
 import 'package:review_app/src/features/auth/presentation/widgets/custom_sucess_pop.dart';
-=======
+
 import 'package:review_app/src/features/auth/presentaion/widgets/auth_text_form_widget.dart';
 
 import '../logic/login/login_cubit.dart';
 import '../logic/login/login_state.dart';
->>>>>>> f696ac15dde1e0224fe0457ff9ff143d9cf7690d:lib/src/features/auth/presentaion/components/login_form.dart
 
 class LoginForm extends StatelessWidget {
   LoginForm({super.key});
