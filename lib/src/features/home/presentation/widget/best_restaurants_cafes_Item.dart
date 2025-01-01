@@ -33,7 +33,7 @@ class BestRestaurantsCafesCardItem extends StatelessWidget {
         child: Column(
           children: [
             AppImageView(
-              AppAssets.onboarding3,
+              resurantImage,
               width: 125.w,
               height: 147.h,
               fit: BoxFit.fill,

@@ -6,6 +6,8 @@ import 'package:review_app/src/features/auth/presentaion/logic/login/login_cubit
 import 'package:review_app/src/features/home/data/datasource/home_api_service.dart';
 import 'package:review_app/src/features/home/data/datasource/home_remote_ds.dart';
 import 'package:review_app/src/features/home/domain/repository/home_repository.dart';
+import 'package:review_app/src/features/home/domain/usecase/get_all_places.dart';
+import 'package:review_app/src/features/home/domain/usecase/get_nears_places.dart';
 import 'package:review_app/src/features/home/domain/usecase/get_new_places.dart';
 import 'package:review_app/src/features/home/domain/usecase/get_top_rated_places.dart';
 import 'package:review_app/src/features/home/presentation/logic/cubit/home_cubit.dart';
@@ -59,10 +61,17 @@ void setupLocator() {
       () => GetNewPlacesUC(getIt<IHomeRepository>()));
   getIt.registerLazySingleton<GetTopRatedPlacesUC>(
       () => GetTopRatedPlacesUC(getIt<IHomeRepository>()));
+  getIt.registerLazySingleton<GetNearstPlacesUC>(
+      () => GetNearstPlacesUC(getIt<IHomeRepository>()));
+  getIt.registerLazySingleton<GetAllPlacesUC>(
+      () => GetAllPlacesUC(getIt<IHomeRepository>()));
 
   // Cubits //
   getIt.registerLazySingleton<LoginCubit>(() => LoginCubit(getIt()));
   getIt.registerLazySingleton<RegisterCubit>(() => RegisterCubit(getIt()));
-  getIt.registerLazySingleton<HomeCubit>(
-      () => HomeCubit(getIt<GetNewPlacesUC>(), getIt<GetTopRatedPlacesUC>()));
+  getIt.registerLazySingleton<HomeCubit>(() => HomeCubit(
+      getIt<GetNewPlacesUC>(),
+      getIt<GetTopRatedPlacesUC>(),
+      getIt<GetNearstPlacesUC>(),
+      getIt<GetAllPlacesUC>()));
 }

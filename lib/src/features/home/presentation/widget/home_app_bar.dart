@@ -20,12 +20,13 @@ class HomeAppBar extends StatelessWidget {
           )),
       subtitle: Text(AppStrings.bestRestaurants,
           style: AppStyles.s14.copyWith(
-           // color: AppColors.black,
+            // color: AppColors.black,
             fontWeight: FontWeight.w600,
           )),
-
-      trailing: const AppImageView(AppAssets.profileImage, isAvatar: true,),
-      
+      trailing: const AppImageView(
+        AppAssets.profileImage,
+        isAvatar: true,
+      ),
     );
   }
 }

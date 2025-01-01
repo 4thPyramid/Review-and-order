@@ -6,6 +6,8 @@ import 'package:review_app/src/features/home/data/models/place_model.dart';
 abstract class IHomeRepository {
   Future<Either<ErrorModel, List<PlaceModel>>> getNewPlaces();
   Future<Either<ErrorModel, List<PlaceModel>>> getTopRatedPlaces();
+  Future<Either<ErrorModel, List<PlaceModel>>> getNearstPlaces();
+  Future<Either<ErrorModel, List<PlaceModel>>> getAllPlaces();
 }
 
 class HomeRepositoryImpl implements IHomeRepository {
@@ -21,5 +23,15 @@ class HomeRepositoryImpl implements IHomeRepository {
   @override
   Future<Either<ErrorModel, List<PlaceModel>>> getTopRatedPlaces() {
     return _homeRemoteDs.getTopRatedPlaces();
+  }
+
+  @override
+  Future<Either<ErrorModel, List<PlaceModel>>> getAllPlaces() async {
+    return _homeRemoteDs.getAllPlaces();
+  }
+
+  @override
+  Future<Either<ErrorModel, List<PlaceModel>>> getNearstPlaces() {
+    return _homeRemoteDs.getNearstPlaces();
   }
 }

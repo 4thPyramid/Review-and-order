@@ -21,7 +21,7 @@ class LocationRow extends StatelessWidget {
         ),
         Text(
           location,
-          style: AppStyles.s8.copyWith(
+          style: AppStyles.s10.copyWith(
             color: AppColors.black,
             fontWeight: FontWeight.w500,
           ),

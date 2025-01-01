@@ -9,10 +9,19 @@ import '../../../../../core/utils/app_assets.dart';
 import 'star_row.dart';
 
 class RestaurantCard extends StatelessWidget {
-  const RestaurantCard(
-      {super.key, required this.rating, required this.location});
-  final double rating;
-  final String location;
+  const RestaurantCard({
+    super.key,
+    required this.resurantName,
+    required this.resurantLocation,
+    required this.resurantRate,
+    required this.resurantImage,
+    required this.resurantStatus,
+  });
+  final String resurantName;
+  final String resurantLocation;
+  final double resurantRate;
+  final String resurantImage;
+  final String resurantStatus;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -42,18 +51,18 @@ class RestaurantCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'مطعم المحمدى',
+                resurantName,
                 style: AppStyles.s16.copyWith(
                   fontWeight: FontWeight.w600,
                   color: AppColors.black,
                 ),
               ),
               SizedBox(height: 10.h),
-              StarRow(rating: rating),
+              StarRow(rating: resurantRate),
               Row(
                 children: [
                   Text(
-                    "مفتوح",
+                    resurantStatus,
                     style: AppStyles.s10.copyWith(
                       color: AppColors.green,
                       fontWeight: FontWeight.w500,
@@ -70,8 +79,8 @@ class RestaurantCard extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 5),
-              const LocationRow(
-                location: '',
+              LocationRow(
+                location: resurantLocation,
               )
             ],
           ),

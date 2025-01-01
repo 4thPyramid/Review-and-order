@@ -20,8 +20,8 @@ class HomeView extends StatelessWidget {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           const HomeAppBar(),
           SizedBox(height: 20.h),
-          const CustomTextFormField(
-              hintText: AppStrings.searchFor, prefixIcon: Icon(Icons.search)),
+          // const CustomTextFormField(
+          //     hintText: AppStrings.searchFor, prefixIcon: Icon(Icons.search)),
           SizedBox(height: 20.h),
           const CustomRowFilter(),
           SizedBox(height: 20.h),
