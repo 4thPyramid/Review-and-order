@@ -1,8 +1,7 @@
-
 import 'package:flutter/material.dart';
 
-import '../../../../../../core/theme/app_colors.dart';
-import '../../../../../../core/utils/app_styles.dart';
+import '../../../../../core/theme/app_colors.dart';
+import '../../../../../core/utils/app_styles.dart';
 
 class TitleAndFavoriteButton extends StatelessWidget {
   const TitleAndFavoriteButton({

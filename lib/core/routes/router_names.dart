@@ -1,14 +1,14 @@
 abstract class RouterNames {
-  static const String splash = '/88iji';
+  static const String splash = '/splash';
   static const String onboarding = '/onboarding';
   static const String letsStart = '/letsStaert';
 
-  static const String login = '/22';
-  static const String register = '/r';
-  static const String forgetPassword = '/gfdsglnd';
-  static const String resetPassword = '/g';
-  static const String otp = '/g';
-  static const String home = '/f';
+  static const String login = '/login';
+  static const String register = '/register';
+  static const String forgetPassword = '/forgetPassword';
+  static const String resetPassword = '/resetPassword';
+  static const String otp = '/otp';
+  static const String home = '/home';
   static const String bottomNavigationBarRoot = '/';
-  static const String placeDetailsView = '/22';
+  static const String placeDetailsView = '/placeDetailsView';
 }

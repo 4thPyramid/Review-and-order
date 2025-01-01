@@ -5,9 +5,9 @@ import 'package:review_app/core/theme/app_colors.dart';
 import 'package:review_app/core/utils/app_assets.dart';
 import 'package:review_app/core/utils/app_image_view.dart';
 import 'package:review_app/core/utils/app_strings.dart';
-import '../../../../../../core/common/widgets/custom_btn.dart';
-import '../../../../../../core/utils/app_styles.dart';
-import '../../../../../../core/utils/main_function.dart';
+import '../../../../../core/common/widgets/custom_btn.dart';
+import '../../../../../core/utils/app_styles.dart';
+import '../../../../../core/utils/main_function.dart';
 import 'add_image_container.dart';
 
 addCommitPop(BuildContext context,
@@ -24,7 +24,7 @@ addCommitPop(BuildContext context,
         Positioned(
           top: -60.h,
           //right: 120,
-           left: MediaQuery.sizeOf(context).width / 2- 60.w,
+          left: MediaQuery.sizeOf(context).width / 2 - 60.w,
           child: AppImageView(
             imageUrl,
             isAvatar: true,
@@ -33,7 +33,8 @@ addCommitPop(BuildContext context,
         ),
         Expanded(
           child: Padding(
-            padding: EdgeInsets.only(top: 40.h, left: 20.w, right: 20.w, bottom: 20.h),
+            padding: EdgeInsets.only(
+                top: 40.h, left: 20.w, right: 20.w, bottom: 20.h),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -100,7 +101,7 @@ addCommitPop(BuildContext context,
                 CustomButton(
                   text: AppStrings.sendCommit,
                   onPressed: () {
-                   Navigator.pop(context);
+                    Navigator.pop(context);
                   },
                 )
               ],

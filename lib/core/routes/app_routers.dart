@@ -11,6 +11,7 @@ import 'package:review_app/src/features/home/presentation/logic/cubit/home_cubit
 import 'package:review_app/src/features/home/presentation/view/home_view.dart';
 import 'package:review_app/src/features/intro/presentation/view/lets_start_view.dart';
 import 'package:review_app/src/features/intro/presentation/view/onboarding_view.dart';
+import 'package:review_app/src/features/place_details/presentation/logic/cubit/place_details_cubit.dart';
 import 'package:review_app/src/features/place_details/presentation/view/place_details_view.dart';
 import 'package:review_app/src/splash_view.dart';
 
@@ -58,12 +59,19 @@ final GoRouter router = GoRouter(
       builder: (context, state) => const ForgetPassword(),
     ),
     GoRoute(
-        path: RouterNames.bottomNavigationBarRoot,
-        builder: (context, state) => const BottomNavigationBarRoot()),
-    GoRoute(
-      path: RouterNames.placeDetailsView,
-      builder: (context, state) => const PlaceDetailsView(),
+      path: RouterNames.bottomNavigationBarRoot,
+      builder: (context, state) => const BottomNavigationBarRoot(),
     ),
+    GoRoute(
+        path: RouterNames.placeDetailsView,
+        builder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>;
+          final placeId = extra['placeId'] as int?;
+          return BlocProvider(
+            create: (context) => getIt<PlaceDetailsCubit>(),
+            child: PlaceDetailsView(placeId: placeId ?? 0),
+          );
+        }),
     GoRoute(
         path: RouterNames.bottomNavigationBarRoot,
         builder: (context, state) => const BottomNavigationBarRoot()),

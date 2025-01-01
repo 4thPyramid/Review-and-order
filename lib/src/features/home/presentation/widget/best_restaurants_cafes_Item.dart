@@ -15,51 +15,56 @@ class BestRestaurantsCafesCardItem extends StatelessWidget {
     required this.resurantLocation,
     required this.resurantRate,
     required this.resurantImage,
+    this.onTap,
   });
   final String resurantName;
   final String resurantLocation;
   final double resurantRate;
   final String resurantImage;
+  final Function()? onTap;
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 2,
-      child: Container(
-        width: 125.w,
-        decoration: BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Column(
-          children: [
-            AppImageView(
-              resurantImage,
-              width: 125.w,
-              height: 147.h,
-              fit: BoxFit.fill,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    resurantName,
-                    style: AppStyles.s14.copyWith(
-                      color: AppColors.black,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  StarRow(
-                    rating: resurantRate,
-                  ),
-                  LocationRow(
-                    location: resurantLocation,
-                  ),
-                ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Card(
+        elevation: 2,
+        child: Container(
+          width: 125.w,
+          decoration: BoxDecoration(
+            color: AppColors.white,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Column(
+            children: [
+              AppImageView(
+                resurantImage,
+                width: 125.w,
+                height: 147.h,
+                fit: BoxFit.fill,
               ),
-            ),
-          ],
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      resurantName,
+                      style: AppStyles.s14.copyWith(
+                        color: AppColors.black,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    StarRow(
+                      rating: resurantRate,
+                    ),
+                    LocationRow(
+                      location: resurantLocation,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -11,6 +11,11 @@ import 'package:review_app/src/features/home/domain/usecase/get_nears_places.dar
 import 'package:review_app/src/features/home/domain/usecase/get_new_places.dart';
 import 'package:review_app/src/features/home/domain/usecase/get_top_rated_places.dart';
 import 'package:review_app/src/features/home/presentation/logic/cubit/home_cubit.dart';
+import 'package:review_app/src/features/place_details/data/datasource/place_datails_api_service.dart';
+import 'package:review_app/src/features/place_details/data/datasource/place_details_remote_data_source.dart';
+import 'package:review_app/src/features/place_details/domain/repository/place_details_repository.dart';
+import 'package:review_app/src/features/place_details/domain/usecase/get_place_details_uc.dart';
+import 'package:review_app/src/features/place_details/presentation/logic/cubit/place_details_cubit.dart';
 import '../../src/features/auth/data/datasource/auth_api_services.dart';
 import '../../src/features/auth/data/datasource/auth_remote_ds.dart';
 import '../../src/features/auth/domain/repository/auth_repository.dart';
@@ -39,11 +44,16 @@ void setupLocator() {
   getIt.registerLazySingleton<HomeApiService>(
       () => HomeApiServiceImpl(getIt<ApiConsumer>()));
 
+  getIt.registerLazySingleton<IPlaceDetailsApiService>(
+      () => PlaceDetailsApiServiceImpl(getIt<ApiConsumer>()));
+
 //DataSources //
   getIt.registerLazySingleton<IAuthRemoteDs>(
       () => AuthRemoteDsImpl(getIt<AuthApiServices>()));
   getIt.registerLazySingleton<IHomeRemoteDs>(
       () => HomeRemoteDsImpl(getIt<HomeApiService>()));
+  getIt.registerLazySingleton<IPlaceDetailsDS>(
+      () => PlaceDetailsDSImpl(getIt<IPlaceDetailsApiService>()));
 
 //Repositories //
 
@@ -51,6 +61,9 @@ void setupLocator() {
       () => AuthRepositoryImpl(getIt<IAuthRemoteDs>()));
   getIt.registerLazySingleton<IHomeRepository>(
       () => HomeRepositoryImpl(getIt<IHomeRemoteDs>()));
+
+  getIt.registerLazySingleton<IPlaceDetailsRepository>(
+      () => PlaceDetailsRepositoryImpl(getIt<IPlaceDetailsDS>()));
 
 // UseCases //
   getIt.registerLazySingleton<LoginUseCase>(
@@ -66,6 +79,9 @@ void setupLocator() {
   getIt.registerLazySingleton<GetAllPlacesUC>(
       () => GetAllPlacesUC(getIt<IHomeRepository>()));
 
+  getIt.registerLazySingleton<GetPlaceDetailsUc>(
+      () => GetPlaceDetailsUc(getIt<IPlaceDetailsRepository>()));
+
   // Cubits //
   getIt.registerLazySingleton<LoginCubit>(() => LoginCubit(getIt()));
   getIt.registerLazySingleton<RegisterCubit>(() => RegisterCubit(getIt()));
@@ -74,4 +90,7 @@ void setupLocator() {
       getIt<GetTopRatedPlacesUC>(),
       getIt<GetNearstPlacesUC>(),
       getIt<GetAllPlacesUC>()));
+
+  getIt.registerLazySingleton<PlaceDetailsCubit>(
+      () => PlaceDetailsCubit(getIt<GetPlaceDetailsUc>()));
 }

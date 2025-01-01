@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:review_app/core/theme/app_colors.dart';
 
-import '../../../../../../core/utils/app_image_view.dart';
-import '../../../../../../core/utils/app_styles.dart';
+import '../../../../../core/utils/app_image_view.dart';
+import '../../../../../core/utils/app_styles.dart';
 
 class ProfileListTile extends StatelessWidget {
   const ProfileListTile({

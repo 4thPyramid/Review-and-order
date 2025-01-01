@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:review_app/core/routes/router_names.dart';
 import 'package:review_app/core/utils/app_assets.dart';
 import 'package:review_app/src/features/home/presentation/logic/cubit/home_cubit.dart';
 
@@ -25,6 +27,10 @@ class BestRestaurantsCafesRow extends StatelessWidget {
               return Padding(
                 padding: const EdgeInsets.only(left: 10),
                 child: BestRestaurantsCafesCardItem(
+                  onTap: () {
+                    context.go(RouterNames.placeDetailsView,
+                        extra: {'place': places[index].id});
+                  },
                   resurantName: places[index].name,
                   resurantLocation:
                       places[index].mapDisc.split("").take(15).join(),
