@@ -23,7 +23,7 @@ class PlaceDetailsView extends StatelessWidget {
           ),
          ),
          child: Padding(
-           padding:  EdgeInsets.only(top: 460.h),
+           padding:  EdgeInsets.only(top: 480.h),
            child: const PlaceDetailsComponent(),
          ),
         ),

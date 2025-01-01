@@ -8,6 +8,7 @@ abstract class AppColors {
   static const Color greyForSelectTap = Color(0xFFF5F5F5);
   static const Color splashColor = Color(0xFFD4DDB7);
   static const Color yellow = Color(0xFFFFFEE2);
+  static const Color redWhite = Color(0xFFE4E4E4);
   static const Color textColor = Color(0xFF000000);
   static const Color locationIconColor = Color(0xFF353535);
   static const Color greyForBackground = Color(0xFFF9F9F9);

@@ -90,6 +90,11 @@ abstract class AppStrings {
       bestRestaurantsCafes = "افضل المطاعم والكافيهات",
       extraSuggestion = "اقتراحات اضافيه",
       ratings = "التقيمات",
-      searchFor = "ابحث عما تريد....";
+      searchFor = "ابحث عما تريد....",
+      addCommit= 'اضف تقييمك',
+      sendCommit= 'ارسال التقييم',
+      youThinkOfTheRestaurant = 'ما رايك فى تجربه المطعم؟',
+      feedbackWillHelpImprove = 'ستساعد ملاحظاتك في تحسين تجربة التطبيق',
+      myName = "احمد سلمان ";
 
 }

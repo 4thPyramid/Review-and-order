@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/utils/app_strings.dart';
 import '../../../../../../core/utils/app_styles.dart';
+import '../widgets/add_image_and_btn.dart';
 import '../widgets/map_card_details.dart';
 import '../widgets/rate_and_time_row.dart';
 import '../widgets/title_and_favorite.dart';
@@ -47,6 +48,8 @@ class PlaceDetailsComponent extends StatelessWidget {
                   style: AppStyles.s20.copyWith(
                       color: AppColors.black, fontWeight: FontWeight.w700)),
             ),
+            SizedBox(height: 20.h),
+            const AddImageAndBtn(),
             SizedBox(height: 20.h),
           ])
         ],

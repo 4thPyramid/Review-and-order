@@ -10,7 +10,6 @@ import 'package:review_app/core/utils/app_strings.dart';
 import 'package:review_app/src/features/auth/presentaion/logic/login/login_cubit.dart';
 import 'package:review_app/src/features/auth/presentaion/logic/login/login_state.dart';
 import 'package:review_app/src/features/auth/presentation/widgets/auth_text_form_widget.dart';
-import 'package:review_app/src/features/auth/presentation/widgets/custom_sucess_pop.dart';
 
 class LoginForm extends StatelessWidget {
   LoginForm({super.key});

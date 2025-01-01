@@ -28,7 +28,7 @@ class RegisterForm extends StatelessWidget {
     return BlocConsumer<RegisterCubit, RegisterState>(
       listener: (context, state) {
         if (state is RegisterSuccessState) {
-          showSucessPop(context, message: 'تم التسجيل بنجاح!');
+          showSuccessPop(context);
           context.go(RouterNames.bottomNavigationBarRoot);
         } else if (state is RegisterFailureState) {
           ScaffoldMessenger.of(context).showSnackBar(
