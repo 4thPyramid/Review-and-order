@@ -4,16 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:review_app/core/utils/app_styles.dart';
 
 class StarRow extends StatelessWidget {
-  const StarRow({
-    super.key, this.itemSize,this.textStyle
-  });
-final double? itemSize;
-final TextStyle?  textStyle;
-
-    super.key,
-    required this.rating,
-  });
+  const StarRow(
+      {super.key, this.itemSize, this.textStyle, required this.rating});
+  final double? itemSize;
+  final TextStyle? textStyle;
   final double rating;
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -24,9 +20,7 @@ final TextStyle?  textStyle;
           direction: Axis.horizontal,
           allowHalfRating: true,
           itemCount: 4,
-          itemSize:itemSize?? 12,
-          itemCount: 5,
-          itemSize: 12,
+          itemSize: itemSize ?? 12,
           itemBuilder: (context, _) => const Icon(
             Icons.star,
             color: Colors.amber,
@@ -36,12 +30,7 @@ final TextStyle?  textStyle;
           },
         ),
         const SizedBox(width: 5),
-        Text(
-          '4.7 ',
-          style: textStyle??AppStyles.s12
-         
-          
-        ),
+        Text('4.7 ', style: textStyle ?? AppStyles.s12),
       ],
     );
   }

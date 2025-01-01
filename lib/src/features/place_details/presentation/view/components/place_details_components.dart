@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/utils/app_strings.dart';
 import '../../../../../../core/utils/app_styles.dart';
-import '../../../../home/presentation/view/widget/star_row.dart';
 import '../widgets/map_card_details.dart';
 import '../widgets/rate_and_time_row.dart';
 import '../widgets/title_and_favorite.dart';

@@ -11,5 +11,4 @@ abstract class RouterNames {
   static const String home = '/f';
   static const String bottomNavigationBarRoot = '/bb';
   static const String placeDetailsView = '/';
-  static const String bottomNavigationBarRoot = '/b';
 }

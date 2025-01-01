@@ -6,9 +6,9 @@ import 'package:review_app/src/features/auth/presentation/views/forget_password.
 import 'package:review_app/src/features/auth/presentation/views/login_view.dart';
 import 'package:review_app/src/features/auth/presentation/views/register_view.dart';
 import 'package:review_app/src/features/auth/presentaion/logic/register/register_cubit.dart';
-import 'package:review_app/src/features/auth/presentaion/views/forget_password.dart';
-import 'package:review_app/src/features/auth/presentaion/views/login_view.dart';
-import 'package:review_app/src/features/auth/presentaion/views/register_view.dart';
+
+import 'package:review_app/src/features/home/presentation/logic/cubit/home_cubit.dart';
+import 'package:review_app/src/features/home/presentation/view/home_view.dart';
 import 'package:review_app/src/features/intro/presentation/view/lets_start_view.dart';
 import 'package:review_app/src/features/intro/presentation/view/onboarding_view.dart';
 import 'package:review_app/src/features/place_details/presentation/view/place_details_view.dart';

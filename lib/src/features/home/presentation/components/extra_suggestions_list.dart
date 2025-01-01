@@ -17,13 +17,14 @@ class ExtraSuggestions extends StatelessWidget {
         return Padding(
           padding: EdgeInsets.symmetric(vertical: 10),
           child: InkWell(
-              onTap: () {
-                context.go(RouterNames.placeDetailsView);
-              },
-              child: const RestaurantCard()),
-          child: RestaurantCard(
-            rating: 4,
-            location: "",
+            onTap: () {
+              context.go(RouterNames.placeDetailsView);
+            },
+            //  child: const RestaurantCard()),
+            child: RestaurantCard(
+              rating: 4,
+              location: "",
+            ),
           ),
         );
       },

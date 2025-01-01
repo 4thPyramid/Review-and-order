@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:review_app/core/common/functions/validator.dart';
 import 'package:review_app/core/common/widgets/custom_btn.dart';
 import 'package:review_app/core/utils/app_strings.dart';
+import 'package:review_app/src/features/auth/presentaion/logic/register/register_cubit.dart';
+import 'package:review_app/src/features/auth/presentaion/logic/register/register_state.dart';
 import 'package:review_app/src/features/auth/presentation/widgets/auth_text_form_widget.dart';
 import 'package:review_app/src/features/auth/presentation/widgets/custom_sucess_pop.dart';
 import 'package:review_app/src/features/auth/presentation/widgets/have_an_account_widget.dart';
@@ -11,8 +13,6 @@ import 'package:review_app/src/features/auth/presentation/widgets/terms_and_cond
 
 import '../../../../../core/routes/router_names.dart';
 import '../../data/model/register_request.dart';
-import '../logic/register/register_cubit.dart';
-import '../logic/register/register_state.dart';
 
 class RegisterForm extends StatelessWidget {
   RegisterForm({super.key});
