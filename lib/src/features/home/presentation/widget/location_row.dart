@@ -7,8 +7,9 @@ import '../../../../../core/utils/app_styles.dart';
 class LocationRow extends StatelessWidget {
   const LocationRow({
     super.key,
+    required this.location,
   });
-
+  final String location;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -19,7 +20,7 @@ class LocationRow extends StatelessWidget {
           size: 14.sp,
         ),
         Text(
-          'المنصوره, حى الجامعه',
+          location,
           style: AppStyles.s8.copyWith(
             color: AppColors.black,
             fontWeight: FontWeight.w500,

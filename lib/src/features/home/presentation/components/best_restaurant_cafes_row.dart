@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:review_app/src/features/home/presentation/logic/cubit/home_cubit.dart';
 
 import '../widget/best_restaurants_cafes_Item.dart';
 
@@ -8,17 +10,32 @@ class BestRestaurantsCafesRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 255.h,
-      child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: 10,
-          itemBuilder: (context, index) {
-            return const Padding(
-              padding: EdgeInsets.only(left: 10),
-              child: BestRestaurantsCafesCardItem(),
-            );
-          }),
-    );
+    BlocProvider.of<HomeCubit>(context).getTopRatedPlaces();
+    return BlocBuilder<HomeCubit, HomeState>(builder: (context, state) {
+      return state.when(
+        initial: () => const Text('Loading ...'),
+        loading: () => const CircularProgressIndicator(),
+        loaded: (places) => SizedBox(
+          height: 255.h,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: places.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: BestRestaurantsCafesCardItem(
+                  resurantName: places[index].name,
+                  resurantLocation: places[index].mapDisc,
+                  resurantRate: places[index].rating,
+                  resurantImage:
+                      places[index].coverImage ?? 'default_image_url',
+                ),
+              );
+            },
+          ),
+        ),
+        error: (error) => Text(error.message),
+      );
+    });
   }
 }

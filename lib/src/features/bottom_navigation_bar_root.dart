@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:review_app/core/services/service_locator.dart';
+import 'package:review_app/src/features/home/presentation/logic/cubit/home_cubit.dart';
 import 'package:review_app/src/features/notification/notification_view.dart';
 
 import '../../core/app_cubit/app_cubit.dart';
@@ -16,7 +18,10 @@ class BottomNavigationBarRoot extends StatelessWidget {
     return BlocBuilder<AppCubit, AppState>(
       builder: (context, state) {
         final List<Widget> pages = [
-          const HomeView(),
+          BlocProvider(
+            create: (context) => getIt<HomeCubit>(),
+            child: const HomeView(),
+          ),
           const SearchView(),
           const NotificationView(),
           const ProfileView(),

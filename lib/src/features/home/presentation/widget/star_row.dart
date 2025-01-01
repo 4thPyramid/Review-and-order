@@ -10,17 +10,23 @@ class StarRow extends StatelessWidget {
 final double? itemSize;
 final TextStyle?  textStyle;
 
+    super.key,
+    required this.rating,
+  });
+  final double rating;
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         RatingBar.builder(
-          initialRating: 3,
+          initialRating: rating,
           minRating: 1,
           direction: Axis.horizontal,
           allowHalfRating: true,
           itemCount: 4,
           itemSize:itemSize?? 12,
+          itemCount: 5,
+          itemSize: 12,
           itemBuilder: (context, _) => const Icon(
             Icons.star,
             color: Colors.amber,

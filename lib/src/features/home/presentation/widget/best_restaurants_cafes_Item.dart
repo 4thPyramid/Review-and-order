@@ -8,13 +8,18 @@ import '../../../../../core/utils/app_styles.dart';
 import 'location_row.dart';
 import 'star_row.dart';
 
-
-
 class BestRestaurantsCafesCardItem extends StatelessWidget {
   const BestRestaurantsCafesCardItem({
     super.key,
+    required this.resurantName,
+    required this.resurantLocation,
+    required this.resurantRate,
+    required this.resurantImage,
   });
-
+  final String resurantName;
+  final String resurantLocation;
+  final double resurantRate;
+  final String resurantImage;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -39,14 +44,18 @@ class BestRestaurantsCafesCardItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'مطعم الراتب الشامي ',
+                    resurantName,
                     style: AppStyles.s14.copyWith(
                       color: AppColors.black,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const StarRow(),
-                 const LocationRow(),
+                  StarRow(
+                    rating: resurantRate,
+                  ),
+                  LocationRow(
+                    location: resurantLocation,
+                  ),
                 ],
               ),
             ),
@@ -56,4 +65,3 @@ class BestRestaurantsCafesCardItem extends StatelessWidget {
     );
   }
 }
-

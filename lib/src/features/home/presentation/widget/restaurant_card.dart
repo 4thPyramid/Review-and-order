@@ -9,8 +9,10 @@ import '../../../../../core/utils/app_assets.dart';
 import 'star_row.dart';
 
 class RestaurantCard extends StatelessWidget {
-  const RestaurantCard({super.key});
-
+  const RestaurantCard(
+      {super.key, required this.rating, required this.location});
+  final double rating;
+  final String location;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,7 +26,7 @@ class RestaurantCard extends StatelessWidget {
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 5,
             blurRadius: 7,
-            offset: const Offset(0, 3), 
+            offset: const Offset(0, 3),
           ),
         ],
       ),
@@ -34,7 +36,7 @@ class RestaurantCard extends StatelessWidget {
             AppAssets.onboarding3,
             radius: BorderRadius.circular(19.r),
           ),
-           SizedBox(width: 20.h),
+          SizedBox(width: 20.h),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,7 +49,7 @@ class RestaurantCard extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10.h),
-              const StarRow(),
+              StarRow(rating: rating),
               Row(
                 children: [
                   Text(
@@ -58,7 +60,7 @@ class RestaurantCard extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 5),
-                      Text(
+                  Text(
                     "يغلق الساعة 5:00 مساءً",
                     style: AppStyles.s12.copyWith(
                       color: AppColors.grey,
@@ -68,7 +70,9 @@ class RestaurantCard extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 5),
-              const LocationRow()
+              const LocationRow(
+                location: '',
+              )
             ],
           ),
         ],
