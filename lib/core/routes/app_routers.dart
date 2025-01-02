@@ -13,6 +13,8 @@ import 'package:review_app/src/features/intro/presentation/view/lets_start_view.
 import 'package:review_app/src/features/intro/presentation/view/onboarding_view.dart';
 import 'package:review_app/src/features/place_details/presentation/logic/cubit/place_details_cubit.dart';
 import 'package:review_app/src/features/place_details/presentation/view/place_details_view.dart';
+import 'package:review_app/src/features/profile/presentation/view/personal_info_view.dart';
+import 'package:review_app/src/features/profile/presentation/view/settings_view.dart';
 import 'package:review_app/src/splash_view.dart';
 
 import '../../src/features/auth/presentaion/logic/login/login_cubit.dart';
@@ -82,5 +84,12 @@ final GoRouter router = GoRouter(
         child: const HomeView(),
       ),
     ),
+    GoRoute(
+        path: RouterNames.personalInfoView,
+        builder: (context, state) => const PersonalInfoView()),
+
+         GoRoute(
+        path: RouterNames.settingView,
+        builder: (context, state) => const SettingsView()),
   ],
 );

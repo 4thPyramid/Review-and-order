@@ -1,11 +1,10 @@
-
 abstract class AppStrings {
   static const appName = "دليل المدينه",
       skip = "تخطي",
       creatNewAccount = "انشاء حساب جديد !",
       welcom = "مرحبا بك  ",
       welcomBack = "مرحبا بعودتك !",
-         signInSuccessfully =
+      signInSuccessfully =
           ' لقد قمت بتسجيل الدخول بنجاح \n في تطبيق دليل المدينه',
       goToHome = "الذهاب الى الصفحه الرئيسية",
       signIn = "تسجيل الدخول",
@@ -17,6 +16,9 @@ abstract class AppStrings {
       haveAnAccount = "لديك حساب ؟ ",
       resendCode = "إعادة إرسال الرمز",
       letsStart = "هيا نبدأ !",
+      favorite = 'المفضله',
+      notification = 'الاشعارات',
+      settings = 'الاعدادات',
       introText =
           "قم بتسجيل الدخول لتستمتع بالميزات التي نقدمها، وواستكشف اماكن جديده!",
       home = "الرئيسية",
@@ -30,7 +32,6 @@ abstract class AppStrings {
       creatAcount = "انشئ حساب",
       hintName = "ادخل اسمك ثلاثي",
       addNewVisit = 'اضف زياره جديده',
-      notifications = "التنبيهات",
       emailHint = " ادخل البريد الالكتروني",
       hintPassword = "ادخل كلمة المرور",
       hintConfirmPassword = "ادخل كلمة المرور مرة اخري",
@@ -40,12 +41,14 @@ abstract class AppStrings {
       forgetPasswordMessage =
           'أدخل حساب بريدك الإلكتروني لإعادة تعيين كلمة المرور الخاصة بك.',
       name = "الاسم",
+      allName = "الاسم بالكامل",
       password = "كلمة المرور",
       newPassword = "كلمة المرور الجديدة",
       confirmNewPassword = "تأكيد كلمة المرور الجديدة",
       resetPassword = "إعادة تعيين كلمة المرور",
       confirm = "تأكيد",
       send = "ارسال",
+      signout = "تسجيل الخروج",
       confirmPassword = "تأكيد كلمة المرور",
       forgetPassword = "هل نسيت كلمة المرور ؟",
       confirmationCode = "كود التسجيل",
@@ -77,6 +80,7 @@ abstract class AppStrings {
       profile = "الملف الشخصى",
       performanceDetails = "احصائيات الاداء",
       editProfile = "تعديل الملف الشخصى",
+      personalInfo = "المعلومات الشخصية",
       phoneHint = "ادخل رقم الهاتف",
       visitsHint = "ادخل عدد الزيارات المكتملة",
       goalsHint = "ادخل عدد الاهداف المحققة",
@@ -84,17 +88,18 @@ abstract class AppStrings {
       uncompletedVisitsHint = "ادخل عدد الزيارات الغير مكتملة",
       save = "حفظ",
       invalidForm = "البيانات غير صحيحة",
-      recognize = "تعرف على ", 
+      recognize = "تعرف على ",
       bestRestaurants = "افضل المطاعم القريبه منك",
       passwordMismatch = "كلمة المرور غير متطابقة",
       bestRestaurantsCafes = "افضل المطاعم والكافيهات",
       extraSuggestion = "اقتراحات اضافيه",
       ratings = "التقيمات",
       searchFor = "ابحث عما تريد....",
-      addCommit= 'اضف تقييمك',
-      sendCommit= 'ارسال التقييم',
+      addCommit = 'اضف تقييمك',
+      sendCommit = 'ارسال التقييم',
+      edit = 'تعديل',
       youThinkOfTheRestaurant = 'ما رايك فى تجربه المطعم؟',
       feedbackWillHelpImprove = 'ستساعد ملاحظاتك في تحسين تجربة التطبيق',
+      personalProfile = "الملف الشخصى",
       myName = "احمد سلمان ";
-
 }

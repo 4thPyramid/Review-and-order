@@ -9,6 +9,7 @@ abstract class AppAssets {
 
 
   // icons
-  static const String compleatedIcon = "assets/images/compleated_icon.png";
   static const String successIcon = "assets/images/successIcon.svg";
+  static const String editIcon = "assets/svg/editIcon.svg";
+  static const String editCamera = "assets/svg/editCamera.svg";
 }

@@ -7,7 +7,7 @@ import 'package:review_app/src/features/notification/notification_view.dart';
 import '../../core/app_cubit/app_cubit.dart';
 import '../../core/theme/app_colors.dart';
 import 'home/presentation/view/home_view.dart';
-import 'profile/profile_view.dart';
+import 'profile/presentation/view/profile_view.dart';
 import 'search/search_view.dart';
 
 class BottomNavigationBarRoot extends StatelessWidget {
@@ -27,6 +27,7 @@ class BottomNavigationBarRoot extends StatelessWidget {
           const ProfileView(),
         ];
         return Scaffold(
+          backgroundColor: AppColors.greyForBackground,
           body: SafeArea(
             bottom: false,
             child: pages[state.bottomNavBarSelectedIndex],
