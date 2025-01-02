@@ -91,6 +91,6 @@ void setupLocator() {
       getIt<GetNearstPlacesUC>(),
       getIt<GetAllPlacesUC>()));
 
-  getIt.registerLazySingleton<PlaceDetailsCubit>(
+  getIt.registerFactory<PlaceDetailsCubit>(
       () => PlaceDetailsCubit(getIt<GetPlaceDetailsUc>()));
 }

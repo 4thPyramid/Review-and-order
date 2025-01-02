@@ -1,9 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'one_place_model.g.dart';
+part 'place_details_model.g.dart';
 
 @JsonSerializable()
-class OnePlaceModel {
+class PlaceDetailsModel {
   final int id;
   final String name;
   @JsonKey(name: 'map_disc')
@@ -28,8 +28,9 @@ class OnePlaceModel {
   final int reviewsCount;
   final List<ReviewModel> reviews;
   final List<ImageModel> images;
+  final List<RatingModel> ratings;
 
-  OnePlaceModel({
+  PlaceDetailsModel({
     required this.id,
     required this.name,
     required this.mapDisc,
@@ -46,12 +47,13 @@ class OnePlaceModel {
     required this.reviewsCount,
     required this.reviews,
     required this.images,
+    required this.ratings,
   });
 
-  factory OnePlaceModel.fromJson(Map<String, dynamic> json) =>
-      _$OnePlaceModelFromJson(json);
+  factory PlaceDetailsModel.fromJson(Map<String, dynamic> json) =>
+      _$PlaceDetailsModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$OnePlaceModelToJson(this);
+  Map<String, dynamic> toJson() => _$PlaceDetailsModelToJson(this);
 }
 
 @JsonSerializable()
@@ -67,6 +69,9 @@ class ReviewModel {
   final String createdAt;
   @JsonKey(name: 'updated_at')
   final String updatedAt;
+  @JsonKey(name: 'user_rating')
+  final double userRating;
+  final UserModel user;
 
   ReviewModel({
     required this.id,
@@ -76,6 +81,8 @@ class ReviewModel {
     required this.placeId,
     required this.createdAt,
     required this.updatedAt,
+    required this.userRating,
+    required this.user,
   });
 
   factory ReviewModel.fromJson(Map<String, dynamic> json) =>
@@ -85,11 +92,80 @@ class ReviewModel {
 }
 
 @JsonSerializable()
+class UserModel {
+  final int id;
+  final String name;
+  final String phone;
+  final String email;
+  final String? image;
+  @JsonKey(name: 'created_at')
+  final String createdAt;
+  @JsonKey(name: 'updated_at')
+  final String updatedAt;
+
+  UserModel({
+    required this.id,
+    required this.name,
+    required this.phone,
+    required this.email,
+    this.image,
+    required this.createdAt,
+    required this.updatedAt,
+  });
+
+  factory UserModel.fromJson(Map<String, dynamic> json) =>
+      _$UserModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$UserModelToJson(this);
+}
+
+@JsonSerializable()
 class ImageModel {
-  const ImageModel();
+  @JsonKey(name: 'place_id')
+  final int placeId;
+  final String image;
+  @JsonKey(name: 'created_at')
+  final String createdAt;
+  @JsonKey(name: 'updated_at')
+  final String updatedAt;
+
+  ImageModel({
+    required this.placeId,
+    required this.image,
+    required this.createdAt,
+    required this.updatedAt,
+  });
 
   factory ImageModel.fromJson(Map<String, dynamic> json) =>
       _$ImageModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$ImageModelToJson(this);
+}
+
+@JsonSerializable()
+class RatingModel {
+  final int id;
+  final int rating;
+  @JsonKey(name: 'user_id')
+  final int userId;
+  @JsonKey(name: 'place_id')
+  final int placeId;
+  @JsonKey(name: 'created_at')
+  final String createdAt;
+  @JsonKey(name: 'updated_at')
+  final String updatedAt;
+
+  RatingModel({
+    required this.id,
+    required this.rating,
+    required this.userId,
+    required this.placeId,
+    required this.createdAt,
+    required this.updatedAt,
+  });
+
+  factory RatingModel.fromJson(Map<String, dynamic> json) =>
+      _$RatingModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$RatingModelToJson(this);
 }

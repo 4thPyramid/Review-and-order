@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'one_place_model.dart';
+part of 'place_details_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-OnePlaceModel _$OnePlaceModelFromJson(Map<String, dynamic> json) =>
-    OnePlaceModel(
+PlaceDetailsModel _$PlaceDetailsModelFromJson(Map<String, dynamic> json) =>
+    PlaceDetailsModel(
       id: (json['id'] as num).toInt(),
       name: json['name'] as String,
       mapDisc: json['map_disc'] as String,
@@ -28,9 +28,12 @@ OnePlaceModel _$OnePlaceModelFromJson(Map<String, dynamic> json) =>
       images: (json['images'] as List<dynamic>)
           .map((e) => ImageModel.fromJson(e as Map<String, dynamic>))
           .toList(),
+      ratings: (json['ratings'] as List<dynamic>)
+          .map((e) => RatingModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
-Map<String, dynamic> _$OnePlaceModelToJson(OnePlaceModel instance) =>
+Map<String, dynamic> _$PlaceDetailsModelToJson(PlaceDetailsModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
@@ -48,6 +51,7 @@ Map<String, dynamic> _$OnePlaceModelToJson(OnePlaceModel instance) =>
       'reviews_count': instance.reviewsCount,
       'reviews': instance.reviews,
       'images': instance.images,
+      'ratings': instance.ratings,
     };
 
 ReviewModel _$ReviewModelFromJson(Map<String, dynamic> json) => ReviewModel(
@@ -58,6 +62,8 @@ ReviewModel _$ReviewModelFromJson(Map<String, dynamic> json) => ReviewModel(
       placeId: (json['place_id'] as num).toInt(),
       createdAt: json['created_at'] as String,
       updatedAt: json['updated_at'] as String,
+      userRating: (json['user_rating'] as num).toDouble(),
+      user: UserModel.fromJson(json['user'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ReviewModelToJson(ReviewModel instance) =>
@@ -69,9 +75,60 @@ Map<String, dynamic> _$ReviewModelToJson(ReviewModel instance) =>
       'place_id': instance.placeId,
       'created_at': instance.createdAt,
       'updated_at': instance.updatedAt,
+      'user_rating': instance.userRating,
+      'user': instance.user,
     };
 
-ImageModel _$ImageModelFromJson(Map<String, dynamic> json) => ImageModel();
+UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
+      id: (json['id'] as num).toInt(),
+      name: json['name'] as String,
+      phone: json['phone'] as String,
+      email: json['email'] as String,
+      image: json['image'] as String?,
+      createdAt: json['created_at'] as String,
+      updatedAt: json['updated_at'] as String,
+    );
+
+Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
+      'id': instance.id,
+      'userName': instance.name,
+      'phone': instance.phone,
+      'email': instance.email,
+      'image': instance.image,
+      'created_at': instance.createdAt,
+      'updated_at': instance.updatedAt,
+    };
+
+ImageModel _$ImageModelFromJson(Map<String, dynamic> json) => ImageModel(
+      placeId: (json['place_id'] as num).toInt(),
+      image: json['image'] as String,
+      createdAt: json['created_at'] as String,
+      updatedAt: json['updated_at'] as String,
+    );
 
 Map<String, dynamic> _$ImageModelToJson(ImageModel instance) =>
-    <String, dynamic>{};
+    <String, dynamic>{
+      'place_id': instance.placeId,
+      'image': instance.image,
+      'created_at': instance.createdAt,
+      'updated_at': instance.updatedAt,
+    };
+
+RatingModel _$RatingModelFromJson(Map<String, dynamic> json) => RatingModel(
+      id: (json['id'] as num).toInt(),
+      rating: (json['rating'] as num).toInt(),
+      userId: (json['user_id'] as num).toInt(),
+      placeId: (json['place_id'] as num).toInt(),
+      createdAt: json['created_at'] as String,
+      updatedAt: json['updated_at'] as String,
+    );
+
+Map<String, dynamic> _$RatingModelToJson(RatingModel instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'rating': instance.rating,
+      'user_id': instance.userId,
+      'place_id': instance.placeId,
+      'created_at': instance.createdAt,
+      'updated_at': instance.updatedAt,
+    };

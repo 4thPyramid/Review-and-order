@@ -18,10 +18,7 @@ class BottomNavigationBarRoot extends StatelessWidget {
     return BlocBuilder<AppCubit, AppState>(
       builder: (context, state) {
         final List<Widget> pages = [
-          BlocProvider(
-            create: (context) => getIt<HomeCubit>(),
-            child: const HomeView(),
-          ),
+          const HomeView(),
           const SearchView(),
           const NotificationView(),
           const ProfileView(),

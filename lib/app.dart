@@ -6,6 +6,7 @@ import 'package:review_app/core/app_cubit/app_cubit.dart';
 import 'package:review_app/core/routes/app_routers.dart';
 import 'package:review_app/core/services/service_locator.dart';
 import 'package:review_app/core/theme/app_themes.dart';
+import 'package:review_app/src/features/home/presentation/logic/cubit/home_cubit.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -16,8 +17,15 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(393, 852),
       minTextAdapt: true,
-      child: BlocProvider(
-        create: (context) => getIt<AppCubit>(),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => getIt<AppCubit>(),
+          ),
+          BlocProvider(
+            create: (context) => getIt<HomeCubit>(),
+          ),
+        ],
         child: MaterialApp.router(
           debugShowCheckedModeBanner: false,
           theme: AppTheme.lightTheme,

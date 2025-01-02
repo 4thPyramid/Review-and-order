@@ -61,10 +61,6 @@ final GoRouter router = GoRouter(
       builder: (context, state) => const ForgetPassword(),
     ),
     GoRoute(
-      path: RouterNames.bottomNavigationBarRoot,
-      builder: (context, state) => const BottomNavigationBarRoot(),
-    ),
-    GoRoute(
         path: RouterNames.placeDetailsView,
         builder: (context, state) {
           final extra = state.extra as Map<String, dynamic>;
@@ -75,14 +71,12 @@ final GoRouter router = GoRouter(
           );
         }),
     GoRoute(
-        path: RouterNames.bottomNavigationBarRoot,
-        builder: (context, state) => const BottomNavigationBarRoot()),
+      path: RouterNames.bottomNavigationBarRoot,
+      builder: (context, state) => const BottomNavigationBarRoot(),
+    ),
     GoRoute(
       path: RouterNames.home,
-      builder: (context, state) => BlocProvider(
-        create: (context) => getIt<HomeCubit>(),
-        child: const HomeView(),
-      ),
+      builder: (context, state) => const HomeView(),
     ),
     GoRoute(
         path: RouterNames.personalInfoView,

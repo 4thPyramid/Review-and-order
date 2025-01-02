@@ -20,7 +20,7 @@ mixin _$PlaceDetailsState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(OnePlaceModel place) loaded,
+    required TResult Function(PlaceDetailsModel place) loaded,
     required TResult Function(ErrorModel message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$PlaceDetailsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(OnePlaceModel place)? loaded,
+    TResult? Function(PlaceDetailsModel place)? loaded,
     TResult? Function(ErrorModel message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$PlaceDetailsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(OnePlaceModel place)? loaded,
+    TResult Function(PlaceDetailsModel place)? loaded,
     TResult Function(ErrorModel message)? error,
     required TResult orElse(),
   }) =>
@@ -132,7 +132,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(OnePlaceModel place) loaded,
+    required TResult Function(PlaceDetailsModel place) loaded,
     required TResult Function(ErrorModel message) error,
   }) {
     return initial();
@@ -143,7 +143,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(OnePlaceModel place)? loaded,
+    TResult? Function(PlaceDetailsModel place)? loaded,
     TResult? Function(ErrorModel message)? error,
   }) {
     return initial?.call();
@@ -154,7 +154,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(OnePlaceModel place)? loaded,
+    TResult Function(PlaceDetailsModel place)? loaded,
     TResult Function(ErrorModel message)? error,
     required TResult orElse(),
   }) {
@@ -249,7 +249,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(OnePlaceModel place) loaded,
+    required TResult Function(PlaceDetailsModel place) loaded,
     required TResult Function(ErrorModel message) error,
   }) {
     return loading();
@@ -260,7 +260,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(OnePlaceModel place)? loaded,
+    TResult? Function(PlaceDetailsModel place)? loaded,
     TResult? Function(ErrorModel message)? error,
   }) {
     return loading?.call();
@@ -271,7 +271,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(OnePlaceModel place)? loaded,
+    TResult Function(PlaceDetailsModel place)? loaded,
     TResult Function(ErrorModel message)? error,
     required TResult orElse(),
   }) {
@@ -329,7 +329,7 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({OnePlaceModel place});
+  $Res call({PlaceDetailsModel place});
 }
 
 /// @nodoc
@@ -345,13 +345,13 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? place = freezed,
+    Object? place = null,
   }) {
     return _then(_$LoadedImpl(
-      freezed == place
+      null == place
           ? _value.place
           : place // ignore: cast_nullable_to_non_nullable
-              as OnePlaceModel,
+              as PlaceDetailsModel,
     ));
   }
 }
@@ -362,7 +362,7 @@ class _$LoadedImpl implements _Loaded {
   const _$LoadedImpl(this.place);
 
   @override
-  final OnePlaceModel place;
+  final PlaceDetailsModel place;
 
   @override
   String toString() {
@@ -374,12 +374,11 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            const DeepCollectionEquality().equals(other.place, place));
+            (identical(other.place, place) || other.place == place));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(place));
+  int get hashCode => Object.hash(runtimeType, place);
 
   /// Create a copy of PlaceDetailsState
   /// with the given fields replaced by the non-null parameter values.
@@ -394,7 +393,7 @@ class _$LoadedImpl implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(OnePlaceModel place) loaded,
+    required TResult Function(PlaceDetailsModel place) loaded,
     required TResult Function(ErrorModel message) error,
   }) {
     return loaded(place);
@@ -405,7 +404,7 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(OnePlaceModel place)? loaded,
+    TResult? Function(PlaceDetailsModel place)? loaded,
     TResult? Function(ErrorModel message)? error,
   }) {
     return loaded?.call(place);
@@ -416,7 +415,7 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(OnePlaceModel place)? loaded,
+    TResult Function(PlaceDetailsModel place)? loaded,
     TResult Function(ErrorModel message)? error,
     required TResult orElse(),
   }) {
@@ -465,9 +464,9 @@ class _$LoadedImpl implements _Loaded {
 }
 
 abstract class _Loaded implements PlaceDetailsState {
-  const factory _Loaded(final OnePlaceModel place) = _$LoadedImpl;
+  const factory _Loaded(final PlaceDetailsModel place) = _$LoadedImpl;
 
-  OnePlaceModel get place;
+  PlaceDetailsModel get place;
 
   /// Create a copy of PlaceDetailsState
   /// with the given fields replaced by the non-null parameter values.
@@ -498,10 +497,10 @@ class __$$ErrorImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = freezed,
+    Object? message = null,
   }) {
     return _then(_$ErrorImpl(
-      freezed == message
+      null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as ErrorModel,
@@ -527,12 +526,11 @@ class _$ErrorImpl implements _Error {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ErrorImpl &&
-            const DeepCollectionEquality().equals(other.message, message));
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+  int get hashCode => Object.hash(runtimeType, message);
 
   /// Create a copy of PlaceDetailsState
   /// with the given fields replaced by the non-null parameter values.
@@ -547,7 +545,7 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(OnePlaceModel place) loaded,
+    required TResult Function(PlaceDetailsModel place) loaded,
     required TResult Function(ErrorModel message) error,
   }) {
     return error(message);
@@ -558,7 +556,7 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(OnePlaceModel place)? loaded,
+    TResult? Function(PlaceDetailsModel place)? loaded,
     TResult? Function(ErrorModel message)? error,
   }) {
     return error?.call(message);
@@ -569,7 +567,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(OnePlaceModel place)? loaded,
+    TResult Function(PlaceDetailsModel place)? loaded,
     TResult Function(ErrorModel message)? error,
     required TResult orElse(),
   }) {
