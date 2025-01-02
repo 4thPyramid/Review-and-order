@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:review_app/core/common/widgets/custom_btn.dart';
 import 'package:review_app/src/features/place_details/presentation/logic/cubit/place_details_cubit.dart';
 import 'package:review_app/src/features/place_details/presentation/widgets/comments_list.dart';
-
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/utils/app_strings.dart';
 import '../../../../../core/utils/app_styles.dart';
-import '../widgets/add_image_and_btn.dart';
 import '../widgets/map_card_details.dart';
 import '../widgets/rate_and_time_row.dart';
 import '../widgets/title_and_favorite.dart';

@@ -38,6 +38,10 @@ void handelDioException(DioException e) {
         case 404:
           throw ServerException(
               errorModel: ErrorModel.fromJson(e.response?.data));
+        case 408:
+          throw ServerException(
+              errorModel: ErrorModel.fromJson(e.response?.data));
+
         case 500:
           throw ServerException(
               errorModel: ErrorModel.fromJson(e.response?.data));
