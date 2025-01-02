@@ -8,7 +8,7 @@ import 'package:review_app/core/utils/app_strings.dart';
 import '../../../../../core/common/widgets/custom_btn.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../core/utils/main_function.dart';
-import 'add_image_container.dart';
+import 'comment_image_widget.dart';
 
 addCommitPop(BuildContext context,
     {required String name, required String imageUrl}) {
@@ -96,7 +96,7 @@ addCommitPop(BuildContext context,
                   ),
                 ),
                 SizedBox(height: 20.h),
-                const AddImageContainer(),
+                // const CommentImageWidget(),
                 SizedBox(height: 20.h),
                 CustomButton(
                   text: AppStrings.sendCommit,

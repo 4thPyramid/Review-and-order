@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:review_app/core/errors/error_model.dart';
-import 'package:review_app/src/features/place_details/data/models/one_place_model.dart';
+import 'package:review_app/src/features/place_details/data/models/place_details_model.dart';
 import 'package:review_app/src/features/place_details/domain/usecase/get_place_details_uc.dart';
 
 part 'place_details_state.dart';
@@ -12,13 +12,20 @@ class PlaceDetailsCubit extends Cubit<PlaceDetailsState> {
 
   PlaceDetailsCubit(this.getPlaceDetailsUc)
       : super(const PlaceDetailsState.initial());
-
   Future<void> getPlaceDetails(int placeId) async {
+    if (isClosed) return;
+
+    emit(const PlaceDetailsState.initial());
     emit(const PlaceDetailsState.loading());
     final result = await getPlaceDetailsUc(placeId);
     result.fold(
-      (l) => emit(PlaceDetailsState.error(l)),
-      (r) => emit(PlaceDetailsState.loaded(r)),
+      (l) => {if (!isClosed) emit(PlaceDetailsState.error(l))},
+      (r) => {if (!isClosed) emit(PlaceDetailsState.loaded(r))},
     );
+  }
+
+  @override
+  Future<void> close() {
+    return super.close();
   }
 }

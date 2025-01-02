@@ -28,8 +28,11 @@ class BestRestaurantsCafesRow extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 10),
                 child: BestRestaurantsCafesCardItem(
                   onTap: () {
-                    context.go(RouterNames.placeDetailsView,
-                        extra: {'place': places[index].id});
+                    context.pushReplacement(
+                      RouterNames.placeDetailsView,
+                      extra: {'placeId': places[index].id},
+                    );
+                    print("**************${places[index].id}****************");
                   },
                   resurantName: places[index].name,
                   resurantLocation:
