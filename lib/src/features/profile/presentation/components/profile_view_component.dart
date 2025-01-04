@@ -36,11 +36,11 @@ class ProfileComponents extends StatelessWidget {
           icon: Icons.favorite_border,
           iconColor: AppColors.purple,
         ),
-        const CustomListTile(
-          title: AppStrings.notification,
-          icon: Icons.notifications_none,
-          iconColor: AppColors.primaryColor,
-        ),
+        // const CustomListTile(
+        //   title: AppStrings.notification,
+        //   icon: Icons.notifications_none,
+        //   iconColor: AppColors.primaryColor,
+        // ),
         SizedBox(height: 30.h),
          CustomListTile(
           onPressed: () {

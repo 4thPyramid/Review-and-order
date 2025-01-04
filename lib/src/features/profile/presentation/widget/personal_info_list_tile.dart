@@ -11,21 +11,24 @@ class PersonalInfoListTile extends StatelessWidget {
       required this.title,
       this.icon,
       required this.subtitle,
-      this.iconColor});
+      this.iconColor, this.onTap});
   final String title;
   final IconData? icon;
   final String subtitle;
   final Color? iconColor;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return Card(
+      
       elevation: 0,
       color: AppColors.white,
       margin: EdgeInsets.symmetric(
         horizontal: 16.w,
       ),
       child: ListTile(
+        onTap:onTap,
         contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.h),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16.r),
