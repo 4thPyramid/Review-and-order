@@ -31,7 +31,8 @@ class ProfileComponents extends StatelessWidget {
           iconColor: AppColors.orange,
         ),
         SizedBox(height: 30.h),
-        const CustomListTile(
+         CustomListTile(
+          onPressed: () => context.go(RouterNames.favoriteView),
           title: AppStrings.favorite,
           icon: Icons.favorite_border,
           iconColor: AppColors.purple,

@@ -5,9 +5,10 @@ import 'package:review_app/core/common/functions/password_visibility_cubit.dart'
 import 'package:review_app/src/features/auth/presentation/views/forget_password.dart';
 import 'package:review_app/src/features/auth/presentation/views/login_view.dart';
 import 'package:review_app/src/features/auth/presentation/views/register_view.dart';
-import 'package:review_app/src/features/auth/presentaion/logic/register/register_cubit.dart';
+import 'package:review_app/src/features/auth/presentation/logic/register/register_cubit.dart';
+import 'package:review_app/src/features/favorite/presentation/logic/get_favorite_cubit.dart';
+import 'package:review_app/src/features/favorite/presentation/view/favorite_view.dart';
 
-import 'package:review_app/src/features/home/presentation/logic/cubit/home_cubit.dart';
 import 'package:review_app/src/features/home/presentation/view/home_view.dart';
 import 'package:review_app/src/features/intro/presentation/view/lets_start_view.dart';
 import 'package:review_app/src/features/intro/presentation/view/onboarding_view.dart';
@@ -17,7 +18,7 @@ import 'package:review_app/src/features/profile/presentation/view/personal_info_
 import 'package:review_app/src/features/profile/presentation/view/settings_view.dart';
 import 'package:review_app/src/splash_view.dart';
 
-import '../../src/features/auth/presentaion/logic/login/login_cubit.dart';
+import '../../src/features/auth/presentation/logic/login/login_cubit.dart';
 import '../../src/features/bottom_navigation_bar_root.dart';
 import '../services/service_locator.dart';
 
@@ -81,9 +82,11 @@ final GoRouter router = GoRouter(
     GoRoute(
         path: RouterNames.personalInfoView,
         builder: (context, state) => const PersonalInfoView()),
-
-         GoRoute(
+    GoRoute(
         path: RouterNames.settingView,
         builder: (context, state) => const SettingsView()),
+    GoRoute(
+        path: RouterNames.favoriteView,
+        builder: (context, state) => const FavoriteView()),
   ],
 );

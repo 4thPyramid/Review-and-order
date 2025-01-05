@@ -2,7 +2,12 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:review_app/src/features/auth/domain/usecase/register_use_case.dart';
-import 'package:review_app/src/features/auth/presentaion/logic/login/login_cubit.dart';
+import 'package:review_app/src/features/auth/presentation/logic/login/login_cubit.dart';
+import 'package:review_app/src/features/favorite/data/datasource/favorite_api_services.dart';
+import 'package:review_app/src/features/favorite/data/datasource/favorite_remote_ds.dart';
+import 'package:review_app/src/features/favorite/domain/repository/favorite_repository.dart';
+import 'package:review_app/src/features/favorite/domain/usecase/get_favorite_use_case.dart';
+import 'package:review_app/src/features/favorite/presentation/logic/get_favorite_cubit.dart';
 import 'package:review_app/src/features/home/data/datasource/home_api_service.dart';
 import 'package:review_app/src/features/home/data/datasource/home_remote_ds.dart';
 import 'package:review_app/src/features/home/domain/repository/home_repository.dart';
@@ -20,7 +25,7 @@ import '../../src/features/auth/data/datasource/auth_api_services.dart';
 import '../../src/features/auth/data/datasource/auth_remote_ds.dart';
 import '../../src/features/auth/domain/repository/auth_repository.dart';
 import '../../src/features/auth/domain/usecase/login_use_case.dart';
-import '../../src/features/auth/presentaion/logic/register/register_cubit.dart';
+import '../../src/features/auth/presentation/logic/register/register_cubit.dart';
 import '../app_cubit/app_cubit.dart';
 import '../data/api/api_consumer.dart';
 import '../data/api/dio_consumer.dart';
@@ -47,7 +52,12 @@ void setupLocator() {
   getIt.registerLazySingleton<IPlaceDetailsApiService>(
       () => PlaceDetailsApiServiceImpl(getIt<ApiConsumer>()));
 
-//DataSources //
+ getIt.registerLazySingleton<FavoriteApiServices>(
+      () => FavoriteApiServicesImpl(getIt<ApiConsumer>()));
+
+
+
+/// --DataSources-- ///
   getIt.registerLazySingleton<IAuthRemoteDs>(
       () => AuthRemoteDsImpl(getIt<AuthApiServices>()));
   getIt.registerLazySingleton<IHomeRemoteDs>(
@@ -55,7 +65,10 @@ void setupLocator() {
   getIt.registerLazySingleton<IPlaceDetailsDS>(
       () => PlaceDetailsDSImpl(getIt<IPlaceDetailsApiService>()));
 
-//Repositories //
+ getIt.registerLazySingleton<IFavoriteRemoteDs>(
+      () => FavoriteRemoteDsImpl(apiService: getIt<FavoriteApiServices>()));
+
+/// -- Repositories -- ///
 
   getIt.registerLazySingleton<IAuthRepository>(
       () => AuthRepositoryImpl(getIt<IAuthRemoteDs>()));
@@ -65,7 +78,11 @@ void setupLocator() {
   getIt.registerLazySingleton<IPlaceDetailsRepository>(
       () => PlaceDetailsRepositoryImpl(getIt<IPlaceDetailsDS>()));
 
-// UseCases //
+
+ getIt.registerLazySingleton<IFavoriteRepository>(
+      () => FavoriteRepositoryImpl(getIt<IFavoriteRemoteDs>()));
+
+/// -- UseCases -- ///
   getIt.registerLazySingleton<LoginUseCase>(
       () => LoginUseCase(getIt<IAuthRepository>()));
   getIt.registerLazySingleton<RegisterUseCase>(
@@ -82,6 +99,10 @@ void setupLocator() {
   getIt.registerLazySingleton<GetPlaceDetailsUc>(
       () => GetPlaceDetailsUc(getIt<IPlaceDetailsRepository>()));
 
+       getIt.registerLazySingleton<GetFavoriteUseCase>(
+      () => GetFavoriteUseCase(getIt<IFavoriteRepository>()));
+
+
   // Cubits //
   getIt.registerLazySingleton<LoginCubit>(() => LoginCubit(getIt()));
   getIt.registerLazySingleton<RegisterCubit>(() => RegisterCubit(getIt()));
@@ -93,4 +114,7 @@ void setupLocator() {
 
   getIt.registerFactory<PlaceDetailsCubit>(
       () => PlaceDetailsCubit(getIt<GetPlaceDetailsUc>()));
+
+        getIt.registerFactory<GetFavoriteCubit>(
+      () => GetFavoriteCubit(getIt()));
 }

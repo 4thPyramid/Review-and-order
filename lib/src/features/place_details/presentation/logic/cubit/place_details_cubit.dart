@@ -17,7 +17,7 @@ class PlaceDetailsCubit extends Cubit<PlaceDetailsState> {
 
     emit(const PlaceDetailsState.initial());
     emit(const PlaceDetailsState.loading());
-    final result = await getPlaceDetailsUc(placeId);
+    final result = await getPlaceDetailsUc.call(placeId);
     result.fold(
       (l) => {if (!isClosed) emit(PlaceDetailsState.error(l))},
       (r) => {if (!isClosed) emit(PlaceDetailsState.loaded(r))},
