@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -22,7 +21,7 @@ class ProfileComponents extends StatelessWidget {
           image: AppAssets.profileImage,
         ),
         SizedBox(height: 40.h),
-         CustomListTile(
+        CustomListTile(
           onPressed: () {
             context.go(RouterNames.personalInfoView);
           },
@@ -31,8 +30,8 @@ class ProfileComponents extends StatelessWidget {
           iconColor: AppColors.orange,
         ),
         SizedBox(height: 30.h),
-         CustomListTile(
-          onPressed: () => context.go(RouterNames.favoriteView),
+        CustomListTile(
+          onPressed: () => context.push(RouterNames.favoriteView),
           title: AppStrings.favorite,
           icon: Icons.favorite_border,
           iconColor: AppColors.purple,
@@ -43,7 +42,7 @@ class ProfileComponents extends StatelessWidget {
         //   iconColor: AppColors.primaryColor,
         // ),
         SizedBox(height: 30.h),
-         CustomListTile(
+        CustomListTile(
           onPressed: () {
             context.go(RouterNames.settingView);
           },

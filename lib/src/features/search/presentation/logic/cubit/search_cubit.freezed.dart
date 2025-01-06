@@ -20,7 +20,7 @@ mixin _$SearchState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PlaceModel> places) loaded,
+    required TResult Function(List<SearchResponse> places) loaded,
     required TResult Function(ErrorModel message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$SearchState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PlaceModel> places)? loaded,
+    TResult? Function(List<SearchResponse> places)? loaded,
     TResult? Function(ErrorModel message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$SearchState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PlaceModel> places)? loaded,
+    TResult Function(List<SearchResponse> places)? loaded,
     TResult Function(ErrorModel message)? error,
     required TResult orElse(),
   }) =>
@@ -132,7 +132,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PlaceModel> places) loaded,
+    required TResult Function(List<SearchResponse> places) loaded,
     required TResult Function(ErrorModel message) error,
   }) {
     return initial();
@@ -143,7 +143,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PlaceModel> places)? loaded,
+    TResult? Function(List<SearchResponse> places)? loaded,
     TResult? Function(ErrorModel message)? error,
   }) {
     return initial?.call();
@@ -154,7 +154,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PlaceModel> places)? loaded,
+    TResult Function(List<SearchResponse> places)? loaded,
     TResult Function(ErrorModel message)? error,
     required TResult orElse(),
   }) {
@@ -249,7 +249,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PlaceModel> places) loaded,
+    required TResult Function(List<SearchResponse> places) loaded,
     required TResult Function(ErrorModel message) error,
   }) {
     return loading();
@@ -260,7 +260,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PlaceModel> places)? loaded,
+    TResult? Function(List<SearchResponse> places)? loaded,
     TResult? Function(ErrorModel message)? error,
   }) {
     return loading?.call();
@@ -271,7 +271,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PlaceModel> places)? loaded,
+    TResult Function(List<SearchResponse> places)? loaded,
     TResult Function(ErrorModel message)? error,
     required TResult orElse(),
   }) {
@@ -329,7 +329,7 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<PlaceModel> places});
+  $Res call({List<SearchResponse> places});
 }
 
 /// @nodoc
@@ -351,7 +351,7 @@ class __$$LoadedImplCopyWithImpl<$Res>
       null == places
           ? _value._places
           : places // ignore: cast_nullable_to_non_nullable
-              as List<PlaceModel>,
+              as List<SearchResponse>,
     ));
   }
 }
@@ -359,11 +359,11 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl(final List<PlaceModel> places) : _places = places;
+  const _$LoadedImpl(final List<SearchResponse> places) : _places = places;
 
-  final List<PlaceModel> _places;
+  final List<SearchResponse> _places;
   @override
-  List<PlaceModel> get places {
+  List<SearchResponse> get places {
     if (_places is EqualUnmodifiableListView) return _places;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_places);
@@ -399,7 +399,7 @@ class _$LoadedImpl implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PlaceModel> places) loaded,
+    required TResult Function(List<SearchResponse> places) loaded,
     required TResult Function(ErrorModel message) error,
   }) {
     return loaded(places);
@@ -410,7 +410,7 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PlaceModel> places)? loaded,
+    TResult? Function(List<SearchResponse> places)? loaded,
     TResult? Function(ErrorModel message)? error,
   }) {
     return loaded?.call(places);
@@ -421,7 +421,7 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PlaceModel> places)? loaded,
+    TResult Function(List<SearchResponse> places)? loaded,
     TResult Function(ErrorModel message)? error,
     required TResult orElse(),
   }) {
@@ -470,9 +470,9 @@ class _$LoadedImpl implements _Loaded {
 }
 
 abstract class _Loaded implements SearchState {
-  const factory _Loaded(final List<PlaceModel> places) = _$LoadedImpl;
+  const factory _Loaded(final List<SearchResponse> places) = _$LoadedImpl;
 
-  List<PlaceModel> get places;
+  List<SearchResponse> get places;
 
   /// Create a copy of SearchState
   /// with the given fields replaced by the non-null parameter values.
@@ -503,10 +503,10 @@ class __$$ErrorImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = freezed,
+    Object? message = null,
   }) {
     return _then(_$ErrorImpl(
-      freezed == message
+      null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as ErrorModel,
@@ -532,12 +532,11 @@ class _$ErrorImpl implements _Error {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ErrorImpl &&
-            const DeepCollectionEquality().equals(other.message, message));
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+  int get hashCode => Object.hash(runtimeType, message);
 
   /// Create a copy of SearchState
   /// with the given fields replaced by the non-null parameter values.
@@ -552,7 +551,7 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PlaceModel> places) loaded,
+    required TResult Function(List<SearchResponse> places) loaded,
     required TResult Function(ErrorModel message) error,
   }) {
     return error(message);
@@ -563,7 +562,7 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PlaceModel> places)? loaded,
+    TResult? Function(List<SearchResponse> places)? loaded,
     TResult? Function(ErrorModel message)? error,
   }) {
     return error?.call(message);
@@ -574,7 +573,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PlaceModel> places)? loaded,
+    TResult Function(List<SearchResponse> places)? loaded,
     TResult Function(ErrorModel message)? error,
     required TResult orElse(),
   }) {

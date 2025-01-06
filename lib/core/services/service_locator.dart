@@ -23,6 +23,11 @@ import 'package:review_app/src/features/place_details/domain/usecase/add_favorit
 import 'package:review_app/src/features/place_details/domain/usecase/get_place_details_uc.dart';
 import 'package:review_app/src/features/place_details/presentation/logic/cubit/add_favorite_place_cubit.dart';
 import 'package:review_app/src/features/place_details/presentation/logic/place_details/place_details_cubit.dart';
+import 'package:review_app/src/features/search/data/datasourse/search_api_service.dart';
+import 'package:review_app/src/features/search/data/datasourse/search_remote_ds.dart';
+import 'package:review_app/src/features/search/domain/repository/search_repository.dart';
+import 'package:review_app/src/features/search/domain/usecase/get_search_results.dart';
+import 'package:review_app/src/features/search/presentation/logic/cubit/search_cubit.dart';
 import '../../src/features/auth/data/datasource/auth_api_services.dart';
 import '../../src/features/auth/data/datasource/auth_remote_ds.dart';
 import '../../src/features/auth/domain/repository/auth_repository.dart';
@@ -57,6 +62,9 @@ void setupLocator() {
   getIt.registerLazySingleton<FavoriteApiServices>(
       () => FavoriteApiServicesImpl(getIt<ApiConsumer>()));
 
+  getIt.registerLazySingleton<SearchApiService>(
+      () => SearchApiServiceImpl(getIt<ApiConsumer>()));
+
   /// --DataSources-- ///
   getIt.registerLazySingleton<IAuthRemoteDs>(
       () => AuthRemoteDsImpl(getIt<AuthApiServices>()));
@@ -67,6 +75,9 @@ void setupLocator() {
 
   getIt.registerLazySingleton<IFavoriteRemoteDs>(
       () => FavoriteRemoteDsImpl(apiService: getIt<FavoriteApiServices>()));
+
+  getIt.registerLazySingleton<ISearchRemoteDataSource>(
+      () => SearchRemoteDataSource(getIt<SearchApiService>()));
 
   /// -- Repositories -- ///
 
@@ -80,6 +91,8 @@ void setupLocator() {
 
   getIt.registerLazySingleton<IFavoriteRepository>(
       () => FavoriteRepositoryImpl(getIt<IFavoriteRemoteDs>()));
+  getIt.registerLazySingleton<ISearchRepository>(
+      () => SearchRepository(getIt<ISearchRemoteDataSource>()));
 
   /// -- UseCases -- ///
   getIt.registerLazySingleton<LoginUseCase>(
@@ -103,6 +116,9 @@ void setupLocator() {
   getIt.registerLazySingleton<GetFavoriteUseCase>(
       () => GetFavoriteUseCase(getIt<IFavoriteRepository>()));
 
+  getIt.registerLazySingleton<GetSearchResults>(
+      () => GetSearchResults(getIt<ISearchRepository>()));
+
   // Cubits //
   getIt.registerLazySingleton<LoginCubit>(() => LoginCubit(getIt()));
   getIt.registerLazySingleton<RegisterCubit>(() => RegisterCubit(getIt()));
@@ -118,4 +134,6 @@ void setupLocator() {
   getIt.registerFactory<GetFavoriteCubit>(() => GetFavoriteCubit(getIt()));
   getIt.registerFactory<AddFavoritePlaceCubit>(
       () => AddFavoritePlaceCubit(getIt<AddFavoritePlaceUc>()));
+
+  getIt.registerFactory<SearchCubit>(() => SearchCubit(getIt()));
 }

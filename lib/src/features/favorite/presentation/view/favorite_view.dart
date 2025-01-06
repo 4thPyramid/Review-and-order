@@ -11,14 +11,11 @@ class FavoriteView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: BlocProvider(
-       create: (context) => getIt<GetFavoriteCubit>()..getFavoriteList(),
-          child: Padding(
-            padding:  EdgeInsets.only(top: 40.0.h , left: 24.0.w, right: 24.0.w),
-            child: const FavoriteComponents(),
-          ),
+          create: (context) => getIt<GetFavoriteCubit>()..getFavoriteList(),
+          child: const FavoriteComponents(),
         ),
       ),
     );
