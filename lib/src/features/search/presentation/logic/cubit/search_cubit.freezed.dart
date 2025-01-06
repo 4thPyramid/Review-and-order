@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'place_details_cubit.dart';
+part of 'search_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,12 +15,12 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$PlaceDetailsState {
+mixin _$SearchState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(PlaceDetailsModel place) loaded,
+    required TResult Function(List<PlaceModel> places) loaded,
     required TResult Function(ErrorModel message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$PlaceDetailsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(PlaceDetailsModel place)? loaded,
+    TResult? Function(List<PlaceModel> places)? loaded,
     TResult? Function(ErrorModel message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$PlaceDetailsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(PlaceDetailsModel place)? loaded,
+    TResult Function(List<PlaceModel> places)? loaded,
     TResult Function(ErrorModel message)? error,
     required TResult orElse(),
   }) =>
@@ -69,23 +69,23 @@ mixin _$PlaceDetailsState {
 }
 
 /// @nodoc
-abstract class $PlaceDetailsStateCopyWith<$Res> {
-  factory $PlaceDetailsStateCopyWith(
-          PlaceDetailsState value, $Res Function(PlaceDetailsState) then) =
-      _$PlaceDetailsStateCopyWithImpl<$Res, PlaceDetailsState>;
+abstract class $SearchStateCopyWith<$Res> {
+  factory $SearchStateCopyWith(
+          SearchState value, $Res Function(SearchState) then) =
+      _$SearchStateCopyWithImpl<$Res, SearchState>;
 }
 
 /// @nodoc
-class _$PlaceDetailsStateCopyWithImpl<$Res, $Val extends PlaceDetailsState>
-    implements $PlaceDetailsStateCopyWith<$Res> {
-  _$PlaceDetailsStateCopyWithImpl(this._value, this._then);
+class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
+    implements $SearchStateCopyWith<$Res> {
+  _$SearchStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of PlaceDetailsState
+  /// Create a copy of SearchState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -98,13 +98,13 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$PlaceDetailsStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$SearchStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of PlaceDetailsState
+  /// Create a copy of SearchState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -115,7 +115,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'PlaceDetailsState.initial()';
+    return 'SearchState.initial()';
   }
 
   @override
@@ -132,7 +132,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(PlaceDetailsModel place) loaded,
+    required TResult Function(List<PlaceModel> places) loaded,
     required TResult Function(ErrorModel message) error,
   }) {
     return initial();
@@ -143,7 +143,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(PlaceDetailsModel place)? loaded,
+    TResult? Function(List<PlaceModel> places)? loaded,
     TResult? Function(ErrorModel message)? error,
   }) {
     return initial?.call();
@@ -154,7 +154,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(PlaceDetailsModel place)? loaded,
+    TResult Function(List<PlaceModel> places)? loaded,
     TResult Function(ErrorModel message)? error,
     required TResult orElse(),
   }) {
@@ -202,7 +202,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements PlaceDetailsState {
+abstract class _Initial implements SearchState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -215,13 +215,13 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$PlaceDetailsStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$SearchStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of PlaceDetailsState
+  /// Create a copy of SearchState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -232,7 +232,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'PlaceDetailsState.loading()';
+    return 'SearchState.loading()';
   }
 
   @override
@@ -249,7 +249,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(PlaceDetailsModel place) loaded,
+    required TResult Function(List<PlaceModel> places) loaded,
     required TResult Function(ErrorModel message) error,
   }) {
     return loading();
@@ -260,7 +260,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(PlaceDetailsModel place)? loaded,
+    TResult? Function(List<PlaceModel> places)? loaded,
     TResult? Function(ErrorModel message)? error,
   }) {
     return loading?.call();
@@ -271,7 +271,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(PlaceDetailsModel place)? loaded,
+    TResult Function(List<PlaceModel> places)? loaded,
     TResult Function(ErrorModel message)? error,
     required TResult orElse(),
   }) {
@@ -319,7 +319,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements PlaceDetailsState {
+abstract class _Loading implements SearchState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -329,29 +329,29 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({PlaceDetailsModel place});
+  $Res call({List<PlaceModel> places});
 }
 
 /// @nodoc
 class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$PlaceDetailsStateCopyWithImpl<$Res, _$LoadedImpl>
+    extends _$SearchStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of PlaceDetailsState
+  /// Create a copy of SearchState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? place = null,
+    Object? places = null,
   }) {
     return _then(_$LoadedImpl(
-      null == place
-          ? _value.place
-          : place // ignore: cast_nullable_to_non_nullable
-              as PlaceDetailsModel,
+      null == places
+          ? _value._places
+          : places // ignore: cast_nullable_to_non_nullable
+              as List<PlaceModel>,
     ));
   }
 }
@@ -359,14 +359,19 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl(this.place);
+  const _$LoadedImpl(final List<PlaceModel> places) : _places = places;
 
+  final List<PlaceModel> _places;
   @override
-  final PlaceDetailsModel place;
+  List<PlaceModel> get places {
+    if (_places is EqualUnmodifiableListView) return _places;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_places);
+  }
 
   @override
   String toString() {
-    return 'PlaceDetailsState.loaded(place: $place)';
+    return 'SearchState.loaded(places: $places)';
   }
 
   @override
@@ -374,13 +379,14 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            (identical(other.place, place) || other.place == place));
+            const DeepCollectionEquality().equals(other._places, _places));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, place);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_places));
 
-  /// Create a copy of PlaceDetailsState
+  /// Create a copy of SearchState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -393,10 +399,10 @@ class _$LoadedImpl implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(PlaceDetailsModel place) loaded,
+    required TResult Function(List<PlaceModel> places) loaded,
     required TResult Function(ErrorModel message) error,
   }) {
-    return loaded(place);
+    return loaded(places);
   }
 
   @override
@@ -404,10 +410,10 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(PlaceDetailsModel place)? loaded,
+    TResult? Function(List<PlaceModel> places)? loaded,
     TResult? Function(ErrorModel message)? error,
   }) {
-    return loaded?.call(place);
+    return loaded?.call(places);
   }
 
   @override
@@ -415,12 +421,12 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(PlaceDetailsModel place)? loaded,
+    TResult Function(List<PlaceModel> places)? loaded,
     TResult Function(ErrorModel message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(place);
+      return loaded(places);
     }
     return orElse();
   }
@@ -463,12 +469,12 @@ class _$LoadedImpl implements _Loaded {
   }
 }
 
-abstract class _Loaded implements PlaceDetailsState {
-  const factory _Loaded(final PlaceDetailsModel place) = _$LoadedImpl;
+abstract class _Loaded implements SearchState {
+  const factory _Loaded(final List<PlaceModel> places) = _$LoadedImpl;
 
-  PlaceDetailsModel get place;
+  List<PlaceModel> get places;
 
-  /// Create a copy of PlaceDetailsState
+  /// Create a copy of SearchState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
@@ -486,21 +492,21 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$PlaceDetailsStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$SearchStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of PlaceDetailsState
+  /// Create a copy of SearchState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = null,
+    Object? message = freezed,
   }) {
     return _then(_$ErrorImpl(
-      null == message
+      freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as ErrorModel,
@@ -518,7 +524,7 @@ class _$ErrorImpl implements _Error {
 
   @override
   String toString() {
-    return 'PlaceDetailsState.error(message: $message)';
+    return 'SearchState.error(message: $message)';
   }
 
   @override
@@ -526,13 +532,14 @@ class _$ErrorImpl implements _Error {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ErrorImpl &&
-            (identical(other.message, message) || other.message == message));
+            const DeepCollectionEquality().equals(other.message, message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
 
-  /// Create a copy of PlaceDetailsState
+  /// Create a copy of SearchState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -545,7 +552,7 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(PlaceDetailsModel place) loaded,
+    required TResult Function(List<PlaceModel> places) loaded,
     required TResult Function(ErrorModel message) error,
   }) {
     return error(message);
@@ -556,7 +563,7 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(PlaceDetailsModel place)? loaded,
+    TResult? Function(List<PlaceModel> places)? loaded,
     TResult? Function(ErrorModel message)? error,
   }) {
     return error?.call(message);
@@ -567,7 +574,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(PlaceDetailsModel place)? loaded,
+    TResult Function(List<PlaceModel> places)? loaded,
     TResult Function(ErrorModel message)? error,
     required TResult orElse(),
   }) {
@@ -615,12 +622,12 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements PlaceDetailsState {
+abstract class _Error implements SearchState {
   const factory _Error(final ErrorModel message) = _$ErrorImpl;
 
   ErrorModel get message;
 
-  /// Create a copy of PlaceDetailsState
+  /// Create a copy of SearchState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>

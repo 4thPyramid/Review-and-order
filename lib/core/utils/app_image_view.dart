@@ -7,7 +7,6 @@ import 'package:review_app/core/theme/app_colors.dart';
 import 'package:review_app/core/utils/app_shimmer.dart';
 
 class AppImageView extends StatelessWidget {
-  ///[imagePath] is required parameter for showing image
   final String? imagePath;
   final double? height;
   final double? width;
@@ -20,9 +19,8 @@ class AppImageView extends StatelessWidget {
   final BorderRadius? radius;
   final BoxBorder? border;
   final String? placeHolderImage;
+  final String? tag;
 
-  ///a [AppImageView] it can be used for showing any type of images
-  /// it will shows the placeholder image if image is not found on network image
   const AppImageView(
     this.imagePath, {
     super.key,
@@ -37,6 +35,7 @@ class AppImageView extends StatelessWidget {
     this.border,
     this.isAvatar = false,
     this.placeHolderImage,
+    this.tag,
   });
 
   @override
@@ -59,8 +58,7 @@ class AppImageView extends StatelessWidget {
     );
   }
 
-  ///build the image with border radius
-  _buildCircleImage() {
+  Widget _buildCircleImage() {
     if (radius != null) {
       return ClipRRect(
         borderRadius: radius ?? BorderRadius.zero,
@@ -71,8 +69,7 @@ class AppImageView extends StatelessWidget {
     }
   }
 
-  ///build the image with border and border radius style
-  _buildImageWithBorder() {
+  Widget _buildImageWithBorder() {
     if (border != null) {
       return Container(
         decoration: BoxDecoration(
@@ -130,28 +127,25 @@ class AppImageView extends StatelessWidget {
             fit: fit ?? BoxFit.fill,
             imageUrl: imagePath!,
             color: color,
-            httpHeaders: const {
-              // "Authorization":
-              //     "Bearer ${SharedPrefHelper.getString(AppStrings.appUserTokenKey)}",
-            },
             imageBuilder: (context, imageProvider) => InkWell(
               onDoubleTap: () {
-                imageHeroFunction(context, imageProvider);
+                imageHeroFunction(context, imageProvider,
+                    tag: tag ?? "$imagePath${this.hashCode}");
               },
               onLongPress: () {
-                imageHeroFunction(context, imageProvider);
+                imageHeroFunction(context, imageProvider,
+                    tag: tag ?? "$imagePath${hashCode}");
               },
               child: Hero(
-                tag: imageProvider,
+                tag: tag ?? "$imagePath${this.hashCode}",
                 child: Container(
-                  height: height, // height of the image  // height of the image
-                  width: width, // width of the image
+                  height: height,
+                  width: width,
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   decoration: BoxDecoration(
                     border: Border.all(color: color ?? AppColors.white),
                     borderRadius: radius,
-                    shape:
-                        isAvatar == true ? BoxShape.circle : BoxShape.rectangle,
+                    shape: isAvatar ? BoxShape.circle : BoxShape.rectangle,
                     image: DecorationImage(
                       image: imageProvider,
                       fit: fit ?? BoxFit.fill,
@@ -162,12 +156,8 @@ class AppImageView extends StatelessWidget {
             ),
             placeholder: (context, url) => AppShimmer(avatar: isAvatar),
             errorWidget: (context, url, error) => placeHolderImage != null
-                ? placeHolderImage != null
-                    ? Image.asset(placeHolderImage!)
-                    : AppShimmer(avatar: isAvatar)
-                : isAvatar
-                    ? AppShimmer(avatar: isAvatar)
-                    : AppShimmer(height: height, width: width),
+                ? Image.asset(placeHolderImage!)
+                : AppShimmer(avatar: isAvatar),
           );
 
         case ImageType.png:
@@ -214,13 +204,14 @@ Future<dynamic> imageHeroFunction(BuildContext context, var imageProvider,
             Navigator.pop(context);
           },
           child: Hero(
-              tag: tag ?? imageProvider,
-              child: Container(
-                color: Colors.black,
-                width: double.infinity,
-                height: double.infinity,
-                child: Image(image: imageProvider),
-              )),
+            tag: tag ?? imageProvider,
+            child: Container(
+              color: Colors.black,
+              width: double.infinity,
+              height: double.infinity,
+              child: Image(image: imageProvider),
+            ),
+          ),
         ),
       ),
     ),

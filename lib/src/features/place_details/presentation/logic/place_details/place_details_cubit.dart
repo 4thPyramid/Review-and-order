@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:review_app/core/errors/error_model.dart';
 import 'package:review_app/src/features/place_details/data/models/place_details_model.dart';

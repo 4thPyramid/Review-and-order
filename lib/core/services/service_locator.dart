@@ -19,8 +19,10 @@ import 'package:review_app/src/features/home/presentation/logic/cubit/home_cubit
 import 'package:review_app/src/features/place_details/data/datasource/place_datails_api_service.dart';
 import 'package:review_app/src/features/place_details/data/datasource/place_details_remote_data_source.dart';
 import 'package:review_app/src/features/place_details/domain/repository/place_details_repository.dart';
+import 'package:review_app/src/features/place_details/domain/usecase/add_favorite_place_uc.dart';
 import 'package:review_app/src/features/place_details/domain/usecase/get_place_details_uc.dart';
-import 'package:review_app/src/features/place_details/presentation/logic/cubit/place_details_cubit.dart';
+import 'package:review_app/src/features/place_details/presentation/logic/cubit/add_favorite_place_cubit.dart';
+import 'package:review_app/src/features/place_details/presentation/logic/place_details/place_details_cubit.dart';
 import '../../src/features/auth/data/datasource/auth_api_services.dart';
 import '../../src/features/auth/data/datasource/auth_remote_ds.dart';
 import '../../src/features/auth/domain/repository/auth_repository.dart';
@@ -52,12 +54,10 @@ void setupLocator() {
   getIt.registerLazySingleton<IPlaceDetailsApiService>(
       () => PlaceDetailsApiServiceImpl(getIt<ApiConsumer>()));
 
- getIt.registerLazySingleton<FavoriteApiServices>(
+  getIt.registerLazySingleton<FavoriteApiServices>(
       () => FavoriteApiServicesImpl(getIt<ApiConsumer>()));
 
-
-
-/// --DataSources-- ///
+  /// --DataSources-- ///
   getIt.registerLazySingleton<IAuthRemoteDs>(
       () => AuthRemoteDsImpl(getIt<AuthApiServices>()));
   getIt.registerLazySingleton<IHomeRemoteDs>(
@@ -65,10 +65,10 @@ void setupLocator() {
   getIt.registerLazySingleton<IPlaceDetailsDS>(
       () => PlaceDetailsDSImpl(getIt<IPlaceDetailsApiService>()));
 
- getIt.registerLazySingleton<IFavoriteRemoteDs>(
+  getIt.registerLazySingleton<IFavoriteRemoteDs>(
       () => FavoriteRemoteDsImpl(apiService: getIt<FavoriteApiServices>()));
 
-/// -- Repositories -- ///
+  /// -- Repositories -- ///
 
   getIt.registerLazySingleton<IAuthRepository>(
       () => AuthRepositoryImpl(getIt<IAuthRemoteDs>()));
@@ -78,11 +78,10 @@ void setupLocator() {
   getIt.registerLazySingleton<IPlaceDetailsRepository>(
       () => PlaceDetailsRepositoryImpl(getIt<IPlaceDetailsDS>()));
 
-
- getIt.registerLazySingleton<IFavoriteRepository>(
+  getIt.registerLazySingleton<IFavoriteRepository>(
       () => FavoriteRepositoryImpl(getIt<IFavoriteRemoteDs>()));
 
-/// -- UseCases -- ///
+  /// -- UseCases -- ///
   getIt.registerLazySingleton<LoginUseCase>(
       () => LoginUseCase(getIt<IAuthRepository>()));
   getIt.registerLazySingleton<RegisterUseCase>(
@@ -98,10 +97,11 @@ void setupLocator() {
 
   getIt.registerLazySingleton<GetPlaceDetailsUc>(
       () => GetPlaceDetailsUc(getIt<IPlaceDetailsRepository>()));
+  getIt.registerLazySingleton<AddFavoritePlaceUc>(
+      () => AddFavoritePlaceUc(getIt<IPlaceDetailsRepository>()));
 
-       getIt.registerLazySingleton<GetFavoriteUseCase>(
+  getIt.registerLazySingleton<GetFavoriteUseCase>(
       () => GetFavoriteUseCase(getIt<IFavoriteRepository>()));
-
 
   // Cubits //
   getIt.registerLazySingleton<LoginCubit>(() => LoginCubit(getIt()));
@@ -115,6 +115,7 @@ void setupLocator() {
   getIt.registerFactory<PlaceDetailsCubit>(
       () => PlaceDetailsCubit(getIt<GetPlaceDetailsUc>()));
 
-        getIt.registerFactory<GetFavoriteCubit>(
-      () => GetFavoriteCubit(getIt()));
+  getIt.registerFactory<GetFavoriteCubit>(() => GetFavoriteCubit(getIt()));
+  getIt.registerFactory<AddFavoritePlaceCubit>(
+      () => AddFavoritePlaceCubit(getIt<AddFavoritePlaceUc>()));
 }

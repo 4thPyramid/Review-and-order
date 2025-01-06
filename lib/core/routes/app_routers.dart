@@ -12,7 +12,8 @@ import 'package:review_app/src/features/favorite/presentation/view/favorite_view
 import 'package:review_app/src/features/home/presentation/view/home_view.dart';
 import 'package:review_app/src/features/intro/presentation/view/lets_start_view.dart';
 import 'package:review_app/src/features/intro/presentation/view/onboarding_view.dart';
-import 'package:review_app/src/features/place_details/presentation/logic/cubit/place_details_cubit.dart';
+import 'package:review_app/src/features/place_details/presentation/logic/cubit/add_favorite_place_cubit.dart';
+import 'package:review_app/src/features/place_details/presentation/logic/place_details/place_details_cubit.dart';
 import 'package:review_app/src/features/place_details/presentation/view/place_details_view.dart';
 import 'package:review_app/src/features/profile/presentation/view/personal_info_view.dart';
 import 'package:review_app/src/features/profile/presentation/view/settings_view.dart';
@@ -66,8 +67,15 @@ final GoRouter router = GoRouter(
         builder: (context, state) {
           final extra = state.extra as Map<String, dynamic>;
           final placeId = extra['placeId'] as int?;
-          return BlocProvider(
-            create: (context) => getIt<PlaceDetailsCubit>(),
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt<PlaceDetailsCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<AddFavoritePlaceCubit>(),
+              ),
+            ],
             child: PlaceDetailsView(placeId: placeId ?? 0),
           );
         }),
