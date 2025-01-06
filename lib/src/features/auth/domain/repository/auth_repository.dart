@@ -12,6 +12,9 @@ abstract class IAuthRepository {
   );
   Future<Either<ErrorModel, AuthResponse>> register(
       RegisterAuthData registerAuthData);
+        Future<Either<ErrorModel, String>> forgetPassword(String email);
+ Future<Either<ErrorModel, String>> verifyCode(String email, String code);
+  Future<Either<ErrorModel, String>> resetPassword(String email, String code, String password);
 }
 
 class AuthRepositoryImpl implements IAuthRepository {
@@ -28,5 +31,20 @@ class AuthRepositoryImpl implements IAuthRepository {
   Future<Either<ErrorModel, AuthResponse>> register(
       RegisterAuthData registerAuthData) {
     return _remoteDs.register(registerAuthData);
+  }
+  
+  @override
+  Future<Either<ErrorModel, String>> forgetPassword(String email) {
+   return _remoteDs.forgetPassword(email);
+  }
+  
+  @override
+  Future<Either<ErrorModel, String>> verifyCode(String email, String code) {
+   return _remoteDs.verifyCode(email, code);
+  }
+  
+  @override
+  Future<Either<ErrorModel, String>> resetPassword(String email, String code, String password) {
+  return _remoteDs.resetPassword(email, code, password);
   }
 }

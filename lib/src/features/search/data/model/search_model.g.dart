@@ -22,7 +22,6 @@ SearchResponse _$SearchResponseFromJson(Map<String, dynamic> json) =>
       nextPageUrl: json['next_page_url'] as String,
       path: json['path'] as String,
       perPage: (json['per_page'] as num).toInt(),
-      //prevPageUrl: json['prev_page_url'] as String,
       to: (json['to'] as num).toInt(),
       total: (json['total'] as num).toInt(),
     );
@@ -39,7 +38,6 @@ Map<String, dynamic> _$SearchResponseToJson(SearchResponse instance) =>
       'next_page_url': instance.nextPageUrl,
       'path': instance.path,
       'per_page': instance.perPage,
-      // 'prev_page_url': instance.prevPageUrl,
       'to': instance.to,
       'total': instance.total,
     };

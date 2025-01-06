@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:review_app/src/features/auth/domain/usecase/register_use_case.dart';
+import 'package:review_app/src/features/auth/presentation/logic/forget_password/forget_password_cubit.dart';
 import 'package:review_app/src/features/auth/presentation/logic/login/login_cubit.dart';
 import 'package:review_app/src/features/favorite/data/datasource/favorite_api_services.dart';
 import 'package:review_app/src/features/favorite/data/datasource/favorite_remote_ds.dart';
@@ -31,6 +32,7 @@ import 'package:review_app/src/features/search/presentation/logic/cubit/search_c
 import '../../src/features/auth/data/datasource/auth_api_services.dart';
 import '../../src/features/auth/data/datasource/auth_remote_ds.dart';
 import '../../src/features/auth/domain/repository/auth_repository.dart';
+import '../../src/features/auth/domain/usecase/forget_password_use_case.dart';
 import '../../src/features/auth/domain/usecase/login_use_case.dart';
 import '../../src/features/auth/presentation/logic/register/register_cubit.dart';
 import '../app_cubit/app_cubit.dart';
@@ -119,6 +121,12 @@ void setupLocator() {
   getIt.registerLazySingleton<GetSearchResults>(
       () => GetSearchResults(getIt<ISearchRepository>()));
 
+getIt.registerLazySingleton<ForgetPasswordUseCase>(
+      () => ForgetPasswordUseCase(getIt()));
+  getIt.registerLazySingleton<VerifyCodeUseCase>(
+      () => VerifyCodeUseCase(getIt()));
+ getIt.registerLazySingleton<ResetPasswordUseCase>(
+      () => ResetPasswordUseCase(getIt()));
   // Cubits //
   getIt.registerLazySingleton<LoginCubit>(() => LoginCubit(getIt()));
   getIt.registerLazySingleton<RegisterCubit>(() => RegisterCubit(getIt()));
@@ -136,4 +144,5 @@ void setupLocator() {
       () => AddFavoritePlaceCubit(getIt<AddFavoritePlaceUc>()));
 
   getIt.registerFactory<SearchCubit>(() => SearchCubit(getIt()));
+  getIt.registerFactory<ForgetPasswordCubit>(() => ForgetPasswordCubit(getIt(),getIt(),getIt()));
 }

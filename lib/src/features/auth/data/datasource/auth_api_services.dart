@@ -11,6 +11,10 @@ abstract class AuthApiServices {
   Future<Either<ErrorModel, AuthResponse>> login(String email, String password);
   Future<Either<ErrorModel, AuthResponse>> register(
       RegisterAuthData registerAuthData);
+  Future<Either<ErrorModel, String>> forgetPassword(String email);
+  Future<Either<ErrorModel, String>> verifyCode(String email, String code);
+  Future<Either<ErrorModel, String>> resetPassword(
+      String email, String code, String password);
 }
 
 class AuthApiServicesImpl extends AuthApiServices {
@@ -58,4 +62,57 @@ class AuthApiServicesImpl extends AuthApiServices {
       return Left(e.errorModel);
     }
   }
+
+  @override
+  Future<Either<ErrorModel, String>> forgetPassword(String email) async {
+    try {
+      final response = await api.post(
+        'forgot-password',
+        data: {
+          "identifier": email,
+        },
+        isFormData: true,
+      );
+      return Right(response['message']);
+    } on ServerException catch (e) {
+      return Left(e.errorModel);
+    }
+  }
+  
+  @override
+  Future<Either<ErrorModel, String>> verifyCode(String email, String code) async {
+    try {
+      final response = await api.post(
+        'verify-code',
+        data: {
+          "identifier": email,
+          "code": code,
+        },
+        isFormData: true,
+      );
+      return Right(response['message']);
+    } on ServerException catch (e) {
+      return Left(e.errorModel);
+    }
+  }
+  
+  @override
+  Future<Either<ErrorModel, String>> resetPassword(String email, String code, String password) async {
+    try {
+      final response = await api.post(
+        'update-password',
+        data: {
+          "identifier": email,
+          "code": code,
+          "password": password,
+        },
+        isFormData: true,
+      );
+      return Right(response['message']);
+    } on ServerException catch (e) {
+      return Left(e.errorModel);
+    }
+   
+  }
+   
 }

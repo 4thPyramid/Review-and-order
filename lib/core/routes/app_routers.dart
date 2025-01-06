@@ -19,6 +19,7 @@ import 'package:review_app/src/features/profile/presentation/view/personal_info_
 import 'package:review_app/src/features/profile/presentation/view/settings_view.dart';
 import 'package:review_app/src/splash_view.dart';
 
+import '../../src/features/auth/presentation/logic/forget_password/forget_password_cubit.dart';
 import '../../src/features/auth/presentation/logic/login/login_cubit.dart';
 import '../../src/features/bottom_navigation_bar_root.dart';
 import '../services/service_locator.dart';
@@ -60,7 +61,10 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: RouterNames.forgetPassword,
-      builder: (context, state) => const ForgetPassword(),
+      builder: (context, state) =>  BlocProvider(
+        create: (context) => getIt<ForgetPasswordCubit>(),
+       child:   const ForgetPassword(),
+      ),
     ),
     GoRoute(
         path: RouterNames.placeDetailsView,
