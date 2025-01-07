@@ -33,8 +33,8 @@ class SearchResponse {
   @JsonKey(name: 'per_page')
   final int perPage;
 
-  //@JsonKey(name: 'prev_page_url')
-  // final String prevPageUrl;
+  @JsonKey(name: 'prev_page_url')
+  final String prevPageUrl;
 
   final int to;
 
@@ -51,7 +51,7 @@ class SearchResponse {
     required this.nextPageUrl,
     required this.path,
     required this.perPage,
-    //required this.prevPageUrl,
+    required this.prevPageUrl,
     required this.to,
     required this.total,
   });

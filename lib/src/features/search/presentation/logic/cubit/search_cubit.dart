@@ -16,10 +16,7 @@ class SearchCubit extends Cubit<SearchState> {
   Future<void> getSearchResult(String query) async {
     emit(const SearchState.loading());
     try {
-      final result = await _getSearchResults(query).timeout(
-        const Duration(seconds: 10),
-        onTimeout: () => Left(ErrorModel(message: 'Request timed out')),
-      );
+      final result = await _getSearchResults(query);
       result.fold(
         (error) => emit(SearchState.error(error)),
         (places) => emit(SearchState.loaded([places])),
