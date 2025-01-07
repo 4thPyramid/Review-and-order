@@ -20,8 +20,8 @@ class SearchApiServiceImpl implements SearchApiService {
   Future<Either<ErrorModel, SearchResponse>> getSearchResult(
       String query) async {
     try {
-      final response = await _api.get('search', queryParameters: {
-        'query': query,
+      final response = await _api.get('search?name=$query', queryParameters: {
+        'name': query,
       });
 
       final places = SearchResponse.fromJson(response);
