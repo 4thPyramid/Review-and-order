@@ -6,6 +6,8 @@ import 'package:review_app/src/features/auth/presentation/views/forget_password.
 import 'package:review_app/src/features/auth/presentation/views/login_view.dart';
 import 'package:review_app/src/features/auth/presentation/views/register_view.dart';
 import 'package:review_app/src/features/auth/presentation/logic/register/register_cubit.dart';
+import 'package:review_app/src/features/auth/presentation/views/reset_password.dart';
+import 'package:review_app/src/features/auth/presentation/views/verify_code_view.dart';
 import 'package:review_app/src/features/favorite/presentation/logic/get_favorite_cubit.dart';
 import 'package:review_app/src/features/favorite/presentation/view/favorite_view.dart';
 
@@ -61,9 +63,9 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: RouterNames.forgetPassword,
-      builder: (context, state) =>  BlocProvider(
+      builder: (context, state) => BlocProvider(
         create: (context) => getIt<ForgetPasswordCubit>(),
-       child:   const ForgetPassword(),
+        child: const ForgetPassword(),
       ),
     ),
     GoRoute(
@@ -92,6 +94,18 @@ final GoRouter router = GoRouter(
       builder: (context, state) => const HomeView(),
     ),
     GoRoute(
+        path: RouterNames.verifyCodeView,
+        builder: (context, state) {
+          final email = state.extra as String;
+          pragma('email --->: $email');
+          return BlocProvider(
+            create: (context) => getIt<ForgetPasswordCubit>(),
+            child: VerifyCodeView(
+              email: email,
+            ),
+          );
+        }),
+    GoRoute(
         path: RouterNames.personalInfoView,
         builder: (context, state) => const PersonalInfoView()),
     GoRoute(
@@ -100,5 +114,19 @@ final GoRouter router = GoRouter(
     GoRoute(
         path: RouterNames.favoriteView,
         builder: (context, state) => const FavoriteView()),
+    GoRoute(
+      path: RouterNames.resetPassword,
+      builder: (context, state) {
+        final data = state.extra as Map<String, dynamic>;
+        final email = data['email']!;
+        final code = data['code']!;
+        print(email);
+        print(code);
+        return BlocProvider(
+          create: (context) => getIt<ForgetPasswordCubit>(),
+          child: ResetPassword(email: email, code: code),
+        );
+      },
+    ),
   ],
 );
