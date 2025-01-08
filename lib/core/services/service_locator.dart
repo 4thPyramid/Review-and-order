@@ -24,6 +24,10 @@ import 'package:review_app/src/features/place_details/domain/usecase/add_favorit
 import 'package:review_app/src/features/place_details/domain/usecase/get_place_details_uc.dart';
 import 'package:review_app/src/features/place_details/presentation/logic/cubit/add_favorite_place_cubit.dart';
 import 'package:review_app/src/features/place_details/presentation/logic/place_details/place_details_cubit.dart';
+import 'package:review_app/src/features/profile/domain/usecase/get_profile_photo_uc.dart';
+import 'package:review_app/src/features/profile/domain/usecase/update_profile_photo.dart';
+import 'package:review_app/src/features/profile/domain/usecase/update_profile_uc.dart';
+import 'package:review_app/src/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:review_app/src/features/search/data/datasourse/search_api_service.dart';
 import 'package:review_app/src/features/search/data/datasourse/search_remote_ds.dart';
 import 'package:review_app/src/features/search/domain/repository/search_repository.dart';
@@ -67,6 +71,9 @@ void setupLocator() {
   getIt.registerLazySingleton<SearchApiService>(
       () => SearchApiServiceImpl(getIt<ApiConsumer>()));
 
+  // getIt.registerLazySingleton<IProfileApiService>(
+  //     () => ProfileApiService(getIt()));
+
   /// --DataSources-- ///
   getIt.registerLazySingleton<IAuthRemoteDs>(
       () => AuthRemoteDsImpl(getIt<AuthApiServices>()));
@@ -81,6 +88,9 @@ void setupLocator() {
   getIt.registerLazySingleton<ISearchRemoteDataSource>(
       () => SearchRemoteDataSource(getIt<SearchApiService>()));
 
+  // getIt.registerLazySingleton<IProfileRemoteDS>(
+  //     () => ProfileRemoteDS(getIt<IProfileApiService>()));
+
   /// -- Repositories -- ///
 
   getIt.registerLazySingleton<IAuthRepository>(
@@ -90,7 +100,8 @@ void setupLocator() {
 
   getIt.registerLazySingleton<IPlaceDetailsRepository>(
       () => PlaceDetailsRepositoryImpl(getIt<IPlaceDetailsDS>()));
-
+  // getIt.registerLazySingleton<IProfileRepository>(
+  //     () => ProfileRepository(getIt()));
   getIt.registerLazySingleton<IFavoriteRepository>(
       () => FavoriteRepositoryImpl(getIt<IFavoriteRemoteDs>()));
   getIt.registerLazySingleton<ISearchRepository>(
@@ -121,12 +132,22 @@ void setupLocator() {
   getIt.registerLazySingleton<GetSearchResults>(
       () => GetSearchResults(getIt<ISearchRepository>()));
 
-getIt.registerLazySingleton<ForgetPasswordUseCase>(
+  getIt.registerLazySingleton<ForgetPasswordUseCase>(
       () => ForgetPasswordUseCase(getIt()));
   getIt.registerLazySingleton<VerifyCodeUseCase>(
       () => VerifyCodeUseCase(getIt()));
- getIt.registerLazySingleton<ResetPasswordUseCase>(
+  getIt.registerLazySingleton<ResetPasswordUseCase>(
       () => ResetPasswordUseCase(getIt()));
+
+  getIt.registerLazySingleton<GetProfleDataUC>(
+    () => GetProfleDataUC(getIt()),
+  );
+  getIt.registerLazySingleton<UpdateProfileUc>(
+    () => UpdateProfileUc(getIt()),
+  );
+  getIt.registerLazySingleton<UpdateProfilePhoto>(
+      () => UpdateProfilePhoto(getIt()));
+
   // Cubits //
   getIt.registerLazySingleton<LoginCubit>(() => LoginCubit(getIt()));
   getIt.registerLazySingleton<RegisterCubit>(() => RegisterCubit(getIt()));
@@ -144,5 +165,12 @@ getIt.registerLazySingleton<ForgetPasswordUseCase>(
       () => AddFavoritePlaceCubit(getIt<AddFavoritePlaceUc>()));
 
   getIt.registerFactory<SearchCubit>(() => SearchCubit(getIt()));
-  getIt.registerFactory<ForgetPasswordCubit>(() => ForgetPasswordCubit(getIt(),getIt(),getIt()));
+  getIt.registerFactory<ForgetPasswordCubit>(
+      () => ForgetPasswordCubit(getIt(), getIt(), getIt()));
+
+  getIt.registerFactory<ProfileCubit>(() => ProfileCubit(
+        getIt(),
+        getIt(),
+        getIt(),
+      ));
 }

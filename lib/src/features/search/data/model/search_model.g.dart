@@ -13,15 +13,16 @@ SearchResponse _$SearchResponseFromJson(Map<String, dynamic> json) =>
           .map((e) => PlaceSearchModel.fromJson(e as Map<String, dynamic>))
           .toList(),
       firstPageUrl: json['first_page_url'] as String,
-      from: (json['from'] as num? ?? 0).toInt(),
+      from: (json['from'] as num).toInt(),
       lastPage: (json['last_page'] as num).toInt(),
       lastPageUrl: json['last_page_url'] as String,
       links: (json['links'] as List<dynamic>)
           .map((e) => LinkModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      nextPageUrl: json['next_page_url'] as String? ?? "",
+      nextPageUrl: json['next_page_url'] as String,
       path: json['path'] as String,
       perPage: (json['per_page'] as num).toInt(),
+      prevPageUrl: json['prev_page_url'] as String,
       to: (json['to'] as num).toInt(),
       total: (json['total'] as num).toInt(),
     );
@@ -38,6 +39,7 @@ Map<String, dynamic> _$SearchResponseToJson(SearchResponse instance) =>
       'next_page_url': instance.nextPageUrl,
       'path': instance.path,
       'per_page': instance.perPage,
+      'prev_page_url': instance.prevPageUrl,
       'to': instance.to,
       'total': instance.total,
     };

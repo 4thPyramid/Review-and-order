@@ -9,6 +9,7 @@ import 'package:review_app/src/features/auth/presentation/logic/register/registe
 import 'package:review_app/src/features/auth/presentation/views/reset_password.dart';
 import 'package:review_app/src/features/auth/presentation/views/verify_code_view.dart';
 import 'package:review_app/src/features/favorite/presentation/logic/get_favorite_cubit.dart';
+
 import 'package:review_app/src/features/favorite/presentation/view/favorite_view.dart';
 
 import 'package:review_app/src/features/home/presentation/view/home_view.dart';
@@ -17,6 +18,7 @@ import 'package:review_app/src/features/intro/presentation/view/onboarding_view.
 import 'package:review_app/src/features/place_details/presentation/logic/cubit/add_favorite_place_cubit.dart';
 import 'package:review_app/src/features/place_details/presentation/logic/place_details/place_details_cubit.dart';
 import 'package:review_app/src/features/place_details/presentation/view/place_details_view.dart';
+import 'package:review_app/src/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:review_app/src/features/profile/presentation/view/personal_info_view.dart';
 import 'package:review_app/src/features/profile/presentation/view/settings_view.dart';
 import 'package:review_app/src/splash_view.dart';
@@ -107,7 +109,10 @@ final GoRouter router = GoRouter(
         }),
     GoRoute(
         path: RouterNames.personalInfoView,
-        builder: (context, state) => const PersonalInfoView()),
+        builder: (context, state) => BlocProvider(
+              create: (context) => getIt<ProfileCubit>(),
+              child: const PersonalInfoView(),
+            )),
     GoRoute(
         path: RouterNames.settingView,
         builder: (context, state) => const SettingsView()),

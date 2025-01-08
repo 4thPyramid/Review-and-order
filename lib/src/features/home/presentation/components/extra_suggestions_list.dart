@@ -26,7 +26,10 @@ class ExtraSuggestions extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: InkWell(
                 onTap: () {
-                  context.go(RouterNames.placeDetailsView);
+                  context.pushReplacement(
+                    RouterNames.placeDetailsView,
+                    extra: {'placeId': places[index].id},
+                  );
                 },
                 child: RestaurantCard(
                   resurantName: places[index].name,

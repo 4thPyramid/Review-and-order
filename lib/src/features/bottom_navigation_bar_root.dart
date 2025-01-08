@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:review_app/core/services/service_locator.dart';
 import 'package:review_app/src/features/home/presentation/logic/cubit/home_cubit.dart';
 import 'package:review_app/src/features/notification/notification_view.dart';
+import 'package:review_app/src/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:review_app/src/features/search/presentation/logic/cubit/search_cubit.dart';
 
 import '../../core/app_cubit/app_cubit.dart';
@@ -25,7 +26,10 @@ class BottomNavigationBarRoot extends StatelessWidget {
             child: const SearchView(),
           ),
           const NotificationView(),
-          const ProfileView(),
+          BlocProvider(
+            create: (context) => getIt<ProfileCubit>(),
+            child: const ProfileView(),
+          ),
         ];
         return Scaffold(
           backgroundColor: AppColors.greyForBackground,

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:review_app/core/common/widgets/custom_text_form_field.dart';
+import 'package:review_app/src/features/auth/presentation/logic/login/login_cubit.dart';
+import 'package:review_app/src/features/profile/presentation/cubit/profile_cubit.dart';
 
 import '../../../../../core/common/widgets/custom_btn.dart';
 import '../../../../../core/theme/app_colors.dart';
@@ -9,6 +13,10 @@ import '../../../../../core/utils/app_styles.dart';
 import '../../../../../core/utils/main_function.dart';
 
 editAccountPop(BuildContext context) {
+  var nameTextController = TextEditingController();
+  var emailTextController = TextEditingController();
+  var phoneTextController = TextEditingController();
+
   customAlertDialog(
     marginHPadding: 20.h,
     marginVPadding: 20.h,
@@ -17,20 +25,22 @@ editAccountPop(BuildContext context) {
     context: context,
     content: Padding(
       padding: EdgeInsets.symmetric(vertical: 50.0.h),
-      child:  Column(
+      child: Column(
         children: [
-         const CustomTextFormField(
+          CustomTextFormField(
+            controller: nameTextController,
             hintText: AppStrings.allName,
-            prefixIcon: Icon(Icons.person_outline),
+            prefixIcon: const Icon(Icons.person_outline),
           ),
           SizedBox(height: 20.h),
-           const CustomTextFormField(
+          CustomTextFormField(
+            controller: emailTextController,
             hintText: AppStrings.email,
             prefixIcon: Icon(Icons.email_outlined),
-          
           ),
           SizedBox(height: 20.h),
-          const CustomTextFormField(
+          CustomTextFormField(
+            controller: phoneTextController,
             hintText: AppStrings.phoneHint,
             prefixIcon: Icon(Icons.phone),
           ),
@@ -42,7 +52,12 @@ editAccountPop(BuildContext context) {
               fontWeight: FontWeight.w700,
             ),
             onPressed: () {
-              Navigator.pop(context);
+              context.read<ProfileCubit>().updateProfile(
+                    name: nameTextController.text,
+                    email: emailTextController.text,
+                    phone: phoneTextController.text,
+                  );
+              context.pop();
             },
           )
         ],

@@ -1,20 +1,34 @@
+import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/utils/app_assets.dart';
 import '../../../../../core/utils/app_image_view.dart';
+import '../cubit/profile_cubit.dart';
+
 class PersonalCircleImage extends StatefulWidget {
-  const PersonalCircleImage({super.key});
+  const PersonalCircleImage({super.key, this.profileImage});
+
+  final String? profileImage;
 
   @override
   State<PersonalCircleImage> createState() => _PersonalCircleImageState();
 }
 
 class _PersonalCircleImageState extends State<PersonalCircleImage> {
-  String profileImage = AppAssets.profileImage; 
+  String? profileImage;
+
+  @override
+  void initState() {
+    super.initState();
+    profileImage = widget.profileImage?.isNotEmpty == true
+        ? widget.profileImage!
+        : AppAssets.profileImage;
+  }
 
   Future<void> _pickImage() async {
     final ImagePicker picker = ImagePicker();
@@ -52,9 +66,13 @@ class _PersonalCircleImageState extends State<PersonalCircleImage> {
     );
 
     if (pickedFile != null) {
+      final File? imageFile = File(pickedFile.path);
+
       setState(() {
-        profileImage = pickedFile.path; 
+        profileImage = imageFile!.path;
       });
+
+      context.read<ProfileCubit>().updateProfilePhoto(imageFile);
     }
   }
 
@@ -64,26 +82,29 @@ class _PersonalCircleImageState extends State<PersonalCircleImage> {
       children: [
         CircleAvatar(
           radius: 60.r,
-          child: AppImageView(
-            profileImage,
-            isAvatar: true,
-            radius: BorderRadius.circular(60.r),
-           // width: 120.w,
-            height: 120.h,
+          backgroundColor: AppColors.lightGrey,
+          child: ClipOval(
+            child: AppImageView(
+              profileImage ?? '',
+              isAvatar: true,
+              radius: BorderRadius.circular(60.r),
+              height: 120.h,
+              width: 120.h,
+            ),
           ),
         ),
-      
         Positioned(
           right: 0,
           bottom: 0,
           child: GestureDetector(
-            onTap: _pickImage, 
-            child:  CircleAvatar(
+            onTap: _pickImage,
+            child: CircleAvatar(
               radius: 20.r,
               backgroundColor: AppColors.primaryColor,
-              child:  AppImageView(
+              child: AppImageView(
                 AppAssets.editCamera,
                 height: 20.h,
+                width: 20.w,
               ),
             ),
           ),
