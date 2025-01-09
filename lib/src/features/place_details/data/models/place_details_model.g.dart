@@ -62,7 +62,7 @@ ReviewModel _$ReviewModelFromJson(Map<String, dynamic> json) => ReviewModel(
       placeId: (json['place_id'] as num).toInt(),
       createdAt: json['created_at'] as String,
       updatedAt: json['updated_at'] as String,
-      userRating: (json['user_rating'] as num).toDouble(),
+      userRating: (json['user_rating'] as num? ?? 0).toDouble(),
       user: UserModel.fromJson(json['user'] as Map<String, dynamic>),
     );
 

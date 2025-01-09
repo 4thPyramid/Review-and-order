@@ -13,7 +13,13 @@ class BestRestaurantsCafesRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    BlocProvider.of<HomeCubit>(context).getPlacesPyFilter();
+    final homeCubit = BlocProvider.of<HomeCubit>(context);
+    final currentPosition = homeCubit.currentPosition;
+
+    homeCubit.getPlacesByFilter(
+      currentPosition?.latitude ?? 0.0,
+      currentPosition?.longitude ?? 0.0,
+    );
     return BlocBuilder<HomeCubit, HomeState>(builder: (context, state) {
       return state.when(
         initial: () => const Text('Loading ...'),
@@ -46,6 +52,10 @@ class BestRestaurantsCafesRow extends StatelessWidget {
           ),
         ),
         error: (error) => Text(error.message),
+        locationUpdated: () {
+          print("locationUpdated");
+          return const SizedBox.shrink();
+        },
       );
     });
   }

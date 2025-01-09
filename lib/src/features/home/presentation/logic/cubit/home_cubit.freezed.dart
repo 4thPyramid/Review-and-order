@@ -22,6 +22,7 @@ mixin _$HomeState {
     required TResult Function() loading,
     required TResult Function(List<PlaceModel> places) loaded,
     required TResult Function(ErrorModel message) error,
+    required TResult Function() locationUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$HomeState {
     TResult? Function()? loading,
     TResult? Function(List<PlaceModel> places)? loaded,
     TResult? Function(ErrorModel message)? error,
+    TResult? Function()? locationUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$HomeState {
     TResult Function()? loading,
     TResult Function(List<PlaceModel> places)? loaded,
     TResult Function(ErrorModel message)? error,
+    TResult Function()? locationUpdated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$HomeState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
+    required TResult Function(_LocationUpdated value) locationUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$HomeState {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
+    TResult? Function(_LocationUpdated value)? locationUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$HomeState {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
+    TResult Function(_LocationUpdated value)? locationUpdated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -133,6 +139,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() loading,
     required TResult Function(List<PlaceModel> places) loaded,
     required TResult Function(ErrorModel message) error,
+    required TResult Function() locationUpdated,
   }) {
     return initial();
   }
@@ -144,6 +151,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? loading,
     TResult? Function(List<PlaceModel> places)? loaded,
     TResult? Function(ErrorModel message)? error,
+    TResult? Function()? locationUpdated,
   }) {
     return initial?.call();
   }
@@ -155,6 +163,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? loading,
     TResult Function(List<PlaceModel> places)? loaded,
     TResult Function(ErrorModel message)? error,
+    TResult Function()? locationUpdated,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -170,6 +179,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
+    required TResult Function(_LocationUpdated value) locationUpdated,
   }) {
     return initial(this);
   }
@@ -181,6 +191,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
+    TResult? Function(_LocationUpdated value)? locationUpdated,
   }) {
     return initial?.call(this);
   }
@@ -192,6 +203,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
+    TResult Function(_LocationUpdated value)? locationUpdated,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -250,6 +262,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() loading,
     required TResult Function(List<PlaceModel> places) loaded,
     required TResult Function(ErrorModel message) error,
+    required TResult Function() locationUpdated,
   }) {
     return loading();
   }
@@ -261,6 +274,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? loading,
     TResult? Function(List<PlaceModel> places)? loaded,
     TResult? Function(ErrorModel message)? error,
+    TResult? Function()? locationUpdated,
   }) {
     return loading?.call();
   }
@@ -272,6 +286,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? loading,
     TResult Function(List<PlaceModel> places)? loaded,
     TResult Function(ErrorModel message)? error,
+    TResult Function()? locationUpdated,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -287,6 +302,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
+    required TResult Function(_LocationUpdated value) locationUpdated,
   }) {
     return loading(this);
   }
@@ -298,6 +314,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
+    TResult? Function(_LocationUpdated value)? locationUpdated,
   }) {
     return loading?.call(this);
   }
@@ -309,6 +326,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
+    TResult Function(_LocationUpdated value)? locationUpdated,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -400,6 +418,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function() loading,
     required TResult Function(List<PlaceModel> places) loaded,
     required TResult Function(ErrorModel message) error,
+    required TResult Function() locationUpdated,
   }) {
     return loaded(places);
   }
@@ -411,6 +430,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function()? loading,
     TResult? Function(List<PlaceModel> places)? loaded,
     TResult? Function(ErrorModel message)? error,
+    TResult? Function()? locationUpdated,
   }) {
     return loaded?.call(places);
   }
@@ -422,6 +442,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function()? loading,
     TResult Function(List<PlaceModel> places)? loaded,
     TResult Function(ErrorModel message)? error,
+    TResult Function()? locationUpdated,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -437,6 +458,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
+    required TResult Function(_LocationUpdated value) locationUpdated,
   }) {
     return loaded(this);
   }
@@ -448,6 +470,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
+    TResult? Function(_LocationUpdated value)? locationUpdated,
   }) {
     return loaded?.call(this);
   }
@@ -459,6 +482,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
+    TResult Function(_LocationUpdated value)? locationUpdated,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -552,6 +576,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function() loading,
     required TResult Function(List<PlaceModel> places) loaded,
     required TResult Function(ErrorModel message) error,
+    required TResult Function() locationUpdated,
   }) {
     return error(message);
   }
@@ -563,6 +588,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? loading,
     TResult? Function(List<PlaceModel> places)? loaded,
     TResult? Function(ErrorModel message)? error,
+    TResult? Function()? locationUpdated,
   }) {
     return error?.call(message);
   }
@@ -574,6 +600,7 @@ class _$ErrorImpl implements _Error {
     TResult Function()? loading,
     TResult Function(List<PlaceModel> places)? loaded,
     TResult Function(ErrorModel message)? error,
+    TResult Function()? locationUpdated,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -589,6 +616,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
+    required TResult Function(_LocationUpdated value) locationUpdated,
   }) {
     return error(this);
   }
@@ -600,6 +628,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
+    TResult? Function(_LocationUpdated value)? locationUpdated,
   }) {
     return error?.call(this);
   }
@@ -611,6 +640,7 @@ class _$ErrorImpl implements _Error {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
+    TResult Function(_LocationUpdated value)? locationUpdated,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -630,4 +660,127 @@ abstract class _Error implements HomeState {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LocationUpdatedImplCopyWith<$Res> {
+  factory _$$LocationUpdatedImplCopyWith(_$LocationUpdatedImpl value,
+          $Res Function(_$LocationUpdatedImpl) then) =
+      __$$LocationUpdatedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LocationUpdatedImplCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$LocationUpdatedImpl>
+    implements _$$LocationUpdatedImplCopyWith<$Res> {
+  __$$LocationUpdatedImplCopyWithImpl(
+      _$LocationUpdatedImpl _value, $Res Function(_$LocationUpdatedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$LocationUpdatedImpl implements _LocationUpdated {
+  const _$LocationUpdatedImpl();
+
+  @override
+  String toString() {
+    return 'HomeState.locationUpdated()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LocationUpdatedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<PlaceModel> places) loaded,
+    required TResult Function(ErrorModel message) error,
+    required TResult Function() locationUpdated,
+  }) {
+    return locationUpdated();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<PlaceModel> places)? loaded,
+    TResult? Function(ErrorModel message)? error,
+    TResult? Function()? locationUpdated,
+  }) {
+    return locationUpdated?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<PlaceModel> places)? loaded,
+    TResult Function(ErrorModel message)? error,
+    TResult Function()? locationUpdated,
+    required TResult orElse(),
+  }) {
+    if (locationUpdated != null) {
+      return locationUpdated();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Error value) error,
+    required TResult Function(_LocationUpdated value) locationUpdated,
+  }) {
+    return locationUpdated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_LocationUpdated value)? locationUpdated,
+  }) {
+    return locationUpdated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_LocationUpdated value)? locationUpdated,
+    required TResult orElse(),
+  }) {
+    if (locationUpdated != null) {
+      return locationUpdated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LocationUpdated implements HomeState {
+  const factory _LocationUpdated() = _$LocationUpdatedImpl;
 }

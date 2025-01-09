@@ -18,6 +18,7 @@ import 'package:review_app/src/features/home/domain/usecase/get_all_places.dart'
 import 'package:review_app/src/features/home/domain/usecase/get_nears_places.dart';
 import 'package:review_app/src/features/home/domain/usecase/get_new_places.dart';
 import 'package:review_app/src/features/home/domain/usecase/get_top_rated_places.dart';
+import 'package:review_app/src/features/home/domain/usecase/update_location.dart';
 import 'package:review_app/src/features/home/presentation/logic/cubit/home_cubit.dart';
 import 'package:review_app/src/features/place_details/data/datasource/place_datails_api_service.dart';
 import 'package:review_app/src/features/place_details/data/datasource/place_details_remote_data_source.dart';
@@ -150,8 +151,7 @@ void setupLocator() {
   getIt.registerLazySingleton<UpdateProfilePhoto>(
       () => UpdateProfilePhoto(getIt()));
 
-getIt.registerLazySingleton<LogoutUseCase>(
-      () => LogoutUseCase(getIt()));
+  getIt.registerLazySingleton<LogoutUseCase>(() => LogoutUseCase(getIt()));
 
   // Cubits //
   getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt()));
@@ -161,7 +161,8 @@ getIt.registerLazySingleton<LogoutUseCase>(
       getIt<GetNewPlacesUC>(),
       getIt<GetTopRatedPlacesUC>(),
       getIt<GetNearstPlacesUC>(),
-      getIt<GetAllPlacesUC>()));
+      getIt<GetAllPlacesUC>(),
+      getIt<UpdateLocationUC>()));
 
   getIt.registerFactory<PlaceDetailsCubit>(
       () => PlaceDetailsCubit(getIt<GetPlaceDetailsUc>()));

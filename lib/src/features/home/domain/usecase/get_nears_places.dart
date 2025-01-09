@@ -6,7 +6,13 @@ import 'package:review_app/src/features/home/domain/repository/home_repository.d
 class GetNearstPlacesUC {
   final IHomeRepository repository;
   GetNearstPlacesUC(this.repository);
-  Future<Either<ErrorModel, List<PlaceModel>>> call() async {
-    return await repository.getNearstPlaces();
+  Future<Either<ErrorModel, List<PlaceModel>>> call(
+    double lat,
+    double lng,
+  ) async {
+    return await repository.getNearstPlaces(
+      lat,
+      lng,
+    );
   }
 }

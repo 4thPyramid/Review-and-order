@@ -6,14 +6,22 @@ import 'package:review_app/core/data/api/api_consumer.dart';
 import 'package:review_app/core/errors/error_model.dart';
 import 'package:review_app/core/errors/exceptions.dart';
 import 'package:review_app/src/features/home/data/models/place_model.dart';
+import 'package:review_app/src/features/home/data/models/update_location_response_model.dart';
 import 'package:review_app/src/features/profile/data/model/profile_model.dart';
 
 abstract class HomeApiService {
   Future<Either<ErrorModel, List<PlaceModel>>> getTopRatedPlaces();
   Future<Either<ErrorModel, List<PlaceModel>>> getNewPlaces();
-  Future<Either<ErrorModel, List<PlaceModel>>> getNearstPlaces();
+  Future<Either<ErrorModel, List<PlaceModel>>> getNearstPlaces(
+    double lat,
+    double lng,
+  );
   Future<Either<ErrorModel, List<PlaceModel>>> getAllPlaces();
   Future<Either<ErrorModel, ProfileModel>> getProfile();
+  Future<Either<ErrorModel, UpdateLocationResponse>> updateLocation(
+    double lat,
+    double lng,
+  );
   Future<Either<ErrorModel, ProfileModel>> updateProfle(
     String? name,
     String? phone,
@@ -54,9 +62,15 @@ class HomeApiServiceImpl implements HomeApiService {
     }
   }
 
-  Future<Either<ErrorModel, List<PlaceModel>>> getNearstPlaces() async {
+  Future<Either<ErrorModel, List<PlaceModel>>> getNearstPlaces(
+    double lat,
+    double lng,
+  ) async {
     try {
-      final response = await _api.get('nearby-places');
+      final response = await _api.post('nearby-places', data: {
+        "lat": lat,
+        "lng": lng,
+      });
       final places = List<PlaceModel>.from(
         response.map((x) => PlaceModel.fromJson(x)),
       );
@@ -74,6 +88,20 @@ class HomeApiServiceImpl implements HomeApiService {
         response.map((x) => PlaceModel.fromJson(x)),
       );
       return Right(places);
+    } on ServerException catch (e) {
+      return Left(e.errorModel);
+    }
+  }
+
+  Future<Either<ErrorModel, UpdateLocationResponse>> updateLocation(
+      double latitude, double longitude) async {
+    try {
+      final response = await _api.post('store-location', data: {
+        'latitude': latitude,
+        'longitude': longitude,
+      });
+      final updateLocationResponse = UpdateLocationResponse.fromJson(response);
+      return Right(updateLocationResponse);
     } on ServerException catch (e) {
       return Left(e.errorModel);
     }

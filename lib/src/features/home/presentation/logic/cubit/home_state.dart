@@ -6,4 +6,5 @@ class HomeState with _$HomeState {
   const factory HomeState.loading() = _Loading;
   const factory HomeState.loaded(List<PlaceModel> places) = _Loaded;
   const factory HomeState.error(ErrorModel message) = _Error;
+  const factory HomeState.locationUpdated() = _LocationUpdated;
 }

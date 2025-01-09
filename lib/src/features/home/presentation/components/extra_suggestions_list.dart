@@ -45,6 +45,10 @@ class ExtraSuggestions extends StatelessWidget {
           },
         ),
         error: (error) => Text(error.message),
+        locationUpdated: () {
+          print("locationUpdated");
+          return const SizedBox.shrink();
+        },
       );
     });
   }
