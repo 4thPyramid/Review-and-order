@@ -10,9 +10,12 @@ abstract class IAuthRemoteDs {
 
   Future<Either<ErrorModel, AuthResponse>> register(
       RegisterAuthData registerAuthData);
-        Future<Either<ErrorModel, String>> forgetPassword(String email);
- Future<Either<ErrorModel, String>> verifyCode(String email, String code);
-  Future<Either<ErrorModel, String>> resetPassword(String email, String code, String password);
+  Future<Either<ErrorModel, String>> logout();
+
+  Future<Either<ErrorModel, String>> forgetPassword(String email);
+  Future<Either<ErrorModel, String>> verifyCode(String email, String code);
+  Future<Either<ErrorModel, String>> resetPassword(
+      String email, String code, String password);
 }
 
 class AuthRemoteDsImpl implements IAuthRemoteDs {
@@ -30,19 +33,25 @@ class AuthRemoteDsImpl implements IAuthRemoteDs {
       RegisterAuthData registerAuthData) {
     return _apiServices.register(registerAuthData);
   }
-  
+
   @override
   Future<Either<ErrorModel, String>> forgetPassword(String email) {
     return _apiServices.forgetPassword(email);
   }
-  
+
   @override
   Future<Either<ErrorModel, String>> verifyCode(String email, String code) {
-   return _apiServices.verifyCode(email, code);
+    return _apiServices.verifyCode(email, code);
+  }
+
+  @override
+  Future<Either<ErrorModel, String>> resetPassword(
+      String email, String code, String password) {
+    return _apiServices.resetPassword(email, code, password);
   }
   
   @override
-  Future<Either<ErrorModel, String>> resetPassword(String email, String code, String password) {
-   return _apiServices.resetPassword(email, code, password);
+  Future<Either<ErrorModel, String>> logout() {
+    return _apiServices.logout();
   }
 }

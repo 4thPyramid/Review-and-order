@@ -8,14 +8,14 @@ import 'profile_list_title.dart';
 class CommentCard extends StatelessWidget {
   const CommentCard({
     super.key,
-    required this.profailImagePath,
+    required this.profileImagePath,
     required this.userName,
     required this.userEmail,
     required this.commentImagePath,
     required this.commentText,
     required this.rate,
   });
-  final String profailImagePath;
+  final String profileImagePath;
   final String userName;
   final String userEmail;
   final String commentImagePath;
@@ -44,7 +44,7 @@ class CommentCard extends StatelessWidget {
         child: Column(
           children: [
             ProfileListTile(
-              imageUrl: profailImagePath,
+              imageUrl: profileImagePath,
               name: userName,
               email: userEmail,
             ),

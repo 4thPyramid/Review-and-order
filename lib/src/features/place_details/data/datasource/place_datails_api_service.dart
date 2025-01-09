@@ -8,6 +8,8 @@ import 'package:review_app/src/features/place_details/data/models/place_details_
 abstract class IPlaceDetailsApiService {
   Future<Either<ErrorModel, PlaceDetailsModel>> getPlaceDetails(int placeId);
   Future<Either<ErrorModel, FavoritePlaceModel>> addToFavorites(int placeId);
+  // Future<Either<ErrorModel, String>> addCommit(
+  //     int placeId , String comment ,  );
 }
 
 class PlaceDetailsApiServiceImpl implements IPlaceDetailsApiService {

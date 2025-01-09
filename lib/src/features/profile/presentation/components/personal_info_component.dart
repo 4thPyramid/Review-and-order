@@ -29,6 +29,7 @@ class PersonalInfoComponent extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 40.h),
+                
                 PersonalCircleImage(profileImage: profile.image),
                 SizedBox(height: 40.h),
                 PersonalInfoListTile(

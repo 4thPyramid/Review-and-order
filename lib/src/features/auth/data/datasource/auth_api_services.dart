@@ -11,6 +11,8 @@ abstract class AuthApiServices {
   Future<Either<ErrorModel, AuthResponse>> login(String email, String password);
   Future<Either<ErrorModel, AuthResponse>> register(
       RegisterAuthData registerAuthData);
+  //log out
+  Future<Either<ErrorModel, String>> logout();
   Future<Either<ErrorModel, String>> forgetPassword(String email);
   Future<Either<ErrorModel, String>> verifyCode(String email, String code);
   Future<Either<ErrorModel, String>> resetPassword(
@@ -78,9 +80,10 @@ class AuthApiServicesImpl extends AuthApiServices {
       return Left(e.errorModel);
     }
   }
-  
+
   @override
-  Future<Either<ErrorModel, String>> verifyCode(String email, String code) async {
+  Future<Either<ErrorModel, String>> verifyCode(
+      String email, String code) async {
     try {
       print(email);
       print(code);
@@ -98,9 +101,10 @@ class AuthApiServicesImpl extends AuthApiServices {
       return Left(e.errorModel);
     }
   }
-  
+
   @override
-  Future<Either<ErrorModel, String>> resetPassword(String email, String code, String password) async {
+  Future<Either<ErrorModel, String>> resetPassword(
+      String email, String code, String password) async {
     try {
       final response = await api.post(
         'update-password',
@@ -115,7 +119,20 @@ class AuthApiServicesImpl extends AuthApiServices {
     } on ServerException catch (e) {
       return Left(e.errorModel);
     }
-   
   }
-   
+
+  @override
+  Future<Either<ErrorModel, String>> logout() async {
+    try {
+      final response = await api.post(
+        'logout',
+      );
+      CacheHelper.deleteToken();
+      CacheHelper().removeData(key: 'name');
+      CacheHelper().removeData(key: 'email');
+      return Right(response['message']);
+    } on ServerException catch (e) {
+      return Left(e.errorModel);
+    }
+  }
 }

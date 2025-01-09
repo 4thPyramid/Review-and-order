@@ -2,13 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:review_app/core/theme/app_colors.dart';
-import 'package:review_app/core/utils/app_assets.dart';
-import 'package:review_app/core/utils/app_image_view.dart';
 import 'package:review_app/core/utils/app_strings.dart';
 import '../../../../../core/common/widgets/custom_btn.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../core/utils/main_function.dart';
-import 'comment_image_widget.dart';
 
 addCommitPop(BuildContext context,
     {required String name, required String imageUrl}) {
@@ -22,14 +19,19 @@ addCommitPop(BuildContext context,
       clipBehavior: Clip.none,
       children: [
         Positioned(
-          top: -60.h,
+          top: -70.h,
           //right: 120,
-          left: MediaQuery.sizeOf(context).width / 2 - 60.w,
-          child: AppImageView(
-            imageUrl,
-            isAvatar: true,
-            width: 80.w,
+          left: MediaQuery.sizeOf(context).width / 2 - 65.w,
+          child:ClipRRect(
+          borderRadius: BorderRadius.circular(120.r),
+          child: Image.network(
+            imageUrl ,
+            width: 100.r,
+            height: 100.r,
+            fit: BoxFit.fill,
           ),
+        ),
+          
         ),
         Expanded(
           child: Padding(

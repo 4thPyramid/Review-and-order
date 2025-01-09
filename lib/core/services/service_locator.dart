@@ -1,9 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:review_app/src/features/auth/domain/usecase/logout_use_case.dart';
 import 'package:review_app/src/features/auth/domain/usecase/register_use_case.dart';
 import 'package:review_app/src/features/auth/presentation/logic/forget_password/forget_password_cubit.dart';
 import 'package:review_app/src/features/auth/presentation/logic/login/login_cubit.dart';
+import 'package:review_app/src/features/auth/presentation/logic/logout/logout_cubit.dart';
 import 'package:review_app/src/features/favorite/data/datasource/favorite_api_services.dart';
 import 'package:review_app/src/features/favorite/data/datasource/favorite_remote_ds.dart';
 import 'package:review_app/src/features/favorite/domain/repository/favorite_repository.dart';
@@ -148,9 +150,13 @@ void setupLocator() {
   getIt.registerLazySingleton<UpdateProfilePhoto>(
       () => UpdateProfilePhoto(getIt()));
 
+getIt.registerLazySingleton<LogoutUseCase>(
+      () => LogoutUseCase(getIt()));
+
   // Cubits //
-  getIt.registerLazySingleton<LoginCubit>(() => LoginCubit(getIt()));
-  getIt.registerLazySingleton<RegisterCubit>(() => RegisterCubit(getIt()));
+  getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt()));
+  getIt.registerFactory<LogoutCubit>(() => LogoutCubit(getIt()));
+  getIt.registerFactory<RegisterCubit>(() => RegisterCubit(getIt()));
   getIt.registerLazySingleton<HomeCubit>(() => HomeCubit(
       getIt<GetNewPlacesUC>(),
       getIt<GetTopRatedPlacesUC>(),

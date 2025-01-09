@@ -8,6 +8,7 @@ abstract class AppStrings {
           ' لقد قمت بتسجيل الدخول بنجاح \n في تطبيق دليل المدينه',
       goToHome = "الذهاب الى الصفحه الرئيسية",
       signIn = "تسجيل الدخول",
+      logout ='تسجيل الخروج',
       register = " تسجيل جديد",
       welcomeInLogin = 'مرحبا بك مره اخرى فى تطبيق دليل المدينه',
       enterPasswordHint = 'أدخل كلمة المرور الخاصة بك',
@@ -26,8 +27,10 @@ abstract class AppStrings {
      likeIt = 'لقد اعجبتك ',
      deleteAccount = 'حذف الحساب',
      areYouSureToDeleteAccount = 'هل انت متأكد من حذف الحساب ؟',
+     areYouSureToLogOut = 'هل انت متأكد من تسجيل الخروج ؟',
       delete = 'حذف',
       cancel = 'الغاء',
+      yes = 'نعم',
       settingsPersonalInfo= "اعدادات الملف الشخصى",
       personalInfoData = "بيانات الملف الشخصى",
       introText =

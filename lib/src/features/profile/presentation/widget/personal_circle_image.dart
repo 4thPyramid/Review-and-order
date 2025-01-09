@@ -3,8 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../../../core/routes/router_names.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/utils/app_assets.dart';
 import '../../../../../core/utils/app_image_view.dart';
@@ -43,20 +45,30 @@ class _PersonalCircleImageState extends State<PersonalCircleImage> {
                 leading: const Icon(Icons.camera),
                 title: const Text('Take a photo'),
                 onTap: () async {
-                  Navigator.pop(
-                    context,
-                    await picker.pickImage(source: ImageSource.camera),
-                  );
+                  final XFile? image =
+                      await picker.pickImage(source: ImageSource.camera);
+                  if (image != null) {
+                    if (context.mounted) {
+                      Navigator.pop(context,
+                          image); // إرجاع الصورة للـ showModalBottomSheet
+                    }
+                  }
+                  context.go(RouterNames.personalInfoView);
                 },
               ),
               ListTile(
                 leading: const Icon(Icons.photo),
                 title: const Text('Choose from gallery'),
                 onTap: () async {
-                  Navigator.pop(
-                    context,
-                    await picker.pickImage(source: ImageSource.gallery),
-                  );
+                  final XFile? image =
+                      await picker.pickImage(source: ImageSource.gallery);
+                  if (image != null) {
+                    if (context.mounted) {
+                      Navigator.pop(context,
+                          image); // إرجاع الصورة للـ showModalBottomSheet
+                    }
+                  }
+                  context.go(RouterNames.personalInfoView);
                 },
               ),
             ],
@@ -80,17 +92,13 @@ class _PersonalCircleImageState extends State<PersonalCircleImage> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        CircleAvatar(
-          radius: 60.r,
-          backgroundColor: AppColors.lightGrey,
-          child: ClipOval(
-            child: AppImageView(
-              profileImage ?? '',
-              isAvatar: true,
-              radius: BorderRadius.circular(60.r),
-              height: 120.h,
-              width: 120.h,
-            ),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(50),
+          child: Image.network(
+            profileImage ?? AppAssets.profileImage,
+            width: 120.r,
+            height: 120.r,
+            fit: BoxFit.cover,
           ),
         ),
         Positioned(

@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
-import '../../../../../core/routes/router_names.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/utils/app_assets.dart';
 import '../../../../../core/utils/app_image_view.dart';
 import '../../../../../core/utils/app_styles.dart';
 
 class AccountInfoCard extends StatelessWidget {
-  AccountInfoCard({
+  const AccountInfoCard({
     super.key,
     required this.name,
     required this.phone,
@@ -16,15 +14,26 @@ class AccountInfoCard extends StatelessWidget {
   });
   final String name;
   final String phone;
-  String? image;
+ final String? image;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-        leading: AppImageView(
-          image,
-          isAvatar: true,
+        leading:
+        ClipRRect(
+          borderRadius: BorderRadius.circular(50),
+          child: Image.network(
+            image??"",
+            width: 50,
+            height: 50,
+            fit: BoxFit.cover,
+          ),
         ),
+        
+        //  AppImageView(
+        //   image??AppAssets.profileImage,
+        //   isAvatar: true,
+        // ),
         title: Text(
           name,
           style: AppStyles.s20.copyWith(

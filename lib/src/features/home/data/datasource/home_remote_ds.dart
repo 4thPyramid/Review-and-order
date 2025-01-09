@@ -56,6 +56,6 @@ class HomeRemoteDsImpl implements IHomeRemoteDs {
 
   @override
   Future<Either<ErrorModel, ProfileModel>> updateProfleImage(File? file) {
-    return _homeApiService.updateProfleImage(file);
+    return _homeApiService.updateProfileImage(file);
   }
 }

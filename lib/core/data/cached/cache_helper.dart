@@ -12,7 +12,11 @@ class CacheHelper {
   static void saveToken({required String value}) {
     sharedPreferences.setString('token', value);
   }
-
+//delete token
+  static void deleteToken() {
+    sharedPreferences.remove('token');
+  }
+  
   static String? getToken() {
     return sharedPreferences.getString('token');
   }

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:review_app/core/common/widgets/custom_btn.dart';
 import 'package:review_app/core/utils/app_assets.dart';
 import 'package:review_app/src/features/place_details/presentation/logic/cubit/add_favorite_place_cubit.dart';
 import 'package:review_app/src/features/place_details/presentation/logic/place_details/place_details_cubit.dart';
+import 'package:review_app/src/features/place_details/presentation/widgets/add_commit_pop.dart';
 import 'package:review_app/src/features/place_details/presentation/widgets/comments_list.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/utils/app_strings.dart';
@@ -37,52 +39,54 @@ class PlaceDetailsComponent extends StatelessWidget {
               ),
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  TitleAndFavoriteButton(
-                    placeName: place.name,
-                    onTap: () {
-                      BlocProvider.of<AddFavoritePlaceCubit>(context)
-                          .addFavoritePlace(place.id);
-                    },
+                TitleAndFavoriteButton(
+                  placeName: place.name,
+                  onTap: () {
+                    BlocProvider.of<AddFavoritePlaceCubit>(context)
+                        .addFavoritePlace(place.id);
+                  },
+                ),
+                RateAndTimeRow(
+                  openAt: place.openAt,
+                  closeAt: place.closeAt,
+                  rate: place.rating,
+                  reviewsCount: place.reviewsCount,
+                ),
+                MapCardDetails(
+                  restaurantAddress: place.mapDisc,
+                  arrivalTime: '3',
+                ),
+                SizedBox(height: 20.h),
+                Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    AppStrings.ratings,
+                    style: AppStyles.s20.copyWith(
+                        color: AppColors.black, fontWeight: FontWeight.w700),
                   ),
-                  RateAndTimeRow(
-                    openAt: place.openAt,
-                    closeAt: place.closeAt,
-                    rate: place.rating,
-                    reviewsCount: place.reviewsCount,
-                  ),
-                  MapCardDetails(
-                    restaurantAddress: place.mapDisc,
-                    arrivalTime: '3',
-                  ),
-                  SizedBox(height: 20.h),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Text(
-                      AppStrings.ratings,
-                      style: AppStyles.s20.copyWith(
-                          color: AppColors.black, fontWeight: FontWeight.w700),
-                    ),
-                  ),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: place.reviews.length,
-                    itemBuilder: (context, index) {
-                      return CommentsList(
-                        userProfilImagePath: place.reviews[index].user.image ??
-                            AppAssets.profileImage,
-                        userName: place.reviews[index].user.name,
-                        userEmail: place.reviews[index].user.email,
-                        commentImagePath: place.reviews[index].image,
-                        commentText: place.reviews[index].content,
-                        rate: place.reviews[index].userRating,
-                        itemCount: place.reviews.length,
-                      );
-                    },
-                  )
-                ])
+                ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: place.reviews.length,
+                  itemBuilder: (context, index) {
+                    return CommentsList(
+                      userProfileImagePath: place.reviews[index].user.image ??
+                          AppAssets.profileImage,
+                      userName: place.reviews[index].user.name,
+                      userEmail: place.reviews[index].user.email,
+                      commentImagePath: place.reviews[index].image,
+                      commentText: place.reviews[index].content,
+                      rate: place.reviews[index].userRating,
+                    );
+                  },
+                ),
+                CustomButton(text: AppStrings.addCommit, onPressed: () {
+                  addCommitPop(context, name:place.reviews[0].user.name, imageUrl:place.reviews[0].user.image ?? AppAssets.profileImage);
+                }),
+                SizedBox(height: 20.h),
               ],
             ),
           ),

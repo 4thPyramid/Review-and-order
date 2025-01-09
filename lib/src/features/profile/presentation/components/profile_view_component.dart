@@ -10,6 +10,7 @@ import '../../../../../core/utils/app_assets.dart';
 import '../../../../../core/utils/app_strings.dart';
 import '../widget/account_info_card.dart';
 import '../widget/custom_list_tile.dart';
+import '../widget/delete_account_pop.dart';
 
 class ProfileComponents extends StatelessWidget {
   const ProfileComponents({super.key});
@@ -67,7 +68,8 @@ class ProfileComponents extends StatelessWidget {
           icon: Icons.settings_outlined,
         ),
         SizedBox(height: 30.h),
-        const CustomListTile(
+        CustomListTile(
+          onPressed: () => logOutPop(context),
           title: AppStrings.signout,
           icon: Icons.logout,
           iconColor: AppColors.errorColor,

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:review_app/core/data/api/api_consumer.dart';
 import 'package:review_app/core/errors/error_model.dart';
 import 'package:review_app/core/errors/exceptions.dart';
@@ -18,7 +19,7 @@ abstract class HomeApiService {
     String? phone,
     String? email,
   );
-  Future<Either<ErrorModel, ProfileModel>> updateProfleImage(
+  Future<Either<ErrorModel, ProfileModel>> updateProfileImage(
     File? file,
   );
 }
@@ -111,15 +112,33 @@ class HomeApiServiceImpl implements HomeApiService {
   }
 
   @override
-  Future<Either<ErrorModel, ProfileModel>> updateProfleImage(File? file) async {
+  Future<Either<ErrorModel, ProfileModel>> updateProfileImage(File? file) async {
     try {
-      final response = await _api.post('update-profile', data: {
-        'image': file,
+      if (file == null) {
+        return Left(ErrorModel(message: "File is null"));
+      }
+
+      final formData = FormData.fromMap({
+        'image': await MultipartFile.fromFile(
+          file.path,
+          filename: file.path.split('/').last,
+        ),
       });
+
+      final response = await _api.post(
+        'update-profile',
+        data: formData,
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      );
+
       final profile = ProfileModel.fromJson(response);
       return Right(profile);
     } on ServerException catch (e) {
       return Left(e.errorModel);
+    } catch (e) {
+      return Left(ErrorModel(message: e.toString()));
     }
   }
 }
