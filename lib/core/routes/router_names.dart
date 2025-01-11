@@ -3,6 +3,7 @@ abstract class RouterNames {
   static const String onboarding = '/onboarding';
   static const String letsStart = '/letsStaert';
   static const String login = '/';
+  static const String maps = '/يبسسيبش';
   static const String register = '/register';
   static const String forgetPassword = '/forgetPassword';
   static const String resetPassword = '/resetPassword';

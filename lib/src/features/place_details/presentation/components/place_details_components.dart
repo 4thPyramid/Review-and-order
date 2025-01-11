@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:review_app/core/common/widgets/custom_btn.dart';
+import 'package:review_app/core/routes/router_names.dart';
 import 'package:review_app/core/utils/app_assets.dart';
 import 'package:review_app/src/features/place_details/presentation/logic/cubit/add_favorite_place_cubit.dart';
 import 'package:review_app/src/features/place_details/presentation/logic/place_details/place_details_cubit.dart';
@@ -57,6 +59,12 @@ class PlaceDetailsComponent extends StatelessWidget {
                 MapCardDetails(
                   restaurantAddress: place.mapDisc,
                   arrivalTime: '3',
+                  onTap: () {
+                    context.go(RouterNames.maps, extra: {
+                      'lat': place.latitude,
+                      'lng': place.longitude,
+                    });
+                  },
                 ),
                 SizedBox(height: 20.h),
                 Align(
@@ -89,6 +97,8 @@ class PlaceDetailsComponent extends StatelessWidget {
                       addCommitPop(context,
                           name: place.reviews![0].user.name,
                           imageUrl: place.reviews![0].user.image ??
+                          // name: place.reviews[0].user.name,
+                          // imageUrl: place.reviews[0].user.image ??
                               AppAssets.profileImage);
                     }),
                 SizedBox(height: 20.h),

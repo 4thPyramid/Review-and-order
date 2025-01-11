@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:review_app/core/routes/router_names.dart';
 import 'package:review_app/core/common/functions/password_visibility_cubit.dart';
+import 'package:review_app/src/features/place_details/presentation/view/place_location_view.dart';
 import 'package:review_app/src/features/auth/presentation/views/forget_password.dart';
 import 'package:review_app/src/features/auth/presentation/views/login_view.dart';
 import 'package:review_app/src/features/auth/presentation/views/register_view.dart';
@@ -33,6 +34,18 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: RouterNames.splash,
       builder: (context, state) => const SplashView(),
+    ),
+    GoRoute(
+      path: RouterNames.maps,
+      builder: (context, state) {
+        final extra = state.extra as Map<String, dynamic>;
+        final lat = extra['lat'] as double?;
+        final lng = extra['lng'] as double?;
+        return PlaceLocationView(
+          lat: lat ?? 0.0,
+          lng: lng ?? 0.0,
+        );
+      },
     ),
     GoRoute(
       path: RouterNames.onboarding,
