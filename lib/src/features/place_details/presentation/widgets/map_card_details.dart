@@ -11,9 +11,11 @@ class MapCardDetails extends StatelessWidget {
     super.key,
     required this.restaurantAddress,
     required this.arrivalTime,
+    required this.onTap,
   });
   final String restaurantAddress;
   final String arrivalTime;
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -36,11 +38,14 @@ class MapCardDetails extends StatelessWidget {
         ),
         child: Row(
           children: [
-            AppImageView(
-              AppAssets.mapImage,
-              width: 140.w,
-              height: 146.h,
-              radius: BorderRadius.circular(19.r),
+            GestureDetector(
+              onTap: onTap,
+              child: AppImageView(
+                AppAssets.mapImage,
+                width: 140.w,
+                height: 146.h,
+                radius: BorderRadius.circular(19.r),
+              ),
             ),
             SizedBox(width: 20.h),
             Column(
