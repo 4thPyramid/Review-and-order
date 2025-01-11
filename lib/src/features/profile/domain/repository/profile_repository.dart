@@ -17,6 +17,8 @@ abstract class ProfileRepository {
   Future<Either<ErrorModel, ProfileModel>> updateProfileImage(
     File? file,
   );
+    Future<Either<ErrorModel, String>> deleteAccount();
+
 }
 
 
@@ -38,5 +40,10 @@ class ProfileRepositoryImpl implements ProfileRepository {
   Future<Either<ErrorModel, ProfileModel>> updateProfile(
       String? name, String? phone, String? email) {
     return _profileRemoteDs.updateProfile(name, phone, email);
+  }
+  
+  @override
+  Future<Either<ErrorModel, String>> deleteAccount() {
+   return _profileRemoteDs.deleteAccount();
   }
 }

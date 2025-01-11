@@ -1,20 +1,29 @@
 //place details view
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:review_app/core/common/widgets/custom_btn.dart';
-import 'package:review_app/core/routes/app_routers.dart';
 import 'package:review_app/core/routes/router_names.dart';
 import 'package:review_app/core/theme/app_colors.dart';
 import 'package:review_app/core/utils/app_assets.dart';
-import 'package:review_app/core/utils/app_image_view.dart';
 
 import '../components/place_details_components.dart';
+import '../logic/place_details/place_details_cubit.dart';
 
-class PlaceDetailsView extends StatelessWidget {
-  const PlaceDetailsView({super.key, required this.placeId});
+class PlaceDetailsView extends StatefulWidget {
+  const PlaceDetailsView({super.key, required this.placeId, });
   final int placeId;
 
+  @override
+  State<PlaceDetailsView> createState() => _PlaceDetailsViewState();
+}
+
+class _PlaceDetailsViewState extends State<PlaceDetailsView> {
+  @override
+  void initState() {
+    super.initState();
+     context.read<PlaceDetailsCubit>().getPlaceDetails(widget.placeId);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,9 +41,7 @@ class PlaceDetailsView extends StatelessWidget {
               ),
               child: Padding(
                 padding: EdgeInsets.only(top: 480.h),
-                child: PlaceDetailsComponent(
-                  placeId: placeId,
-                ),
+                child: const PlaceDetailsComponent(),
               ),
             ),
             Positioned(

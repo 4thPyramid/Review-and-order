@@ -13,7 +13,7 @@ abstract class IPlaceDetailsApiService {
   Future<Either<ErrorModel, FavoritePlaceModel>> addToFavorites(int placeId);
   Future<Either<ErrorModel, String>> addCommit(
       int placeId, String content, File image);
-  Future<Either<ErrorModel, String>> addRate(int placeId, int rate);
+  Future<Either<ErrorModel, String>> addRate(int placeId, double rate);
 }
 
 class PlaceDetailsApiServiceImpl implements IPlaceDetailsApiService {
@@ -70,7 +70,7 @@ class PlaceDetailsApiServiceImpl implements IPlaceDetailsApiService {
   }
 
   @override
-  Future<Either<ErrorModel, String>> addRate(int placeId, int rate) async {
+  Future<Either<ErrorModel, String>> addRate(int placeId, double rate) async {
     try {
       final response = await _api.post('place/$placeId/rate', data: {
         'rating': rate,

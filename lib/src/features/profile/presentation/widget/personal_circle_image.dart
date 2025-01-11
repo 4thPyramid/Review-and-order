@@ -10,7 +10,7 @@ import '../../../../../core/routes/router_names.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/utils/app_assets.dart';
 import '../../../../../core/utils/app_image_view.dart';
-import '../cubit/profile_cubit.dart';
+import '../logic/profile_cubit.dart';
 
 class PersonalCircleImage extends StatefulWidget {
   const PersonalCircleImage({super.key, this.profileImage});

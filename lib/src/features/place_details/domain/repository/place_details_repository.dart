@@ -11,7 +11,7 @@ abstract class IPlaceDetailsRepository {
   Future<Either<ErrorModel, FavoritePlaceModel>> addToFavorites(int placeId);
     Future<Either<ErrorModel, String>> addCommit(
       int placeId, String content, File image);
-  Future<Either<ErrorModel, String>> addRate(int placeId, int rate);
+  Future<Either<ErrorModel, String>> addRate(int placeId, double rate);
 }
 
 class PlaceDetailsRepositoryImpl implements IPlaceDetailsRepository {
@@ -35,7 +35,7 @@ class PlaceDetailsRepositoryImpl implements IPlaceDetailsRepository {
   }
   
   @override
-  Future<Either<ErrorModel, String>> addRate(int placeId, int rate) {
+  Future<Either<ErrorModel, String>> addRate(int placeId, double rate) {
     return _detailsDS.addRate(placeId, rate);
   }
 }

@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:review_app/core/common/widgets/custom_text_form_field.dart';
 import 'package:review_app/src/features/auth/presentation/logic/login/login_cubit.dart';
-import 'package:review_app/src/features/profile/presentation/cubit/profile_cubit.dart';
+import 'package:review_app/src/features/profile/presentation/logic/profile_cubit.dart';
 
 import '../../../../../core/common/widgets/custom_btn.dart';
 import '../../../../../core/theme/app_colors.dart';

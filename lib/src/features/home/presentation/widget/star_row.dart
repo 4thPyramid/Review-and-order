@@ -18,7 +18,7 @@ class StarRow extends StatelessWidget {
           initialRating: rating,
           minRating: 1,
           direction: Axis.horizontal,
-          allowHalfRating: true,
+          allowHalfRating: false,
           itemCount: 4,
           itemSize: itemSize ?? 12,
           itemBuilder: (context, _) => const Icon(
@@ -30,7 +30,7 @@ class StarRow extends StatelessWidget {
           },
         ),
         const SizedBox(width: 5),
-        Text('4.7 ', style: textStyle ?? AppStyles.s12),
+        Text(rating.toString(), style: textStyle ?? AppStyles.s12),
       ],
     );
   }

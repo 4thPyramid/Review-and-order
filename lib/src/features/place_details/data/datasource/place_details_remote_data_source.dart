@@ -11,7 +11,7 @@ abstract class IPlaceDetailsDS {
   Future<Either<ErrorModel, FavoritePlaceModel>> addToFavorites(int placeId);
     Future<Either<ErrorModel, String>> addCommit(
       int placeId, String content, File image);
-  Future<Either<ErrorModel, String>> addRate(int placeId, int rate);
+  Future<Either<ErrorModel, String>> addRate(int placeId, double rate);
 }
 
 class PlaceDetailsDSImpl implements IPlaceDetailsDS {
@@ -34,7 +34,7 @@ class PlaceDetailsDSImpl implements IPlaceDetailsDS {
   }
   
   @override
-  Future<Either<ErrorModel, String>> addRate(int placeId, int rate) {
+  Future<Either<ErrorModel, String>> addRate(int placeId, double rate) {
    return apiService.addRate(placeId, rate);
   }
 

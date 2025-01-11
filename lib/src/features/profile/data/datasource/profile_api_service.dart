@@ -19,6 +19,9 @@ abstract class ProfileApiService {
   Future<Either<ErrorModel, ProfileModel>> updateProfileImage(
     File? file,
   );
+  //delete account
+  Future<Either<ErrorModel, String>> deleteAccount();
+ 
 }
 
 
@@ -87,6 +90,16 @@ class ProfileApiServiceImpl implements ProfileApiService {
       return Left(e.errorModel);
     } catch (e) {
       return Left(ErrorModel(message: e.toString()));
+    }
+  }
+  
+  @override
+  Future<Either<ErrorModel, String>> deleteAccount() async {
+    try {
+      final response = await _api.delete('delete-account');
+      return Right(response['message']);
+    } on ServerException catch (e) {
+      return Left(e.errorModel);
     }
   }
 

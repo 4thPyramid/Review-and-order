@@ -22,7 +22,7 @@ class AddRateUesCase {
 
   AddRateUesCase(this.repository);
 
-  Future<Either<ErrorModel, String>> call(int placeId, int rate) async {
+  Future<Either<ErrorModel, String>> call(int placeId, double rate) async {
     return await repository.addRate(placeId, rate);
   }
 

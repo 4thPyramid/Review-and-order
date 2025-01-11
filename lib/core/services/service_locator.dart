@@ -23,14 +23,16 @@ import 'package:review_app/src/features/home/presentation/logic/cubit/home_cubit
 import 'package:review_app/src/features/place_details/data/datasource/place_datails_api_service.dart';
 import 'package:review_app/src/features/place_details/data/datasource/place_details_remote_data_source.dart';
 import 'package:review_app/src/features/place_details/domain/repository/place_details_repository.dart';
+import 'package:review_app/src/features/place_details/domain/usecase/add_commit_rating_uc.dart';
 import 'package:review_app/src/features/place_details/domain/usecase/add_favorite_place_uc.dart';
 import 'package:review_app/src/features/place_details/domain/usecase/get_place_details_uc.dart';
+import 'package:review_app/src/features/place_details/presentation/logic/cubit/add_commit_cubit.dart';
 import 'package:review_app/src/features/place_details/presentation/logic/cubit/add_favorite_place_cubit.dart';
 import 'package:review_app/src/features/place_details/presentation/logic/place_details/place_details_cubit.dart';
 import 'package:review_app/src/features/profile/domain/usecase/get_profile_photo_uc.dart';
 import 'package:review_app/src/features/profile/domain/usecase/update_profile_photo.dart';
 import 'package:review_app/src/features/profile/domain/usecase/update_profile_uc.dart';
-import 'package:review_app/src/features/profile/presentation/cubit/profile_cubit.dart';
+import 'package:review_app/src/features/profile/presentation/logic/profile_cubit.dart';
 import 'package:review_app/src/features/search/data/datasourse/search_api_service.dart';
 import 'package:review_app/src/features/search/data/datasourse/search_remote_ds.dart';
 import 'package:review_app/src/features/search/domain/repository/search_repository.dart';
@@ -137,6 +139,9 @@ void setupLocator() {
   getIt.registerLazySingleton<GetFavoriteUseCase>(
       () => GetFavoriteUseCase(getIt<IFavoriteRepository>()));
 
+  getIt
+      .registerLazySingleton<AddCommitUesCase>(() => AddCommitUesCase(getIt()));
+  getIt.registerLazySingleton<AddRateUesCase>(() => AddRateUesCase(getIt()));
   getIt.registerLazySingleton<GetSearchResults>(
       () => GetSearchResults(getIt<ISearchRepository>()));
 
@@ -185,4 +190,5 @@ void setupLocator() {
         getIt(),
         getIt(),
       ));
+  getIt.registerFactory<AddCommitCubit>(() => AddCommitCubit(getIt(), getIt()));
 }

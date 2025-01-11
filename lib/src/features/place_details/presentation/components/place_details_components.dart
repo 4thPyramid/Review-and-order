@@ -19,13 +19,11 @@ import '../widgets/title_and_favorite.dart';
 class PlaceDetailsComponent extends StatelessWidget {
   const PlaceDetailsComponent({
     super.key,
-    required this.placeId,
   });
-  final int placeId;
 
   @override
   Widget build(BuildContext context) {
-    BlocProvider.of<PlaceDetailsCubit>(context).getPlaceDetails(placeId);
+   // BlocProvider.of<PlaceDetailsCubit>(context).getPlaceDetails(placeId);
     return BlocBuilder<PlaceDetailsCubit, PlaceDetailsState>(
       builder: (context, state) {
         return state.when(
@@ -94,11 +92,11 @@ class PlaceDetailsComponent extends StatelessWidget {
                 CustomButton(
                     text: AppStrings.addCommit,
                     onPressed: () {
+                      print('place id: ${place.id}');
                       addCommitPop(context,
+                          placeId: place.id,  
                           name: place.reviews![0].user.name,
                           imageUrl: place.reviews![0].user.image ??
-                          // name: place.reviews[0].user.name,
-                          // imageUrl: place.reviews[0].user.image ??
                               AppAssets.profileImage);
                     }),
                 SizedBox(height: 20.h),

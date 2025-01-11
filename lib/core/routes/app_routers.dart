@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:review_app/core/routes/router_names.dart';
 import 'package:review_app/core/common/functions/password_visibility_cubit.dart';
+import 'package:review_app/src/features/place_details/presentation/logic/cubit/add_commit_cubit.dart';
 import 'package:review_app/src/features/place_details/presentation/view/place_location_view.dart';
 import 'package:review_app/src/features/auth/presentation/views/forget_password.dart';
 import 'package:review_app/src/features/auth/presentation/views/login_view.dart';
@@ -19,7 +20,7 @@ import 'package:review_app/src/features/intro/presentation/view/onboarding_view.
 import 'package:review_app/src/features/place_details/presentation/logic/cubit/add_favorite_place_cubit.dart';
 import 'package:review_app/src/features/place_details/presentation/logic/place_details/place_details_cubit.dart';
 import 'package:review_app/src/features/place_details/presentation/view/place_details_view.dart';
-import 'package:review_app/src/features/profile/presentation/cubit/profile_cubit.dart';
+import 'package:review_app/src/features/profile/presentation/logic/profile_cubit.dart';
 import 'package:review_app/src/features/profile/presentation/view/personal_info_view.dart';
 import 'package:review_app/src/features/profile/presentation/view/settings_view.dart';
 import 'package:review_app/src/splash_view.dart';
@@ -91,7 +92,10 @@ final GoRouter router = GoRouter(
           return MultiBlocProvider(
             providers: [
               BlocProvider(
-                create: (context) => getIt<PlaceDetailsCubit>(),
+                create: (context) => getIt<PlaceDetailsCubit>()
+              ),
+                BlocProvider(
+                create: (context) => getIt<AddCommitCubit>(),
               ),
               BlocProvider(
                 create: (context) => getIt<AddFavoritePlaceCubit>(),

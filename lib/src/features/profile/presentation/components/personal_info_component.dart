@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/utils/app_strings.dart';
-import '../cubit/profile_cubit.dart';
+import '../logic/profile_cubit.dart';
 import '../widget/personal_circle_image.dart';
 import '../widget/personal_info_list_tile.dart';
 
