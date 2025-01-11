@@ -15,7 +15,7 @@ part 'profile_cubit.freezed.dart';
 part 'profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
-  final GetProfleDataUC _getProfleDataUC;
+  final GetProfileDataUC _getProfleDataUC;
   final UpdateProfileUc _updateProfileUc;
   final UpdateProfilePhoto _updateProfilePhotoUc;
   ProfileCubit(

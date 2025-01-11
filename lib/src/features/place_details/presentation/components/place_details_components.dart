@@ -70,22 +70,27 @@ class PlaceDetailsComponent extends StatelessWidget {
                 ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  itemCount: place.reviews.length,
+                  itemCount: place.reviews!.length,
                   itemBuilder: (context, index) {
                     return CommentsList(
-                      userProfileImagePath: place.reviews[index].user.image ??
+                      userProfileImagePath: place.reviews![index].user.image ??
                           AppAssets.profileImage,
-                      userName: place.reviews[index].user.name,
-                      userEmail: place.reviews[index].user.email,
-                      commentImagePath: place.reviews[index].image,
-                      commentText: place.reviews[index].content,
-                      rate: place.reviews[index].userRating,
+                      userName: place.reviews![index].user.name,
+                      userEmail: place.reviews![index].user.email,
+                      commentImagePath: place.reviews![index].image,
+                      commentText: place.reviews![index].content,
+                      rate: place.reviews![index].userRating,
                     );
                   },
                 ),
-                CustomButton(text: AppStrings.addCommit, onPressed: () {
-                  addCommitPop(context, name:place.reviews[0].user.name, imageUrl:place.reviews[0].user.image ?? AppAssets.profileImage);
-                }),
+                CustomButton(
+                    text: AppStrings.addCommit,
+                    onPressed: () {
+                      addCommitPop(context,
+                          name: place.reviews![0].user.name,
+                          imageUrl: place.reviews![0].user.image ??
+                              AppAssets.profileImage);
+                    }),
                 SizedBox(height: 20.h),
               ],
             ),

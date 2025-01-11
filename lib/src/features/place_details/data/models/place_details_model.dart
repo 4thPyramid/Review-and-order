@@ -26,9 +26,9 @@ class PlaceDetailsModel {
   final String? coverImage;
   @JsonKey(name: 'reviews_count')
   final int reviewsCount;
-  final List<ReviewModel> reviews;
-  final List<ImageModel> images;
-  final List<RatingModel> ratings;
+  final List<ReviewModel>? reviews;
+  final List<ImageModel>? images;
+  final List<RatingModel>? ratings;
 
   PlaceDetailsModel({
     required this.id,
@@ -45,9 +45,9 @@ class PlaceDetailsModel {
     required this.updatedAt,
     this.coverImage,
     required this.reviewsCount,
-    required this.reviews,
-    required this.images,
-    required this.ratings,
+     this.reviews,
+     this.images,
+     this.ratings,
   });
 
   factory PlaceDetailsModel.fromJson(Map<String, dynamic> json) =>

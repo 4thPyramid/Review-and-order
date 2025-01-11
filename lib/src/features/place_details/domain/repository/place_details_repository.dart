@@ -1,7 +1,7 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:review_app/core/errors/error_model.dart';
-import 'package:review_app/src/features/home/data/models/place_model.dart';
-import 'package:review_app/src/features/intro/data/onbording_model.dart';
 import 'package:review_app/src/features/place_details/data/datasource/place_details_remote_data_source.dart';
 import 'package:review_app/src/features/place_details/data/models/favorite_place.dart';
 import 'package:review_app/src/features/place_details/data/models/place_details_model.dart';
@@ -9,6 +9,9 @@ import 'package:review_app/src/features/place_details/data/models/place_details_
 abstract class IPlaceDetailsRepository {
   Future<Either<ErrorModel, PlaceDetailsModel>> getPlaceDetails(int placeId);
   Future<Either<ErrorModel, FavoritePlaceModel>> addToFavorites(int placeId);
+    Future<Either<ErrorModel, String>> addCommit(
+      int placeId, String content, File image);
+  Future<Either<ErrorModel, String>> addRate(int placeId, int rate);
 }
 
 class PlaceDetailsRepositoryImpl implements IPlaceDetailsRepository {
@@ -24,5 +27,15 @@ class PlaceDetailsRepositoryImpl implements IPlaceDetailsRepository {
   @override
   Future<Either<ErrorModel, FavoritePlaceModel>> addToFavorites(int placeId) {
     return _detailsDS.addToFavorites(placeId);
+  }
+  
+  @override
+  Future<Either<ErrorModel, String>> addCommit(int placeId, String content, File image) {
+    return _detailsDS.addCommit(placeId, content, image);
+  }
+  
+  @override
+  Future<Either<ErrorModel, String>> addRate(int placeId, int rate) {
+    return _detailsDS.addRate(placeId, rate);
   }
 }

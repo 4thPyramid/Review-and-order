@@ -22,14 +22,14 @@ PlaceDetailsModel _$PlaceDetailsModelFromJson(Map<String, dynamic> json) =>
       updatedAt: json['updated_at'] as String,
       coverImage: json['cover_image'] as String?,
       reviewsCount: (json['reviews_count'] as num).toInt(),
-      reviews: (json['reviews'] as List<dynamic>)
-          .map((e) => ReviewModel.fromJson(e as Map<String, dynamic>))
+      reviews: (json['reviews'] as List<dynamic>?)
+          ?.map((e) => ReviewModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      images: (json['images'] as List<dynamic>)
-          .map((e) => ImageModel.fromJson(e as Map<String, dynamic>))
+      images: (json['images'] as List<dynamic>?)
+          ?.map((e) => ImageModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      ratings: (json['ratings'] as List<dynamic>)
-          .map((e) => RatingModel.fromJson(e as Map<String, dynamic>))
+      ratings: (json['ratings'] as List<dynamic>?)
+          ?.map((e) => RatingModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -62,7 +62,7 @@ ReviewModel _$ReviewModelFromJson(Map<String, dynamic> json) => ReviewModel(
       placeId: (json['place_id'] as num).toInt(),
       createdAt: json['created_at'] as String,
       updatedAt: json['updated_at'] as String,
-      userRating: (json['user_rating'] as num? ?? 0).toDouble(),
+      userRating: (json['user_rating'] as num).toDouble(),
       user: UserModel.fromJson(json['user'] as Map<String, dynamic>),
     );
 

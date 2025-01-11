@@ -42,6 +42,9 @@ import '../../src/features/auth/domain/repository/auth_repository.dart';
 import '../../src/features/auth/domain/usecase/forget_password_use_case.dart';
 import '../../src/features/auth/domain/usecase/login_use_case.dart';
 import '../../src/features/auth/presentation/logic/register/register_cubit.dart';
+import '../../src/features/profile/data/datasource/profile_api_service.dart';
+import '../../src/features/profile/data/datasource/profile_remote_ds.dart';
+import '../../src/features/profile/domain/repository/profile_repository.dart';
 import '../app_cubit/app_cubit.dart';
 import '../data/api/api_consumer.dart';
 import '../data/api/dio_consumer.dart';
@@ -74,8 +77,8 @@ void setupLocator() {
   getIt.registerLazySingleton<SearchApiService>(
       () => SearchApiServiceImpl(getIt<ApiConsumer>()));
 
-  // getIt.registerLazySingleton<IProfileApiService>(
-  //     () => ProfileApiService(getIt()));
+  getIt.registerLazySingleton<ProfileApiService>(
+      () => ProfileApiServiceImpl(getIt()));
 
   /// --DataSources-- ///
   getIt.registerLazySingleton<IAuthRemoteDs>(
@@ -91,8 +94,8 @@ void setupLocator() {
   getIt.registerLazySingleton<ISearchRemoteDataSource>(
       () => SearchRemoteDataSource(getIt<SearchApiService>()));
 
-  // getIt.registerLazySingleton<IProfileRemoteDS>(
-  //     () => ProfileRemoteDS(getIt<IProfileApiService>()));
+  getIt.registerLazySingleton<ProfileRemoteDs>(
+      () => ProfileRemoteDSImpl(getIt()));
 
   /// -- Repositories -- ///
 
@@ -103,8 +106,8 @@ void setupLocator() {
 
   getIt.registerLazySingleton<IPlaceDetailsRepository>(
       () => PlaceDetailsRepositoryImpl(getIt<IPlaceDetailsDS>()));
-  // getIt.registerLazySingleton<IProfileRepository>(
-  //     () => ProfileRepository(getIt()));
+  getIt.registerLazySingleton<ProfileRepository>(
+      () => ProfileRepositoryImpl(getIt()));
   getIt.registerLazySingleton<IFavoriteRepository>(
       () => FavoriteRepositoryImpl(getIt<IFavoriteRemoteDs>()));
   getIt.registerLazySingleton<ISearchRepository>(
@@ -123,6 +126,8 @@ void setupLocator() {
       () => GetNearstPlacesUC(getIt<IHomeRepository>()));
   getIt.registerLazySingleton<GetAllPlacesUC>(
       () => GetAllPlacesUC(getIt<IHomeRepository>()));
+  getIt.registerLazySingleton<UpdateLocationUC>(
+      () => UpdateLocationUC(getIt<IHomeRepository>()));
 
   getIt.registerLazySingleton<GetPlaceDetailsUc>(
       () => GetPlaceDetailsUc(getIt<IPlaceDetailsRepository>()));
@@ -142,8 +147,8 @@ void setupLocator() {
   getIt.registerLazySingleton<ResetPasswordUseCase>(
       () => ResetPasswordUseCase(getIt()));
 
-  getIt.registerLazySingleton<GetProfleDataUC>(
-    () => GetProfleDataUC(getIt()),
+  getIt.registerLazySingleton<GetProfileDataUC>(
+    () => GetProfileDataUC(getIt()),
   );
   getIt.registerLazySingleton<UpdateProfileUc>(
     () => UpdateProfileUc(getIt()),

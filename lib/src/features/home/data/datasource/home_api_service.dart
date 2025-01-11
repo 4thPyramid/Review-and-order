@@ -17,19 +17,11 @@ abstract class HomeApiService {
     double lng,
   );
   Future<Either<ErrorModel, List<PlaceModel>>> getAllPlaces();
-  Future<Either<ErrorModel, ProfileModel>> getProfile();
   Future<Either<ErrorModel, UpdateLocationResponse>> updateLocation(
     double lat,
     double lng,
   );
-  Future<Either<ErrorModel, ProfileModel>> updateProfle(
-    String? name,
-    String? phone,
-    String? email,
-  );
-  Future<Either<ErrorModel, ProfileModel>> updateProfileImage(
-    File? file,
-  );
+
 }
 
 class HomeApiServiceImpl implements HomeApiService {
@@ -62,6 +54,7 @@ class HomeApiServiceImpl implements HomeApiService {
     }
   }
 
+  @override
   Future<Either<ErrorModel, List<PlaceModel>>> getNearstPlaces(
     double lat,
     double lng,
@@ -93,6 +86,7 @@ class HomeApiServiceImpl implements HomeApiService {
     }
   }
 
+  @override
   Future<Either<ErrorModel, UpdateLocationResponse>> updateLocation(
       double latitude, double longitude) async {
     try {
@@ -107,66 +101,4 @@ class HomeApiServiceImpl implements HomeApiService {
     }
   }
 
-  @override
-  Future<Either<ErrorModel, ProfileModel>> getProfile() async {
-    try {
-      final response = await _api.get(
-        'profile',
-      );
-      final profile = ProfileModel.fromJson(response);
-      return Right(profile);
-    } on ServerException catch (e) {
-      return Left(e.errorModel);
-    }
-  }
-
-  @override
-  Future<Either<ErrorModel, ProfileModel>> updateProfle(
-    String? name,
-    String? phone,
-    String? email,
-  ) async {
-    try {
-      final response = await _api.post('update-profile', data: {
-        'name': name,
-        'phone': phone,
-        'email': email,
-      });
-      final profile = ProfileModel.fromJson(response);
-      return Right(profile);
-    } on ServerException catch (e) {
-      return Left(e.errorModel);
-    }
-  }
-
-  @override
-  Future<Either<ErrorModel, ProfileModel>> updateProfileImage(File? file) async {
-    try {
-      if (file == null) {
-        return Left(ErrorModel(message: "File is null"));
-      }
-
-      final formData = FormData.fromMap({
-        'image': await MultipartFile.fromFile(
-          file.path,
-          filename: file.path.split('/').last,
-        ),
-      });
-
-      final response = await _api.post(
-        'update-profile',
-        data: formData,
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      );
-
-      final profile = ProfileModel.fromJson(response);
-      return Right(profile);
-    } on ServerException catch (e) {
-      return Left(e.errorModel);
-    } catch (e) {
-      return Left(ErrorModel(message: e.toString()));
-    }
-  }
 }

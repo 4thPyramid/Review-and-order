@@ -17,13 +17,7 @@ abstract class IHomeRemoteDs {
   Future<Either<ErrorModel, List<PlaceModel>>> getAllPlaces();
   Future<Either<ErrorModel, UpdateLocationResponse>> updateLocation(
       double lat, double lng);
-  Future<Either<ErrorModel, ProfileModel>> getProfile();
-  Future<Either<ErrorModel, ProfileModel>> updateProfle(
-    String name,
-    String phone,
-    String email,
-  );
-  Future<Either<ErrorModel, ProfileModel>> updateProfleImage(File? file);
+
 }
 
 class HomeRemoteDsImpl implements IHomeRemoteDs {
@@ -53,22 +47,6 @@ class HomeRemoteDsImpl implements IHomeRemoteDs {
       lat,
       lng,
     );
-  }
-
-  @override
-  Future<Either<ErrorModel, ProfileModel>> getProfile() {
-    return _homeApiService.getProfile();
-  }
-
-  @override
-  Future<Either<ErrorModel, ProfileModel>> updateProfle(
-      String name, String phone, String email) {
-    return _homeApiService.updateProfle(name, phone, email);
-  }
-
-  @override
-  Future<Either<ErrorModel, ProfileModel>> updateProfleImage(File? file) {
-    return _homeApiService.updateProfileImage(file);
   }
 
   @override
