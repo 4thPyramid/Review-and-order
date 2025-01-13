@@ -2,52 +2,53 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'place_details_model.g.dart';
 
+
 @JsonSerializable()
 class PlaceDetailsModel {
-  final int id;
-  final String name;
+  final int? id;
+  final String? name;
   @JsonKey(name: 'map_disc')
-  final String mapDisc;
-  final String longitude;
-  final String latitude;
-  final double rating;
-  final String status;
+  final String? mapDisc;
+  final String? longitude;
+  final String? latitude;
+  final double? rating;
+  final String? status;
   @JsonKey(name: 'open_at')
-  final String openAt;
+  final String? openAt;
   @JsonKey(name: 'close_at')
-  final String closeAt;
+  final String? closeAt;
   @JsonKey(name: 'category_id')
-  final int categoryId;
+  final int? categoryId;
   @JsonKey(name: 'created_at')
-  final String createdAt;
+  final String? createdAt;
   @JsonKey(name: 'updated_at')
-  final String updatedAt;
+  final String? updatedAt;
   @JsonKey(name: 'cover_image')
   final String? coverImage;
   @JsonKey(name: 'reviews_count')
-  final int reviewsCount;
+  final int? reviewsCount;
   final List<ReviewModel>? reviews;
   final List<ImageModel>? images;
   final List<RatingModel>? ratings;
 
   PlaceDetailsModel({
-    required this.id,
-    required this.name,
-    required this.mapDisc,
-    required this.longitude,
-    required this.latitude,
-    required this.rating,
-    required this.status,
-    required this.openAt,
-    required this.closeAt,
-    required this.categoryId,
-    required this.createdAt,
-    required this.updatedAt,
+    this.id,
+    this.name,
+    this.mapDisc,
+    this.longitude,
+    this.latitude,
+    this.rating,
+    this.status,
+    this.openAt,
+    this.closeAt,
+    this.categoryId,
+    this.createdAt,
+    this.updatedAt,
     this.coverImage,
-    required this.reviewsCount,
-     this.reviews,
-     this.images,
-     this.ratings,
+    this.reviewsCount,
+    this.reviews,
+    this.images,
+    this.ratings,
   });
 
   factory PlaceDetailsModel.fromJson(Map<String, dynamic> json) =>
@@ -58,31 +59,31 @@ class PlaceDetailsModel {
 
 @JsonSerializable()
 class ReviewModel {
-  final int id;
-  final String content;
-  final String image;
+  final int? id;
+  final String? content;
+  final String? image;
   @JsonKey(name: 'user_id')
-  final int userId;
+  final int? userId;
   @JsonKey(name: 'place_id')
-  final int placeId;
+  final int? placeId;
   @JsonKey(name: 'created_at')
-  final String createdAt;
+  final String? createdAt;
   @JsonKey(name: 'updated_at')
-  final String updatedAt;
+  final String? updatedAt;
   @JsonKey(name: 'user_rating')
-  final double userRating;
-  final UserModel user;
+  final double? userRating;
+  final UserModel? user;
 
   ReviewModel({
-    required this.id,
-    required this.content,
-    required this.image,
-    required this.userId,
-    required this.placeId,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.userRating,
-    required this.user,
+    this.id,
+    this.content,
+    this.image,
+    this.userId,
+    this.placeId,
+    this.createdAt,
+    this.updatedAt,
+    this.userRating,
+    this.user,
   });
 
   factory ReviewModel.fromJson(Map<String, dynamic> json) =>
@@ -93,24 +94,24 @@ class ReviewModel {
 
 @JsonSerializable()
 class UserModel {
-  final int id;
-  final String name;
-  final String phone;
-  final String email;
+  final int? id;
+  final String? name;
+  final String? phone;
+  final String? email;
   final String? image;
   @JsonKey(name: 'created_at')
-  final String createdAt;
+  final String? createdAt;
   @JsonKey(name: 'updated_at')
-  final String updatedAt;
+  final String? updatedAt;
 
   UserModel({
-    required this.id,
-    required this.name,
-    required this.phone,
-    required this.email,
+    this.id,
+    this.name,
+    this.phone,
+    this.email,
     this.image,
-    required this.createdAt,
-    required this.updatedAt,
+    this.createdAt,
+    this.updatedAt,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>
@@ -122,18 +123,18 @@ class UserModel {
 @JsonSerializable()
 class ImageModel {
   @JsonKey(name: 'place_id')
-  final int placeId;
-  final String image;
+  final int? placeId;
+  final String? image;
   @JsonKey(name: 'created_at')
-  final String createdAt;
+  final String? createdAt;
   @JsonKey(name: 'updated_at')
-  final String updatedAt;
+  final String? updatedAt;
 
   ImageModel({
-    required this.placeId,
-    required this.image,
-    required this.createdAt,
-    required this.updatedAt,
+    this.placeId,
+    this.image,
+    this.createdAt,
+    this.updatedAt,
   });
 
   factory ImageModel.fromJson(Map<String, dynamic> json) =>
@@ -144,24 +145,24 @@ class ImageModel {
 
 @JsonSerializable()
 class RatingModel {
-  final int id;
-  final int rating;
+  final int? id;
+  final int? rating;
   @JsonKey(name: 'user_id')
-  final int userId;
+  final int? userId;
   @JsonKey(name: 'place_id')
-  final int placeId;
+  final int? placeId;
   @JsonKey(name: 'created_at')
-  final String createdAt;
+  final String? createdAt;
   @JsonKey(name: 'updated_at')
-  final String updatedAt;
+  final String? updatedAt;
 
   RatingModel({
-    required this.id,
-    required this.rating,
-    required this.userId,
-    required this.placeId,
-    required this.createdAt,
-    required this.updatedAt,
+    this.id,
+    this.rating,
+    this.userId,
+    this.placeId,
+    this.createdAt,
+    this.updatedAt,
   });
 
   factory RatingModel.fromJson(Map<String, dynamic> json) =>

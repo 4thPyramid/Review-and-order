@@ -8,20 +8,20 @@ part of 'place_details_model.dart';
 
 PlaceDetailsModel _$PlaceDetailsModelFromJson(Map<String, dynamic> json) =>
     PlaceDetailsModel(
-      id: (json['id'] as num).toInt(),
-      name: json['name'] as String,
-      mapDisc: json['map_disc'] as String,
-      longitude: json['longitude'] as String,
-      latitude: json['latitude'] as String,
-      rating: (json['rating'] as num).toDouble(),
-      status: json['status'] as String,
-      openAt: json['open_at'] as String,
-      closeAt: json['close_at'] as String,
-      categoryId: (json['category_id'] as num).toInt(),
-      createdAt: json['created_at'] as String,
-      updatedAt: json['updated_at'] as String,
+      id: (json['id'] as num?)?.toInt(),
+      name: json['name'] as String?,
+      mapDisc: json['map_disc'] as String?,
+      longitude: json['longitude'] as String?,
+      latitude: json['latitude'] as String?,
+      rating: (json['rating'] as num?)?.toDouble(),
+      status: json['status'] as String?,
+      openAt: json['open_at'] as String?,
+      closeAt: json['close_at'] as String?,
+      categoryId: (json['category_id'] as num?)?.toInt(),
+      createdAt: json['created_at'] as String?,
+      updatedAt: json['updated_at'] as String?,
       coverImage: json['cover_image'] as String?,
-      reviewsCount: (json['reviews_count'] as num).toInt(),
+      reviewsCount: (json['reviews_count'] as num?)?.toInt(),
       reviews: (json['reviews'] as List<dynamic>?)
           ?.map((e) => ReviewModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -55,15 +55,17 @@ Map<String, dynamic> _$PlaceDetailsModelToJson(PlaceDetailsModel instance) =>
     };
 
 ReviewModel _$ReviewModelFromJson(Map<String, dynamic> json) => ReviewModel(
-      id: (json['id'] as num).toInt(),
-      content: json['content'] as String,
-      image: json['image'] as String,
-      userId: (json['user_id'] as num).toInt(),
-      placeId: (json['place_id'] as num).toInt(),
-      createdAt: json['created_at'] as String,
-      updatedAt: json['updated_at'] as String,
-      userRating: (json['user_rating'] as num).toDouble(),
-      user: UserModel.fromJson(json['user'] as Map<String, dynamic>),
+      id: (json['id'] as num?)?.toInt(),
+      content: json['content'] as String?,
+      image: json['image'] as String?,
+      userId: (json['user_id'] as num?)?.toInt(),
+      placeId: (json['place_id'] as num?)?.toInt(),
+      createdAt: json['created_at'] as String?,
+      updatedAt: json['updated_at'] as String?,
+      userRating: (json['user_rating'] as num?)?.toDouble(),
+      user: json['user'] == null
+          ? null
+          : UserModel.fromJson(json['user'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ReviewModelToJson(ReviewModel instance) =>
@@ -80,13 +82,13 @@ Map<String, dynamic> _$ReviewModelToJson(ReviewModel instance) =>
     };
 
 UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
-      id: (json['id'] as num).toInt(),
-      name: json['name'] as String,
-      phone: json['phone'] as String,
-      email: json['email'] as String,
+      id: (json['id'] as num?)?.toInt(),
+      name: json['name'] as String?,
+      phone: json['phone'] as String?,
+      email: json['email'] as String?,
       image: json['image'] as String?,
-      createdAt: json['created_at'] as String,
-      updatedAt: json['updated_at'] as String,
+      createdAt: json['created_at'] as String?,
+      updatedAt: json['updated_at'] as String?,
     );
 
 Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
@@ -100,10 +102,10 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
     };
 
 ImageModel _$ImageModelFromJson(Map<String, dynamic> json) => ImageModel(
-      placeId: (json['place_id'] as num).toInt(),
-      image: json['image'] as String,
-      createdAt: json['created_at'] as String,
-      updatedAt: json['updated_at'] as String,
+      placeId: (json['place_id'] as num?)?.toInt(),
+      image: json['image'] as String?,
+      createdAt: json['created_at'] as String?,
+      updatedAt: json['updated_at'] as String?,
     );
 
 Map<String, dynamic> _$ImageModelToJson(ImageModel instance) =>
@@ -115,12 +117,12 @@ Map<String, dynamic> _$ImageModelToJson(ImageModel instance) =>
     };
 
 RatingModel _$RatingModelFromJson(Map<String, dynamic> json) => RatingModel(
-      id: (json['id'] as num).toInt(),
-      rating: (json['rating'] as num).toInt(),
-      userId: (json['user_id'] as num).toInt(),
-      placeId: (json['place_id'] as num).toInt(),
-      createdAt: json['created_at'] as String,
-      updatedAt: json['updated_at'] as String,
+      id: (json['id'] as num?)?.toInt(),
+      rating: (json['rating'] as num?)?.toInt(),
+      userId: (json['user_id'] as num?)?.toInt(),
+      placeId: (json['place_id'] as num?)?.toInt(),
+      createdAt: json['created_at'] as String?,
+      updatedAt: json['updated_at'] as String?,
     );
 
 Map<String, dynamic> _$RatingModelToJson(RatingModel instance) =>

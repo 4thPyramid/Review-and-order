@@ -42,20 +42,20 @@ class PlaceDetailsComponent extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 TitleAndFavoriteButton(
-                  placeName: place.name,
+                  placeName: place.name??'',
                   onTap: () {
                     BlocProvider.of<AddFavoritePlaceCubit>(context)
-                        .addFavoritePlace(place.id);
+                        .addFavoritePlace(place.id??0);
                   },
                 ),
                 RateAndTimeRow(
-                  openAt: place.openAt,
-                  closeAt: place.closeAt,
-                  rate: place.rating,
-                  reviewsCount: place.reviewsCount,
+                  openAt: place.openAt??'',
+                  closeAt: place.closeAt??'',
+                  rate: place.rating??0.0,
+                  reviewsCount: place.reviewsCount??0,
                 ),
                 MapCardDetails(
-                  restaurantAddress: place.mapDisc,
+                  restaurantAddress: place.mapDisc??'',
                   arrivalTime: '3',
                   onTap: () {
                     context.go(RouterNames.maps, extra: {
@@ -79,13 +79,13 @@ class PlaceDetailsComponent extends StatelessWidget {
                   itemCount: place.reviews!.length,
                   itemBuilder: (context, index) {
                     return CommentsList(
-                      userProfileImagePath: place.reviews![index].user.image ??
+                      userProfileImagePath: place.reviews![index].user?.image ??
                           AppAssets.profileImage,
-                      userName: place.reviews![index].user.name,
-                      userEmail: place.reviews![index].user.email,
-                      commentImagePath: place.reviews![index].image,
-                      commentText: place.reviews![index].content,
-                      rate: place.reviews![index].userRating,
+                      userName: place.reviews![index].user?.name??"",
+                      userEmail: place.reviews![index].user?.email??'',
+                      commentImagePath: place.reviews![index].image ?? place.coverImage ?? '',
+                      commentText: place.reviews![index].content??'',
+                      rate: place.reviews![index].userRating??0.0,
                     );
                   },
                 ),
@@ -94,9 +94,9 @@ class PlaceDetailsComponent extends StatelessWidget {
                     onPressed: () {
                       print('place id: ${place.id}');
                       addCommitPop(context,
-                          placeId: place.id,  
-                          name: place.reviews![0].user.name,
-                          imageUrl: place.reviews![0].user.image ??
+                          placeId: place.id??0,  
+                          name: place.reviews![0].user?.name ?? '',
+                          imageUrl: place.reviews![0].user?.image ??
                               AppAssets.profileImage);
                     }),
                 SizedBox(height: 20.h),
