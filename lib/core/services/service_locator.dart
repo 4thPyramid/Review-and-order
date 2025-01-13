@@ -47,6 +47,8 @@ import '../../src/features/auth/presentation/logic/register/register_cubit.dart'
 import '../../src/features/profile/data/datasource/profile_api_service.dart';
 import '../../src/features/profile/data/datasource/profile_remote_ds.dart';
 import '../../src/features/profile/domain/repository/profile_repository.dart';
+import '../../src/features/profile/domain/usecase/delete_account_uc.dart';
+import '../../src/features/profile/presentation/logic/delete_account_cubit.dart';
 import '../app_cubit/app_cubit.dart';
 import '../data/api/api_consumer.dart';
 import '../data/api/dio_consumer.dart';
@@ -155,6 +157,9 @@ void setupLocator() {
   getIt.registerLazySingleton<GetProfileDataUC>(
     () => GetProfileDataUC(getIt()),
   );
+  getIt.registerLazySingleton<DeleteAccountUC>(
+    () => DeleteAccountUC(getIt()),
+  );
   getIt.registerLazySingleton<UpdateProfileUc>(
     () => UpdateProfileUc(getIt()),
   );
@@ -165,6 +170,7 @@ void setupLocator() {
 
   // Cubits //
   getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt()));
+  getIt.registerFactory<DeleteAccountCubit>(() => DeleteAccountCubit(getIt()));
   getIt.registerFactory<LogoutCubit>(() => LogoutCubit(getIt()));
   getIt.registerFactory<RegisterCubit>(() => RegisterCubit(getIt()));
   getIt.registerLazySingleton<HomeCubit>(() => HomeCubit(

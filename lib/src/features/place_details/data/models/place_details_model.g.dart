@@ -49,21 +49,23 @@ Map<String, dynamic> _$PlaceDetailsModelToJson(PlaceDetailsModel instance) =>
       'updated_at': instance.updatedAt,
       'cover_image': instance.coverImage,
       'reviews_count': instance.reviewsCount,
-      'reviews': instance.reviews,
-      'images': instance.images,
-      'ratings': instance.ratings,
+      'reviews': instance.reviews?.map((e) => e.toJson()).toList(),
+      'images': instance.images?.map((e) => e.toJson()).toList(),
+      'ratings': instance.ratings?.map((e) => e.toJson()).toList(),
     };
 
 ReviewModel _$ReviewModelFromJson(Map<String, dynamic> json) => ReviewModel(
-      id: (json['id'] as num).toInt(),
-      content: json['content'] as String,
-      image: json['image'] as String,
-      userId: (json['user_id'] as num).toInt(),
-      placeId: (json['place_id'] as num).toInt(),
-      createdAt: json['created_at'] as String,
-      updatedAt: json['updated_at'] as String,
-      userRating: (json['user_rating'] as num).toDouble(),
-      user: UserModel.fromJson(json['user'] as Map<String, dynamic>),
+      id: (json['id'] as num?)?.toInt(),
+      content: json['content'] as String?,
+      image: json['image'] as String?,
+      userId: (json['user_id'] as num?)?.toInt(),
+      placeId: (json['place_id'] as num?)?.toInt(),
+      createdAt: json['created_at'] as String?,
+      updatedAt: json['updated_at'] as String?,
+      userRating: (json['user_rating'] as num?)?.toDouble(),
+      user: json['user'] == null
+          ? null
+          : UserModel.fromJson(json['user'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ReviewModelToJson(ReviewModel instance) =>
@@ -76,7 +78,7 @@ Map<String, dynamic> _$ReviewModelToJson(ReviewModel instance) =>
       'created_at': instance.createdAt,
       'updated_at': instance.updatedAt,
       'user_rating': instance.userRating,
-      'user': instance.user,
+      'user': instance.user?.toJson(),
     };
 
 UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(

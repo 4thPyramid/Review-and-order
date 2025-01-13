@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:review_app/core/routes/router_names.dart';
+import 'package:review_app/core/services/service_locator.dart';
+import 'package:review_app/core/theme/app_colors.dart';
+import 'package:review_app/src/features/auth/presentation/logic/logout/logout_cubit.dart';
+import 'package:review_app/src/features/auth/presentation/logic/logout/logout_state.dart';
 
 import '../../../../../core/common/widgets/custom_btn.dart';
-import '../../../../../core/routes/router_names.dart';
-import '../../../../../core/services/service_locator.dart';
-import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/utils/app_strings.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../core/utils/main_function.dart';
-import '../logic/delete_account_cubit.dart';
-import '../logic/delete_account_state.dart';
 
-void deleteAccountPop(BuildContext context) {
+void logOutPop(BuildContext context) {
   customAlertDialog(
     marginHPadding: 20.h,
     marginVPadding: 20.h,
@@ -21,30 +21,26 @@ void deleteAccountPop(BuildContext context) {
     vPadding: 12.h,
     context: context,
     content: BlocProvider(
-      create: (context) => getIt<DeleteAccountCubit>(),
-      child: BlocConsumer<DeleteAccountCubit, DeleteAccountState>(
+      create: (context) => getIt<LogoutCubit>(),
+      child: BlocConsumer<LogoutCubit, LogoutState>(
         listener: (context, state) async {
-          state.when(
-            initial: () {},
-            loading: () {},
-            success: (message) async {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(message),
-                  backgroundColor: Colors.green,
-                ),
-              );
-              await Future.delayed(const Duration(milliseconds: 200));
-              if (Navigator.canPop(context)) {
-                context.pushReplacement(RouterNames.login);
-              }
-            },
-            error: (error) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(error.message)),
-              );
-            },
-          );
+          if (state is LogoutSuccess) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.message),
+                backgroundColor: Colors.green,
+              ),
+            );
+            await Future.delayed(
+                const Duration(milliseconds: 200)); 
+            if (Navigator.canPop(context)) {
+              context.pushReplacement(RouterNames.login); 
+            }
+          } else if (state is LogoutError) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(state.errorMessage.message)),
+            );
+          }
         },
         builder: (context, state) {
           return Padding(
@@ -59,7 +55,7 @@ void deleteAccountPop(BuildContext context) {
                 ),
                 SizedBox(height: 13.h),
                 Text(
-                  AppStrings.deleteAccount,
+                  AppStrings.logout,
                   style: AppStyles.s20.copyWith(
                     color: Colors.black,
                     fontWeight: FontWeight.w700,
@@ -67,7 +63,7 @@ void deleteAccountPop(BuildContext context) {
                 ),
                 SizedBox(height: 39.h),
                 Text(
-                  AppStrings.areYouSureToDeleteAccount,
+                  AppStrings.areYouSureToLogOut,
                   textAlign: TextAlign.center,
                   style: AppStyles.s16.copyWith(
                     fontWeight: FontWeight.w400,
@@ -78,16 +74,19 @@ void deleteAccountPop(BuildContext context) {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     CustomButton(
-                        width: 150.w,
-                        backgroundColor: AppColors.errorColor,
-                        text: AppStrings.yes,
-                        textStyle: AppStyles.s12.copyWith(
-                          color: AppColors.white,
-                          fontWeight: FontWeight.w700,
-                        ),
-                        onPressed: () {
-                          context.read<DeleteAccountCubit>().deleteAccount();
-                        }),
+                      width: 150.w,
+                      backgroundColor: AppColors.errorColor,
+                      text: AppStrings.yes,
+                      textStyle: AppStyles.s12.copyWith(
+                        color: AppColors.white,
+                        fontWeight: FontWeight.w700,
+                      ),
+                      onPressed: state is LogoutLoading
+                          ? () {}
+                          : () {
+                              context.read<LogoutCubit>().logout();
+                            },
+                    ),
                     CustomButton(
                       width: 150.w,
                       text: AppStrings.cancel,
@@ -96,10 +95,12 @@ void deleteAccountPop(BuildContext context) {
                         color: AppColors.grey,
                         fontWeight: FontWeight.w700,
                       ),
-                      onPressed: () => Navigator.pop(context),
+                      onPressed: state is LogoutLoading
+                          ? () {}
+                          : () => Navigator.pop(context),
                     ),
                   ],
-                ),
+                )
               ],
             ),
           );

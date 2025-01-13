@@ -40,9 +40,14 @@ class RestaurantCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          AppImageView(
-            resurantImage,
-            radius: BorderRadius.circular(19.r),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.network(
+              resurantImage,
+              width: 85.w,
+              height: 105.h,
+              fit: BoxFit.fill,
+            ),
           ),
           SizedBox(width: 20.h),
           Column(

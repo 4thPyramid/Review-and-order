@@ -10,7 +10,7 @@ import '../../../../../core/utils/app_assets.dart';
 import '../../../../../core/utils/app_strings.dart';
 import '../widget/account_info_card.dart';
 import '../widget/custom_list_tile.dart';
-import '../widget/delete_account_pop.dart';
+import '../widget/logout_pop.dart';
 
 class ProfileComponents extends StatelessWidget {
   const ProfileComponents({super.key});
