@@ -5,7 +5,6 @@ import 'package:review_app/core/utils/app_image_view.dart';
 import 'package:review_app/core/utils/app_styles.dart';
 import 'package:review_app/src/features/home/presentation/widget/location_row.dart';
 
-import '../../../../../core/utils/app_assets.dart';
 import 'star_row.dart';
 
 class RestaurantCard extends StatelessWidget {
@@ -42,7 +41,7 @@ class RestaurantCard extends StatelessWidget {
       child: Row(
         children: [
           AppImageView(
-            AppAssets.onboarding3,
+            resurantImage,
             radius: BorderRadius.circular(19.r),
           ),
           SizedBox(width: 20.h),

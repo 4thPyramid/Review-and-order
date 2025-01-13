@@ -26,12 +26,18 @@ class PlaceLocationViewState extends State<PlaceLocationView> {
 
     return Scaffold(
       body: GoogleMap(
-        mapType: MapType.hybrid,
-        initialCameraPosition: initialPosition,
-        onMapCreated: (GoogleMapController controller) {
-          _controller.complete(controller);
-        },
-      ),
+          mapType: MapType.hybrid,
+          zoomControlsEnabled: true,
+          initialCameraPosition: initialPosition,
+          onMapCreated: (GoogleMapController controller) {
+            _controller.complete(controller);
+          },
+          markers: {
+            Marker(
+              markerId: const MarkerId('place_location'),
+              position: LatLng(widget.lat, widget.lng),
+            ),
+          }),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _goToNewLocation,
         label: const Text('Move to another location!'),
@@ -44,8 +50,8 @@ class PlaceLocationViewState extends State<PlaceLocationView> {
     final GoogleMapController controller = await _controller.future;
 
     const CameraPosition newPosition = CameraPosition(
-      target: LatLng(37.7749, -122.4194),
-      zoom: 14.4746,
+      target: LatLng(31.034063, 31.357464),
+      zoom: 50,
     );
 
     await controller.animateCamera(CameraUpdate.newCameraPosition(newPosition));

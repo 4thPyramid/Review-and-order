@@ -10,10 +10,7 @@ import 'package:review_app/src/features/auth/presentation/views/register_view.da
 import 'package:review_app/src/features/auth/presentation/logic/register/register_cubit.dart';
 import 'package:review_app/src/features/auth/presentation/views/reset_password.dart';
 import 'package:review_app/src/features/auth/presentation/views/verify_code_view.dart';
-import 'package:review_app/src/features/favorite/presentation/logic/get_favorite_cubit.dart';
-
 import 'package:review_app/src/features/favorite/presentation/view/favorite_view.dart';
-
 import 'package:review_app/src/features/home/presentation/view/home_view.dart';
 import 'package:review_app/src/features/intro/presentation/view/lets_start_view.dart';
 import 'package:review_app/src/features/intro/presentation/view/onboarding_view.dart';
@@ -24,11 +21,11 @@ import 'package:review_app/src/features/profile/presentation/logic/profile_cubit
 import 'package:review_app/src/features/profile/presentation/view/personal_info_view.dart';
 import 'package:review_app/src/features/profile/presentation/view/settings_view.dart';
 import 'package:review_app/src/splash_view.dart';
-
 import '../../src/features/auth/presentation/logic/forget_password/forget_password_cubit.dart';
 import '../../src/features/auth/presentation/logic/login/login_cubit.dart';
 import '../../src/features/bottom_navigation_bar_root.dart';
 import '../services/service_locator.dart';
+
 
 final GoRouter router = GoRouter(
   routes: [
@@ -40,8 +37,12 @@ final GoRouter router = GoRouter(
       path: RouterNames.maps,
       builder: (context, state) {
         final extra = state.extra as Map<String, dynamic>;
-        final lat = extra['lat'] as double?;
-        final lng = extra['lng'] as double?;
+        final latString = extra['lat'] as String?;
+        final lngString = extra['lng'] as String?;
+
+        final lat = latString != null ? double.tryParse(latString) : 0.0;
+        final lng = lngString != null ? double.tryParse(lngString) : 0.0;
+
         return PlaceLocationView(
           lat: lat ?? 0.0,
           lng: lng ?? 0.0,
