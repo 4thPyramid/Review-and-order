@@ -13,6 +13,7 @@ class ProfileView extends StatelessWidget {
       child: Column(
         children: [
           ProfileHeader(
+            isInBoarding: false,
             title: AppStrings.personalProfile,
             onPressed: () {},
           ),
@@ -23,4 +24,3 @@ class ProfileView extends StatelessWidget {
     );
   }
 }
-

@@ -2,7 +2,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'place_details_model.g.dart';
 
-
 @JsonSerializable()
 class PlaceDetailsModel {
   final int? id;
@@ -25,6 +24,8 @@ class PlaceDetailsModel {
   final String? updatedAt;
   @JsonKey(name: 'cover_image')
   final String? coverImage;
+  @JsonKey(name: 'user_rating', defaultValue: null)
+  final double? userRating;
   @JsonKey(name: 'reviews_count')
   final int? reviewsCount;
   final List<ReviewModel>? reviews;
@@ -49,6 +50,7 @@ class PlaceDetailsModel {
     this.reviews,
     this.images,
     this.ratings,
+    this.userRating,
   });
 
   factory PlaceDetailsModel.fromJson(Map<String, dynamic> json) =>

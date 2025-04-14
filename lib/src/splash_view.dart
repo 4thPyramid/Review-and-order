@@ -36,10 +36,12 @@ class _SplashViewState extends State<SplashView> {
   void _navigationFromSplash() {
     bool onBoardingVisited = CacheHelper.getData(key: 'onBoarding') ?? false;
 
-    if (onBoardingVisited) {
-      context.go(RouterNames.onboarding);
+    if (CacheHelper.getToken() != null) {
+      context.go(RouterNames.bottomNavigationBarRoot);
+    } else if (onBoardingVisited) {
+      // context.go(RouterNames.onboarding);
 
-      // context.go(RouterNames.login);
+      context.go(RouterNames.login);
     } else {
       context.go(RouterNames.onboarding);
     }

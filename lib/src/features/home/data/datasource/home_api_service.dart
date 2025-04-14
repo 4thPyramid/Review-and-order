@@ -21,7 +21,6 @@ abstract class HomeApiService {
     double lat,
     double lng,
   );
-
 }
 
 class HomeApiServiceImpl implements HomeApiService {
@@ -31,10 +30,11 @@ class HomeApiServiceImpl implements HomeApiService {
   @override
   Future<Either<ErrorModel, List<PlaceModel>>> getNewPlaces() async {
     try {
-      final response = await _api.get('top-rated-places');
+      final response = await _api.get('new-places');
       final places = List<PlaceModel>.from(
         response.map((x) => PlaceModel.fromJson(x)),
       );
+
       return Right(places);
     } on ServerException catch (e) {
       return Left(e.errorModel);
@@ -44,10 +44,13 @@ class HomeApiServiceImpl implements HomeApiService {
   @override
   Future<Either<ErrorModel, List<PlaceModel>>> getTopRatedPlaces() async {
     try {
-      final response = await _api.get('new-places');
+      final response = await _api.get('top-rated-places');
       final places = List<PlaceModel>.from(
         response.map((x) => PlaceModel.fromJson(x)),
       );
+      print('----------------------------------');
+      print('----------------------------------');
+      print('response: $response');
       return Right(places);
     } on ServerException catch (e) {
       return Left(e.errorModel);
@@ -67,6 +70,10 @@ class HomeApiServiceImpl implements HomeApiService {
       final places = List<PlaceModel>.from(
         response.map((x) => PlaceModel.fromJson(x)),
       );
+      print('----------------------------------');
+      print('----------------------------------');
+
+      print('response: $response');
       return Right(places);
     } on ServerException catch (e) {
       return Left(e.errorModel);
@@ -100,5 +107,4 @@ class HomeApiServiceImpl implements HomeApiService {
       return Left(e.errorModel);
     }
   }
-
 }

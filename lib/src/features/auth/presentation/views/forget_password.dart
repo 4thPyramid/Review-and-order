@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:review_app/src/features/auth/presentation/components/forget_password_form.dart';
 import 'package:review_app/src/features/auth/presentation/widgets/forget_password_tapbar.dart';
 import 'package:review_app/src/features/auth/presentation/widgets/welcom_login_text.dart';
@@ -44,7 +45,9 @@ class _ForgetPasswordState extends State<ForgetPassword>
               Align(
                 alignment: Alignment.topRight,
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.pop();
+                  },
                   icon: const Icon(Icons.arrow_back_ios),
                 ),
               ),

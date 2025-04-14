@@ -7,20 +7,30 @@ import '../../../../../core/utils/app_strings.dart';
 import '../../../../../core/utils/app_styles.dart';
 
 class ProfileHeader extends StatelessWidget {
-  const ProfileHeader({super.key, this.onPressed, required this.title});
+  const ProfileHeader(
+      {super.key,
+      this.onPressed,
+      required this.title,
+      required this.isInBoarding});
   final void Function()? onPressed;
   final String title;
+  final bool isInBoarding;
   @override
   Widget build(BuildContext context) {
     return Row(
-     // mainAxisAlignment: MainAxisAlignment.center,
+      // mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        IconButton(
-          onPressed: () {
-              context.push(RouterNames.bottomNavigationBarRoot);
-          },
-          icon: const Icon(Icons.arrow_back_ios,color: AppColors.black,),
-        ),
+        isInBoarding
+            ? IconButton(
+                onPressed: () {
+                  context.push(RouterNames.bottomNavigationBarRoot);
+                },
+                icon: const Icon(
+                  Icons.arrow_back_ios,
+                  color: AppColors.black,
+                ),
+              )
+            : Container(),
         Expanded(
           child: Center(
             child: Text(
@@ -30,16 +40,18 @@ class ProfileHeader extends StatelessWidget {
             ),
           ),
         ),
-        TextButton(
-          onPressed: onPressed,
-          child: Text(
-            AppStrings.edit,
-            style: AppStyles.s12.copyWith(
-              color: AppColors.blue,
-              decoration: TextDecoration.underline,
-            ),
-          ),
-        ),
+        isInBoarding
+            ? TextButton(
+                onPressed: onPressed,
+                child: Text(
+                  AppStrings.edit,
+                  style: AppStyles.s12.copyWith(
+                    color: AppColors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              )
+            : Container(),
       ],
     );
   }

@@ -32,6 +32,9 @@ class HomeCubit extends Cubit<HomeState> {
   Future<void> getNewPlaces() async {
     emit(const HomeState.loading());
     final result = await _getNewPlacesUC();
+
+    print('result: $result');
+    print(result);
     result.fold(
       (l) => emit(HomeState.error(l)),
       (r) => emit(HomeState.loaded(r)),

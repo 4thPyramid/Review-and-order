@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:review_app/core/common/functions/validator.dart';
 import 'package:review_app/core/common/widgets/custom_btn.dart';
 import 'package:review_app/core/common/widgets/custom_text_field_button.dart';
+import 'package:review_app/core/data/cached/cache_helper.dart';
 import 'package:review_app/core/routes/router_names.dart';
 import 'package:review_app/core/utils/app_strings.dart';
 import 'package:review_app/src/features/auth/presentation/logic/login/login_cubit.dart';
@@ -25,7 +26,7 @@ class LoginForm extends StatelessWidget {
         if (state is LoginSuccessState) {
           // Show success message
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('تم تسجيل الدخول بنجاح!')),
+            const SnackBar(content: Text('تم تسجيل الدخول بنجاح!')),
           );
           // Navigate to the home page or any other page
           context.go(RouterNames.bottomNavigationBarRoot);
@@ -63,7 +64,7 @@ class LoginForm extends StatelessWidget {
               CustomTextButton(
                 title: AppStrings.forgetPassword,
                 onTap: () {
-                  context.go(RouterNames.forgetPassword);
+                  context.push(RouterNames.forgetPassword);
                 },
               ),
               SizedBox(height: 60.h),

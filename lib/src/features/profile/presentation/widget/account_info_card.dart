@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:review_app/core/routes/router_names.dart';
 
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/utils/app_assets.dart';
@@ -14,22 +16,21 @@ class AccountInfoCard extends StatelessWidget {
   });
   final String name;
   final String phone;
- final String? image;
+  final String? image;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-        leading:
-        ClipRRect(
+        leading: ClipRRect(
           borderRadius: BorderRadius.circular(50),
           child: Image.network(
-            image??"",
+            image ?? "",
             width: 50,
             height: 50,
             fit: BoxFit.cover,
           ),
         ),
-        
+
         //  AppImageView(
         //   image??AppAssets.profileImage,
         //   isAvatar: true,
@@ -50,7 +51,7 @@ class AccountInfoCard extends StatelessWidget {
         ),
         trailing: InkWell(
           onTap: () {
-            // context.go(RouterNames.personalInfoView);
+            context.push(RouterNames.personalInfoView);
           },
           child: const AppImageView(
             AppAssets.editIcon,

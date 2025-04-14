@@ -31,6 +31,7 @@ PlaceDetailsModel _$PlaceDetailsModelFromJson(Map<String, dynamic> json) =>
       ratings: (json['ratings'] as List<dynamic>?)
           ?.map((e) => RatingModel.fromJson(e as Map<String, dynamic>))
           .toList(),
+      userRating: (json['user_rating'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$PlaceDetailsModelToJson(PlaceDetailsModel instance) =>
@@ -48,6 +49,7 @@ Map<String, dynamic> _$PlaceDetailsModelToJson(PlaceDetailsModel instance) =>
       'created_at': instance.createdAt,
       'updated_at': instance.updatedAt,
       'cover_image': instance.coverImage,
+      'user_rating': instance.userRating,
       'reviews_count': instance.reviewsCount,
       'reviews': instance.reviews?.map((e) => e.toJson()).toList(),
       'images': instance.images?.map((e) => e.toJson()).toList(),

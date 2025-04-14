@@ -14,6 +14,7 @@ class PersonalInfoView extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.white,
         title: ProfileHeader(
+          isInBoarding: true,
           title: AppStrings.personalProfile,
           onPressed: () {
             editAccountPop(context);

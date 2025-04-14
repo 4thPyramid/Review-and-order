@@ -26,7 +26,7 @@ class LoginView extends StatelessWidget {
                 LoginForm(),
                 HaveAnAccountWidget(
                   onTap: () {
-                    context.go(RouterNames.register);
+                    context.push(RouterNames.register);
                   },
                   title1: AppStrings.donotHaveAnAccount,
                   title2: AppStrings.register,
