@@ -38,6 +38,7 @@ class AuthApiServicesImpl extends AuthApiServices {
       CacheHelper.saveToken(value: userResponse.token);
       CacheHelper.saveData(key: 'name', value: userResponse.user.name);
       CacheHelper.saveData(key: 'email', value: userResponse.user.email);
+      CacheHelper.saveData(key: 'phone', value: userResponse.user.phone);
 
       return Right(userResponse);
     } on ServerException catch (e) {

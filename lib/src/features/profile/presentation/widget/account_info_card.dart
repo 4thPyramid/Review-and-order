@@ -24,7 +24,8 @@ class AccountInfoCard extends StatelessWidget {
         leading: ClipRRect(
           borderRadius: BorderRadius.circular(50),
           child: Image.network(
-            image ?? "",
+            image ??
+                "https://www.advanced-healthclinic.com/wp-content/uploads/2020/12/blank-profile-picture-973460_1280-680x680.png",
             width: 50,
             height: 50,
             fit: BoxFit.cover,

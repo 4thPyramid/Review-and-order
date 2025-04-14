@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:review_app/core/data/cached/cache_helper.dart';
 
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/utils/app_strings.dart';
@@ -29,7 +30,6 @@ class PersonalInfoComponent extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 40.h),
-                
                 PersonalCircleImage(profileImage: profile.image),
                 SizedBox(height: 40.h),
                 PersonalInfoListTile(

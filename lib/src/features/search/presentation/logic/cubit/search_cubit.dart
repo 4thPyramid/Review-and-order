@@ -21,7 +21,12 @@ class SearchCubit extends Cubit<SearchState> {
         (error) => emit(SearchState.error(error)),
         (places) => emit(SearchState.loaded([places])),
       );
+      print('===============================================');
+
+      print(result.toString());
     } catch (e) {
+      print('----------------------------------------------');
+      print(e.toString());
       emit(SearchState.error(
           ErrorModel(message: 'An unexpected error occurred: $e')));
     }

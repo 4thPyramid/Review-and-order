@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:review_app/core/data/cached/cache_helper.dart';
 
 import 'package:review_app/core/errors/error_model.dart';
 import 'package:review_app/src/features/profile/data/model/profile_model.dart';
@@ -26,6 +27,7 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   Future<void> getProfile() async {
     emit(const ProfileState.loading());
+
     final result = await _getProfleDataUC.call();
     result.fold(
       (l) => emit(ProfileState.error(l)),
@@ -38,11 +40,17 @@ class ProfileCubit extends Cubit<ProfileState> {
     String? phone,
     String? email,
   }) async {
-    emit(const ProfileState.loading());
+    final fallbackName = CacheHelper().getDataString(key: 'name') ?? '';
+    final fallbackPhone = CacheHelper().getDataString(key: 'phone') ?? '';
+    final fallbackEmail = CacheHelper().getDataString(key: 'email') ?? '';
+    print('=====================');
+    print(fallbackName);
+    print(fallbackPhone);
+    print(fallbackEmail);
     final result = await _updateProfileUc.call(
-      name ?? '',
-      phone ?? '',
-      email ?? '',
+      name ?? fallbackName,
+      phone ?? fallbackPhone,
+      email ?? fallbackEmail,
     );
 
     result.fold(

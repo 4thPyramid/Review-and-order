@@ -23,11 +23,13 @@ class SearchApiServiceImpl implements SearchApiService {
       final response = await _api.get('search?name=$query', queryParameters: {
         'name': query,
       });
+      print(response.toString());
 
       final places = SearchResponse.fromJson(response);
 
       return Right(places);
     } on ServerException catch (e) {
+      print('Error: ${e.errorModel.message}');
       return Left(e.errorModel);
     }
   }
