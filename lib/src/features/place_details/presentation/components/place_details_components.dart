@@ -23,7 +23,6 @@ class PlaceDetailsComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    BlocProvider.of<PlaceDetailsCubit>(context).getPlaceDetails(8);
     return BlocBuilder<PlaceDetailsCubit, PlaceDetailsState>(
       builder: (context, state) {
         return state.when(
@@ -78,6 +77,7 @@ class PlaceDetailsComponent extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: place.reviews!.length,
                   itemBuilder: (context, index) {
+                    print(place.reviews![index].user?.image);
                     return CommentsList(
                       userProfileImagePath: place.reviews![index].user?.image ??
                           AppAssets.profileImage,

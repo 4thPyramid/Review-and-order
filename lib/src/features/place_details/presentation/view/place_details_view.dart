@@ -1,4 +1,5 @@
 //place details view
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,7 +12,10 @@ import '../components/place_details_components.dart';
 import '../logic/place_details/place_details_cubit.dart';
 
 class PlaceDetailsView extends StatefulWidget {
-  const PlaceDetailsView({super.key, required this.placeId, });
+  const PlaceDetailsView({
+    super.key,
+    required this.placeId,
+  });
   final int placeId;
 
   @override
@@ -22,27 +26,61 @@ class _PlaceDetailsViewState extends State<PlaceDetailsView> {
   @override
   void initState() {
     super.initState();
-     context.read<PlaceDetailsCubit>().getPlaceDetails(widget.placeId);
+    context.read<PlaceDetailsCubit>().getPlaceDetails(widget.placeId);
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Stack(
           children: [
-            Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(
-                    AppAssets.onboarding1,
+            BlocBuilder<PlaceDetailsCubit, PlaceDetailsState>(
+              builder: (context, state) {
+                return state.when(
+                  initial: () => Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(
+                          AppAssets.onboarding1,
+                        ),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 480.h),
+                      child: const PlaceDetailsComponent(),
+                    ),
                   ),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              child: Padding(
-                padding: EdgeInsets.only(top: 480.h),
-                child: const PlaceDetailsComponent(),
-              ),
+                  loading: () => Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(
+                          AppAssets.onboarding1,
+                        ),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 480.h),
+                      child: const PlaceDetailsComponent(),
+                    ),
+                  ),
+                  loaded: (place) => Column(
+                    //   mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 400.h,
+                        child: Image.network(
+                          place.coverImage ?? '',
+                        ),
+                      ),
+                      PlaceDetailsComponent()
+                    ],
+                  ),
+                  error: (error) => Text(error.toString()),
+                );
+              },
             ),
             Positioned(
               top: 60.h,
@@ -53,7 +91,7 @@ class _PlaceDetailsViewState extends State<PlaceDetailsView> {
                 },
                 icon: const Icon(
                   Icons.arrow_back_ios,
-                  color: AppColors.white,
+                  color: AppColors.black,
                 ),
               ),
             ),
