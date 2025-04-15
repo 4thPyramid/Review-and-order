@@ -25,19 +25,39 @@ class PlaceLocationViewState extends State<PlaceLocationView> {
     );
 
     return Scaffold(
-      body: GoogleMap(
-          mapType: MapType.hybrid,
-          zoomControlsEnabled: true,
-          initialCameraPosition: initialPosition,
-          onMapCreated: (GoogleMapController controller) {
-            _controller.complete(controller);
-          },
-          markers: {
-            Marker(
-              markerId: const MarkerId('place_location'),
-              position: LatLng(widget.lat, widget.lng),
-            ),
-          }),
+      body: Stack(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(50.0),
+            child: IconButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                icon: Icon(Icons.arrow_back_ios)),
+          ),
+          GoogleMap(
+              mapType: MapType.hybrid,
+              zoomControlsEnabled: true,
+              initialCameraPosition: initialPosition,
+              onMapCreated: (GoogleMapController controller) {
+                _controller.complete(controller);
+              },
+              markers: {
+                Marker(
+                  markerId: const MarkerId('place_location'),
+                  position: LatLng(widget.lat, widget.lng),
+                ),
+              }),
+          Padding(
+            padding: const EdgeInsets.all(50.0),
+            child: IconButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                icon: Icon(Icons.arrow_back_ios)),
+          ),
+        ],
+      ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _goToNewLocation,
         label: const Text('Move to another location!'),

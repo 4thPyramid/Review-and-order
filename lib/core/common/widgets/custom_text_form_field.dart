@@ -45,18 +45,7 @@ class CustomTextFormField extends StatelessWidget {
             hintStyle: AppStyles.s12,
             fillColor: fillColor ?? AppColors.white,
             filled: true,
-            suffixIcon: isPassword
-                ? IconButton(
-                    onPressed: toggeleObscure,
-                    icon: Visibility(
-                        visible: obscureText,
-                        replacement: const Icon(
-                          Icons.visibility_outlined,
-                        ),
-                        child: const Icon(Icons.visibility_off_outlined)),
-                    color: AppColors.grey,
-                  )
-                : null,
+            suffixIcon: suffixIcon,
             prefixIcon: prefixIcon,
             border: InputBorder.none,
             enabledBorder: OutlineInputBorder(

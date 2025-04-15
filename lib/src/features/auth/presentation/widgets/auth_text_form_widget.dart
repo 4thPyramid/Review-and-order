@@ -28,6 +28,7 @@ class AuthTextFieldWidget extends StatefulWidget {
 class _AuthTextFieldWidgetState extends State<AuthTextFieldWidget> {
   bool _isPasswordVisiable = false;
   void _togglePassword() {
+    print("Toggle password pressed");
     setState(() {
       _isPasswordVisiable = !_isPasswordVisiable;
     });
@@ -53,7 +54,7 @@ class _AuthTextFieldWidgetState extends State<AuthTextFieldWidget> {
           controller: widget.controller,
           isPassword: widget.isPassword,
           hintText: widget.hintText,
-          prefixIcon: Icon(widget.prefixIcon, color: AppColors.grey),
+          prefixIcon: Icon(widget.prefixIcon),
           validator: widget.validator,
           obscureText: widget.isPassword ? !_isPasswordVisiable : false,
           suffixIcon: widget.isPassword

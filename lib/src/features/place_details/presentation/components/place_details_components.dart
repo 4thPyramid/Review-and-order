@@ -57,7 +57,7 @@ class PlaceDetailsComponent extends StatelessWidget {
                   restaurantAddress: place.mapDisc ?? '',
                   arrivalTime: '3',
                   onTap: () {
-                    context.go(RouterNames.maps, extra: {
+                    context.push(RouterNames.maps, extra: {
                       'lat': place.latitude,
                       'lng': place.longitude,
                     });
