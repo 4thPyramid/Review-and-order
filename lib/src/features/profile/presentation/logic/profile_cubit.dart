@@ -19,6 +19,11 @@ class ProfileCubit extends Cubit<ProfileState> {
   final GetProfileDataUC _getProfleDataUC;
   final UpdateProfileUc _updateProfileUc;
   final UpdateProfilePhoto _updateProfilePhotoUc;
+
+  // Add variable to store the profile image
+  String? _profileImage;
+  String? get profileImage => _profileImage;
+
   ProfileCubit(
     this._getProfleDataUC,
     this._updateProfileUc,
@@ -29,9 +34,14 @@ class ProfileCubit extends Cubit<ProfileState> {
     emit(const ProfileState.loading());
 
     final result = await _getProfleDataUC.call();
+
     result.fold(
       (l) => emit(ProfileState.error(l)),
-      (r) => emit(ProfileState.success(r)),
+      (r) {
+        // Update the profile image when profile is fetched
+
+        emit(ProfileState.success(r));
+      },
     );
   }
 
@@ -43,6 +53,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     final fallbackName = CacheHelper().getDataString(key: 'name') ?? '';
     final fallbackPhone = CacheHelper().getDataString(key: 'phone') ?? '';
     final fallbackEmail = CacheHelper().getDataString(key: 'email') ?? '';
+
     print('=====================');
     print(fallbackName);
     print(fallbackPhone);
@@ -55,7 +66,10 @@ class ProfileCubit extends Cubit<ProfileState> {
 
     result.fold(
       (l) => emit(ProfileState.error(l)),
-      (r) => emit(ProfileState.success(r)),
+      (r) {
+        // Update the profile image when profile is updated
+        emit(ProfileState.success(r));
+      },
     );
   }
 
@@ -67,7 +81,13 @@ class ProfileCubit extends Cubit<ProfileState> {
 
     result.fold(
       (l) => emit(ProfileState.error(l)),
-      (r) => emit(ProfileState.success(r)),
+      (r) {
+        // Update the profile image when photo is updated
+        _profileImage = r.image;
+        CacheHelper.saveData(key: 'image', value: r.image);
+
+        emit(ProfileState.success(r));
+      },
     );
   }
 }

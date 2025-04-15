@@ -12,10 +12,13 @@ class ProfileView extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          ProfileHeader(
-            isInBoarding: false,
-            title: AppStrings.personalProfile,
-            onPressed: () {},
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: ProfileHeader(
+              isInBoarding: false,
+              title: AppStrings.personalProfile,
+              onPressed: () {},
+            ),
           ),
           SizedBox(height: 40.h),
           const ProfileComponents(),

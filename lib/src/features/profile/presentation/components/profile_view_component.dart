@@ -31,6 +31,7 @@ class ProfileComponents extends StatelessWidget {
               ),
               error: (error) => Text(error.toString()),
             );
+
             // return const AccountInfoCard(
             //   name: "Ahmed Mohamed",
             //   phone: "01007698234",

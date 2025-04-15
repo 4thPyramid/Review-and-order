@@ -6,6 +6,8 @@ import '../../../data/model/auth_response.dart';
 @immutable
 sealed class RegisterState {}
 
+final class RegisterInitialState extends RegisterState {}
+
 final class RegisterLoadingState extends RegisterState {}
 
 final class RegisterSuccessState extends RegisterState {

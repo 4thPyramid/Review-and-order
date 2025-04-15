@@ -96,9 +96,13 @@ class PlaceDetailsComponent extends StatelessWidget {
                       print('place id: ${place.id}');
                       addCommitPop(context,
                           placeId: place.id ?? 0,
-                          name: place.reviews![0].user?.name ?? '',
-                          imageUrl: place.reviews![0].user?.image ??
-                              AppAssets.profileImage);
+                          name: place.reviews?.isNotEmpty == true
+                              ? place.reviews![0].user?.name ?? ''
+                              : '',
+                          imageUrl: place.reviews?.isNotEmpty == true
+                              ? place.reviews![0].user?.image ??
+                                  AppAssets.profileImage
+                              : AppAssets.profileImage);
                     }),
                 SizedBox(height: 20.h),
               ],

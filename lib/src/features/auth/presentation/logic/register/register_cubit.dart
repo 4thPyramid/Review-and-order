@@ -7,7 +7,7 @@ import 'register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
   final RegisterUseCase _registerUseCase;
-  RegisterCubit(this._registerUseCase) : super(RegisterLoadingState());
+  RegisterCubit(this._registerUseCase) : super(RegisterInitialState());
 
   Future<void> register(RegisterAuthData registerAuthData) async {
     emit(RegisterLoadingState());

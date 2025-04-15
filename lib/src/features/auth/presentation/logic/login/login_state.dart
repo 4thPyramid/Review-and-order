@@ -6,6 +6,8 @@ import '../../../data/model/auth_response.dart';
 @immutable
 sealed class LoginState {}
 
+final class InitialLoadingState extends LoginState {}
+
 final class LoginLoadingState extends LoginState {}
 
 final class LoginSuccessState extends LoginState {

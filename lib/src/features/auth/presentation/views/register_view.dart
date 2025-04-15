@@ -13,19 +13,21 @@ class RegisterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          SizedBox(height: 150.h),
-          const RegisterWelcom(),
-          RegisterForm(),
-          HaveAnAccountWidget(
-            onTap: () {
-              context.go(RouterNames.login);
-            },
-            title1: AppStrings.haveAnAccoun,
-            title2: AppStrings.signIn,
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: 150.h),
+            const RegisterWelcom(),
+            RegisterForm(),
+            HaveAnAccountWidget(
+              onTap: () {
+                context.go(RouterNames.login);
+              },
+              title1: AppStrings.haveAnAccoun,
+              title2: AppStrings.signIn,
+            ),
+          ],
+        ),
       ),
     );
   }

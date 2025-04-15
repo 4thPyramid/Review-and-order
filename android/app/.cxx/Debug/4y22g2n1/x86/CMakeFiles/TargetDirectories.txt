@@ -1,0 +1,2 @@
+E:/4th_pyramid/review/Review-and-order/android/app/.cxx/Debug/4y22g2n1/x86/CMakeFiles/edit_cache.dir
+E:/4th_pyramid/review/Review-and-order/android/app/.cxx/Debug/4y22g2n1/x86/CMakeFiles/rebuild_cache.dir

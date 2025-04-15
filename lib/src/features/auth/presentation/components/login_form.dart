@@ -71,7 +71,9 @@ class LoginForm extends StatelessWidget {
               CustomButton(
                 width: 342.w,
                 height: 50.h,
-                text: AppStrings.signIn,
+                text: state is LoginLoadingState
+                    ? 'جاري التسجيل .....'
+                    : AppStrings.signIn,
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
                     final email = emailController.text.trim();
