@@ -77,10 +77,12 @@ class PlaceDetailsComponent extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: place.reviews!.length,
                   itemBuilder: (context, index) {
+                    print('================================================');
                     print(place.reviews![index].user?.image);
+                    print('================================================');
                     return CommentsList(
                       userProfileImagePath: place.reviews![index].user?.image ??
-                          AppAssets.profileImage,
+                          AppAssets.networkProfileImage,
                       userName: place.reviews![index].user?.name ?? "",
                       userEmail: place.reviews![index].user?.email ?? '',
                       commentImagePath:

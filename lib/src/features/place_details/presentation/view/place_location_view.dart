@@ -27,14 +27,6 @@ class PlaceLocationViewState extends State<PlaceLocationView> {
     return Scaffold(
       body: Stack(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(50.0),
-            child: IconButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                icon: Icon(Icons.arrow_back_ios)),
-          ),
           GoogleMap(
               mapType: MapType.hybrid,
               zoomControlsEnabled: true,
@@ -48,13 +40,29 @@ class PlaceLocationViewState extends State<PlaceLocationView> {
                   position: LatLng(widget.lat, widget.lng),
                 ),
               }),
-          Padding(
-            padding: const EdgeInsets.all(50.0),
-            child: IconButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                icon: Icon(Icons.arrow_back_ios)),
+          Positioned(
+            top: 50,
+            right: 15,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.2),
+                    spreadRadius: 1,
+                    blurRadius: 4,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
+              ),
+              child: IconButton(
+                onPressed: () => Navigator.of(context).pop(),
+                icon: const Icon(Icons.arrow_back_ios, size: 20),
+                padding: const EdgeInsets.all(12),
+                constraints: const BoxConstraints(),
+              ),
+            ),
           ),
         ],
       ),
