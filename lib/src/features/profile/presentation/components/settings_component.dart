@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -28,10 +27,10 @@ class SettingsComponent extends StatelessWidget {
             style: AppStyles.s14.copyWith(fontWeight: FontWeight.w700),
           ),
           SizedBox(height: 16.0.h),
-           PersonalInfoListTile(
-            onTap: () {
-               context.go(RouterNames.personalInfoView);
-            },
+          PersonalInfoListTile(
+              onTap: () {
+                context.go(RouterNames.personalInfoView);
+              },
               title: AppStrings.personalInfoData,
               subtitle: "الاسم,ايميل,رقم الهاتف",
               icon: Icons.person_outline,
@@ -42,7 +41,7 @@ class SettingsComponent extends StatelessWidget {
           // icon: Icons.person_outline,
           // iconColor: AppColors.orange),
           PersonalInfoListTile(
-            onTap: ()=>changePasswordPop(context),
+              onTap: () => changePasswordPop(context),
               title: AppStrings.changePassword,
               subtitle: AppStrings.hintChangePassword,
               icon: Icons.lock_outline,
@@ -52,17 +51,13 @@ class SettingsComponent extends StatelessWidget {
             AppStrings.public,
             style: AppStyles.s14.copyWith(fontWeight: FontWeight.w700),
           ),
-          const CustomListTile(
-          title: AppStrings.language,
-          icon: Icons.language,
-          iconColor: AppColors.purple,
-        ),
-           CustomListTile(
-            onPressed: ()=>deleteAccountPop(context),
-          title: AppStrings.deleteAccount,
-          icon: Icons.delete_outline,
-          iconColor: AppColors.errorColor,
-        ),
+
+          CustomListTile(
+            onPressed: () => deleteAccountPop(context),
+            title: AppStrings.deleteAccount,
+            icon: Icons.delete_outline,
+            iconColor: AppColors.errorColor,
+          ),
         ],
       ),
     );
