@@ -7,9 +7,9 @@ part of 'link_model.dart';
 // **************************************************************************
 
 LinkModel _$LinkModelFromJson(Map<String, dynamic> json) => LinkModel(
-      url: json['url'] as String ?? '',
-      label: json['label'] as String ?? '',
-      active: json['active'] as bool ?? false,
+      url: json['url']?.toString(), // safely handles null
+      label: json['label']?.toString() ?? '',
+      active: json['active'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$LinkModelToJson(LinkModel instance) => <String, dynamic>{

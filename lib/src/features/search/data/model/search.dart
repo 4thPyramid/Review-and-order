@@ -1,5 +1,5 @@
-class SearchResponse {
-  SearchResponse({
+class SearchModel {
+  SearchModel({
     required this.currentPage,
     required this.data,
     required this.firstPageUrl,
@@ -28,7 +28,7 @@ class SearchResponse {
   late final int to;
   late final int total;
 
-  SearchResponse.fromJson(Map<String, dynamic> json) {
+  SearchModel.fromJson(Map<String, dynamic> json) {
     currentPage = json['current_page'];
     data = List.from(json['data']).map((e) => Data.fromJson(e)).toList();
     firstPageUrl = json['first_page_url'];

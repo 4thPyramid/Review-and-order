@@ -8,11 +8,11 @@ part of 'place_search_model.dart';
 
 PlaceSearchModel _$PlaceSearchModelFromJson(Map<String, dynamic> json) =>
     PlaceSearchModel(
-      id: (json['id'] as num).toInt() ?? 0,
-      name: json['name'] as String ?? '',
-      coverImage: json['cover_image'] as String ?? '',
-      status: json['status'] as String ?? '',
-      updatedAt: json['updated_at'] as String ?? '',
+      id: (json['id'] as num?)?.toInt() ?? 0,
+      name: json['name']?.toString() ?? '',
+      coverImage: json['cover_image']?.toString(),
+      status: json['status']?.toString() ?? '',
+      updatedAt: json['updated_at']?.toString() ?? '',
     );
 
 Map<String, dynamic> _$PlaceSearchModelToJson(PlaceSearchModel instance) =>
