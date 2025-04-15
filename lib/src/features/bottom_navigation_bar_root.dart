@@ -24,7 +24,7 @@ class BottomNavigationBarRoot extends StatelessWidget {
             create: (context) => getIt<SearchCubit>(),
             child: const SearchView(),
           ),
-          const NotificationView(),
+          //   const NotificationView(),
           BlocProvider(
             create: (context) => getIt<ProfileCubit>(),
             child: const ProfileView(),
@@ -65,10 +65,11 @@ class BottomNavigationBarRoot extends StatelessWidget {
                   ),
                   label: 'Search',
                 ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.notifications_outlined),
-                  label: 'Notification',
-                ),
+                // BottomNavigationBarItem(
+                //   icon: Icon(Icons.notifications_outlined),
+                //   label: 'Notification',
+                // ),
+
                 BottomNavigationBarItem(
                   icon: Icon(Icons.person_outline),
                   label: 'Profile',
