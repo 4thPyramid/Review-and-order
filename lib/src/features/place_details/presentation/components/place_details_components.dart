@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:review_app/core/common/widgets/custom_btn.dart';
+import 'package:review_app/core/data/cached/cache_helper.dart';
 import 'package:review_app/core/routes/router_names.dart';
 import 'package:review_app/core/utils/app_assets.dart';
 import 'package:review_app/src/features/place_details/presentation/logic/cubit/add_favorite_place_cubit.dart';
@@ -60,6 +61,7 @@ class PlaceDetailsComponent extends StatelessWidget {
                     context.push(RouterNames.maps, extra: {
                       'lat': place.latitude,
                       'lng': place.longitude,
+                      'map_disc': place.mapDisc,
                     });
                   },
                 ),
@@ -98,13 +100,9 @@ class PlaceDetailsComponent extends StatelessWidget {
                       print('place id: ${place.id}');
                       addCommitPop(context,
                           placeId: place.id ?? 0,
-                          name: place.reviews?.isNotEmpty == true
-                              ? place.reviews![0].user?.name ?? ''
-                              : '',
-                          imageUrl: place.reviews?.isNotEmpty == true
-                              ? place.reviews![0].user?.image ??
-                                  AppAssets.profileImage
-                              : AppAssets.profileImage);
+                          name: CacheHelper.getData(key: 'name') ?? '',
+                          imageUrl: CacheHelper.getData(key: 'image') ??
+                              AppAssets.networkProfileImage);
                     }),
                 SizedBox(height: 20.h),
               ],

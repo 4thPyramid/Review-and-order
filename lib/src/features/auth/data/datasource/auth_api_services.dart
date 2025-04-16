@@ -59,6 +59,8 @@ class AuthApiServicesImpl extends AuthApiServices {
       CacheHelper.saveToken(value: userResponse.token);
       CacheHelper.saveData(key: 'name', value: userResponse.user.name);
       CacheHelper.saveData(key: 'email', value: userResponse.user.email);
+      CacheHelper.saveData(key: 'phone', value: userResponse.user.phone);
+      CacheHelper.saveData(key: 'id', value: userResponse.user.id);
 
       return Right(userResponse);
     } on ServerException catch (e) {
@@ -131,6 +133,11 @@ class AuthApiServicesImpl extends AuthApiServices {
       CacheHelper.deleteToken();
       CacheHelper().removeData(key: 'name');
       CacheHelper().removeData(key: 'email');
+      CacheHelper().removeData(key: 'phone');
+      CacheHelper().removeData(key: 'token');
+      CacheHelper().removeData(key: 'id');
+      CacheHelper().removeData(key: 'image');
+
       return Right(response['message']);
     } on ServerException catch (e) {
       return Left(e.errorModel);

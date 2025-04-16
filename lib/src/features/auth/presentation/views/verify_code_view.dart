@@ -11,7 +11,7 @@ import '../widgets/welcom_login_text.dart';
 
 class VerifyCodeView extends StatefulWidget {
   const VerifyCodeView({super.key, required this.email});
-final String email;
+  final String email;
   @override
   State<VerifyCodeView> createState() => _VerifyCodeViewState();
 }
@@ -21,7 +21,8 @@ class _VerifyCodeViewState extends State<VerifyCodeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding:  EdgeInsets.only(bottom: 16.h,top: 60.h, right: 16.h, left: 16.h),
+        padding:
+            EdgeInsets.only(bottom: 16.h, top: 60.h, right: 16.h, left: 16.h),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -30,7 +31,9 @@ class _VerifyCodeViewState extends State<VerifyCodeView> {
               Align(
                 alignment: Alignment.topRight,
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   icon: const Icon(Icons.arrow_back_ios),
                 ),
               ),
@@ -40,7 +43,9 @@ class _VerifyCodeViewState extends State<VerifyCodeView> {
                 subTitle: " دخل الرمز الذي أرسلناه إليك",
               ),
               SizedBox(height: 20.h),
-              VerifyCodeForm(email: widget.email,),
+              VerifyCodeForm(
+                email: widget.email,
+              ),
             ],
           ),
         ),

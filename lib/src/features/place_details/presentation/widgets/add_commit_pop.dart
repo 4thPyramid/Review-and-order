@@ -31,21 +31,13 @@ addCommitPop(BuildContext context,
           top: -70.h,
           left: MediaQuery.sizeOf(context).width / 2 - 65.w,
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(120.r),
-            child: imageUrl.startsWith('http')
-                ? Image.network(
-                    imageUrl,
-                    width: 100.r,
-                    height: 100.r,
-                    fit: BoxFit.fill,
-                  )
-                : Image.asset(
-                    imageUrl,
-                    width: 100.r,
-                    height: 100.r,
-                    fit: BoxFit.fill,
-                  ),
-          ),
+              borderRadius: BorderRadius.circular(120.r),
+              child: Image.network(
+                imageUrl,
+                width: 100.r,
+                height: 100.r,
+                fit: BoxFit.fill,
+              )),
         ),
         Padding(
           padding:

@@ -60,17 +60,17 @@ class Validator {
     if (value == null || value.isEmpty) {
       return 'يرجى إدخال الاسم';
     }
-    final parts = value.split(' ');
-    if (parts.length < 1) {
-      return 'يرجى إدخال اسم ثلاثي ';
-    }
-    const pattern = r'^[a-zA-Zا-ي ]+$';
-    final regex = RegExp(pattern);
-    for (var part in parts) {
-      if (!regex.hasMatch(part)) {
-        return 'يرجى إدخال اسم صالح (أحرف فقط)';
-      }
-    }
+    // final parts = value.split(' ');
+    // if (parts.length < 1) {
+    //   return 'يرجى إدخال اسم ثلاثي ';
+    // }
+    // const pattern = r'^[a-zA-Zا-ي ]+$';
+    // final regex = RegExp(pattern);
+    // for (var part in parts) {
+    //   if (!regex.hasMatch(part)) {
+    //     return 'يرجى إدخال اسم صالح (أحرف فقط)';
+    //   }
+    // }
     return null;
   }
 

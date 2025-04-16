@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:review_app/core/common/widgets/custom_text_form_field.dart';
 import 'package:review_app/src/features/home/presentation/widget/custom_row_filter.dart';
 
-import '../../../../../core/services/service_locator.dart';
 import '../../../../../core/utils/app_strings.dart';
 import '../components/best_restaurant_cafes_row.dart';
 import '../components/extra_suggestions_list.dart';
-import '../logic/cubit/home_cubit.dart';
 import '../widget/custom_title.dart';
 import '../widget/home_app_bar.dart';
 

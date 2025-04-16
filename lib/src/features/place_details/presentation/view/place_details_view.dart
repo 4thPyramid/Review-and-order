@@ -69,13 +69,12 @@ class _PlaceDetailsViewState extends State<PlaceDetailsView> {
                   loaded: (place) => Column(
                     //   mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Container(
+                      SizedBox(
                         height: 400.h,
-                        child: Image.network(
-                          place.coverImage ?? '',
-                        ),
+                        child: CachedNetworkImage(
+                            imageUrl: place.coverImage ?? ''),
                       ),
-                      PlaceDetailsComponent()
+                      const PlaceDetailsComponent()
                     ],
                   ),
                   error: (error) => Text(error.toString()),

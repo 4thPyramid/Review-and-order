@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:review_app/core/data/cached/cache_helper.dart';
 
 import '../../../../../core/data/api/api_consumer.dart';
 import '../../../../../core/errors/error_model.dart';
@@ -10,7 +11,7 @@ import '../model/profile_model.dart';
 
 abstract class ProfileApiService {
   Future<Either<ErrorModel, ProfileModel>> getProfile();
- 
+
   Future<Either<ErrorModel, ProfileModel>> updateProfile(
     String? name,
     String? phone,
@@ -21,9 +22,7 @@ abstract class ProfileApiService {
   );
   //delete account
   Future<Either<ErrorModel, String>> deleteAccount();
- 
 }
-
 
 class ProfileApiServiceImpl implements ProfileApiService {
   final ApiConsumer _api;
@@ -37,6 +36,10 @@ class ProfileApiServiceImpl implements ProfileApiService {
         'profile',
       );
       final profile = ProfileModel.fromJson(response);
+      CacheHelper.saveData(key: 'name', value: profile.name);
+      CacheHelper.saveData(key: 'phone', value: profile.phone);
+      CacheHelper.saveData(key: 'email', value: profile.email);
+      CacheHelper.saveData(key: 'image', value: profile.image);
       return Right(profile);
     } on ServerException catch (e) {
       return Left(e.errorModel);
@@ -63,7 +66,8 @@ class ProfileApiServiceImpl implements ProfileApiService {
   }
 
   @override
-  Future<Either<ErrorModel, ProfileModel>> updateProfileImage(File? file) async {
+  Future<Either<ErrorModel, ProfileModel>> updateProfileImage(
+      File? file) async {
     try {
       if (file == null) {
         return Left(ErrorModel(message: "File is null"));
@@ -92,7 +96,7 @@ class ProfileApiServiceImpl implements ProfileApiService {
       return Left(ErrorModel(message: e.toString()));
     }
   }
-  
+
   @override
   Future<Either<ErrorModel, String>> deleteAccount() async {
     try {
@@ -102,5 +106,4 @@ class ProfileApiServiceImpl implements ProfileApiService {
       return Left(e.errorModel);
     }
   }
-
 }

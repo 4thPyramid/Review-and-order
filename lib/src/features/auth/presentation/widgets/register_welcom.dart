@@ -13,14 +13,8 @@ class RegisterWelcom extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        IconButton(
-          onPressed: () {
-            context.pop();
-          },
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            color: AppColors.black,
-          ),
+        SizedBox(
+          width: 40.w,
         ),
         const Text(
           AppStrings.register,

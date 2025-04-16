@@ -30,7 +30,7 @@ class ForgetPasswordForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   late String inputValue;
+    late String inputValue;
     return BlocConsumer<ForgetPasswordCubit, ForgetPasswordState>(
       listener: (context, state) {
         state.whenOrNull(
@@ -41,7 +41,7 @@ class ForgetPasswordForm extends StatelessWidget {
                 backgroundColor: Colors.green,
               ),
             );
-            context.go(RouterNames.verifyCodeView, extra: inputValue);
+            context.push(RouterNames.verifyCodeView, extra: inputValue);
           },
           error: (error) {
             ScaffoldMessenger.of(context).showSnackBar(

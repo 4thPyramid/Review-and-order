@@ -26,7 +26,6 @@ import '../../src/features/auth/presentation/logic/login/login_cubit.dart';
 import '../../src/features/bottom_navigation_bar_root.dart';
 import '../services/service_locator.dart';
 
-
 final GoRouter router = GoRouter(
   routes: [
     GoRoute(
@@ -39,6 +38,7 @@ final GoRouter router = GoRouter(
         final extra = state.extra as Map<String, dynamic>;
         final latString = extra['lat'] as String?;
         final lngString = extra['lng'] as String?;
+        final placeName = extra['map_disc'] as String?;
 
         final lat = latString != null ? double.tryParse(latString) : 0.0;
         final lng = lngString != null ? double.tryParse(lngString) : 0.0;
@@ -46,6 +46,7 @@ final GoRouter router = GoRouter(
         return PlaceLocationView(
           lat: lat ?? 0.0,
           lng: lng ?? 0.0,
+          placeName: placeName ?? 'location name',
         );
       },
     ),
@@ -92,10 +93,8 @@ final GoRouter router = GoRouter(
           final placeId = extra['placeId'] as int?;
           return MultiBlocProvider(
             providers: [
+              BlocProvider(create: (context) => getIt<PlaceDetailsCubit>()),
               BlocProvider(
-                create: (context) => getIt<PlaceDetailsCubit>()
-              ),
-                BlocProvider(
                 create: (context) => getIt<AddCommitCubit>(),
               ),
               BlocProvider(

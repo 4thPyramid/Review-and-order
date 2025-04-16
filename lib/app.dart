@@ -7,6 +7,7 @@ import 'package:review_app/core/routes/app_routers.dart';
 import 'package:review_app/core/services/service_locator.dart';
 import 'package:review_app/core/theme/app_themes.dart';
 import 'package:review_app/src/features/home/presentation/logic/cubit/home_cubit.dart';
+import 'package:review_app/src/features/profile/presentation/logic/profile_cubit.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -24,6 +25,9 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => getIt<HomeCubit>(),
+          ),
+          BlocProvider(
+            create: (context) => getIt<ProfileCubit>(),
           ),
         ],
         child: MaterialApp.router(
