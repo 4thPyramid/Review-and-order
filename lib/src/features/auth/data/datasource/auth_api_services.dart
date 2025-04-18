@@ -88,8 +88,6 @@ class AuthApiServicesImpl extends AuthApiServices {
   Future<Either<ErrorModel, String>> verifyCode(
       String email, String code) async {
     try {
-      print(email);
-      print(code);
       final response = await api.post(
         'verify-code',
         data: {
@@ -98,7 +96,6 @@ class AuthApiServicesImpl extends AuthApiServices {
         },
         isFormData: true,
       );
-      print(response['message']);
       return Right(response['message']);
     } on ServerException catch (e) {
       return Left(e.errorModel);

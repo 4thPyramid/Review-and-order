@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<string>"دليل المدينة"</string>
 	
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We need your location to update it on the server.</string>

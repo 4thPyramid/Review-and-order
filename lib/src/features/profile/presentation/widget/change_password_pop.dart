@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:review_app/core/common/widgets/custom_text_form_field.dart';
+import 'package:review_app/src/features/auth/presentation/widgets/auth_text_form_widget.dart';
 
 import '../../../../../core/common/widgets/custom_btn.dart';
 import '../../../../../core/theme/app_colors.dart';
@@ -19,25 +20,26 @@ changePasswordPop(BuildContext context) {
       padding: EdgeInsets.symmetric(vertical: 50.0.h),
       child: Column(
         children: [
-          const CustomTextFormField(
+          const AuthTextFieldWidget(
             hintText: AppStrings.password,
-            prefixIcon: Icon(Icons.lock_outline),
-            obscureText: true,
+            // prefixIcon: Icon(Icons.lock_outline),
+
+            isPassword: true,
           ),
-          SizedBox(height: 20.h),
-          const CustomTextFormField(
+          //   SizedBox(height: 20.h),
+          const AuthTextFieldWidget(
             hintText: AppStrings.newPassword,
-            prefixIcon: Icon(Icons.lock_outline),
-            obscureText: true,
+            //  prefixIcon: Icon(Icons.lock_outline),
+            isPassword: true,
           ),
-          SizedBox(height: 20.h),
-          const CustomTextFormField(
+          //  SizedBox(height: 20.h),
+          const AuthTextFieldWidget(
             hintText: AppStrings.confirmPassword,
-            prefixIcon: Icon(Icons.lock_outline),
-            obscureText: true,
-            suffixIcon: Icon(Icons.remove_red_eye),
+            //  prefixIcon: Icon(Icons.lock_outline),
+            isPassword: true,
+            //suffixIcon: Icon(Icons.remove_red_eye),
           ),
-          SizedBox(height: 20.h),
+          // SizedBox(height: 20.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [

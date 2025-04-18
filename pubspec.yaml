@@ -50,6 +50,12 @@ dev_dependencies:
     sdk: flutter
   freezed: ^2.5.7
   json_serializable: ^6.7.0
+  flutter_launcher_icons:
+flutter_launcher_icons: 
+  android: true
+  ios: true
+  image_path: "assets/images/logo.png"
+ 
 
 flutter:
   uses-material-design: true

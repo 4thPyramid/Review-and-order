@@ -9,7 +9,6 @@ import '../../../../../core/utils/app_styles.dart';
 import '../widget/change_password_pop.dart';
 import '../widget/custom_list_tile.dart';
 import '../widget/delete_account_pop.dart';
-import '../widget/logout_pop.dart';
 import '../widget/personal_info_list_tile.dart';
 
 class SettingsComponent extends StatelessWidget {
@@ -52,11 +51,14 @@ class SettingsComponent extends StatelessWidget {
             style: AppStyles.s14.copyWith(fontWeight: FontWeight.w700),
           ),
 
-          CustomListTile(
-            onPressed: () => deleteAccountPop(context),
-            title: AppStrings.deleteAccount,
-            icon: Icons.delete_outline,
-            iconColor: AppColors.errorColor,
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 12),
+            child: CustomListTile(
+              onPressed: () => deleteAccountPop(context),
+              title: AppStrings.deleteAccount,
+              icon: Icons.delete_outline,
+              iconColor: AppColors.errorColor,
+            ),
           ),
         ],
       ),

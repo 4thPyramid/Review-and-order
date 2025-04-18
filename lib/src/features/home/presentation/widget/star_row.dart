@@ -17,6 +17,7 @@ class StarRow extends StatelessWidget {
         RatingBar.builder(
           initialRating: rating,
           minRating: 1,
+          ignoreGestures: true,
           direction: Axis.horizontal,
           allowHalfRating: false,
           itemCount: 4,
@@ -30,7 +31,14 @@ class StarRow extends StatelessWidget {
           },
         ),
         const SizedBox(width: 5),
-        Text(rating.toString(), style: textStyle ?? AppStyles.s12),
+        SizedBox(
+          width: 35.w,
+          child: Text(
+            rating.toString(),
+            style: textStyle ?? AppStyles.s12,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
       ],
     );
   }
