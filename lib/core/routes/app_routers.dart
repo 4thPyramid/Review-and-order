@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:review_app/core/routes/router_names.dart';
 import 'package:review_app/core/common/functions/password_visibility_cubit.dart';
+import 'package:review_app/src/features/place_details/presentation/components/place_details_components.dart';
 import 'package:review_app/src/features/place_details/presentation/logic/cubit/add_commit_cubit.dart';
 import 'package:review_app/src/features/place_details/presentation/view/place_location_view.dart';
 import 'package:review_app/src/features/auth/presentation/views/forget_password.dart';
@@ -53,6 +54,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: RouterNames.onboarding,
       builder: (context, state) => const OnboardingView(),
+    ),
+    GoRoute(
+      path: RouterNames.placedetailscomponent,
+      builder: (context, state) => const PlaceDetailsComponent(),
     ),
     GoRoute(
       path: RouterNames.login,

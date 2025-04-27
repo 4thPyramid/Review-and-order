@@ -17,11 +17,16 @@ import '../widgets/map_card_details.dart';
 import '../widgets/rate_and_time_row.dart';
 import '../widgets/title_and_favorite.dart';
 
-class PlaceDetailsComponent extends StatelessWidget {
+class PlaceDetailsComponent extends StatefulWidget {
   const PlaceDetailsComponent({
     super.key,
   });
 
+  @override
+  State<PlaceDetailsComponent> createState() => _PlaceDetailsComponentState();
+}
+
+class _PlaceDetailsComponentState extends State<PlaceDetailsComponent> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PlaceDetailsCubit, PlaceDetailsState>(
@@ -38,74 +43,86 @@ class PlaceDetailsComponent extends StatelessWidget {
                 topRight: Radius.circular(40.r),
               ),
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                TitleAndFavoriteButton(
-                  placeName: place.name ?? '',
-                  onTap: () {
-                    BlocProvider.of<AddFavoritePlaceCubit>(context)
-                        .addFavoritePlace(place.id ?? 0);
-                  },
-                ),
-                RateAndTimeRow(
-                  openAt: place.openAt ?? '',
-                  closeAt: place.closeAt ?? '',
-                  rate: place.rating ?? 0.0,
-                  reviewsCount: place.reviewsCount ?? 0,
-                ),
-                MapCardDetails(
-                  restaurantAddress: place.mapDisc ?? '',
-                  arrivalTime: '3',
-                  onTap: () {
-                    context.push(RouterNames.maps, extra: {
-                      'lat': place.latitude,
-                      'lng': place.longitude,
-                      'map_disc': place.mapDisc,
-                    });
-                  },
-                ),
-                SizedBox(height: 20.h),
-                Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    AppStrings.ratings,
-                    style: AppStyles.s20.copyWith(
-                        color: AppColors.black, fontWeight: FontWeight.w700),
+            child: WillPopScope(
+              onWillPop: () {
+                context
+                    .read<PlaceDetailsCubit>()
+                    .getPlaceDetails(place.id ?? 0);
+                return Future.value(true);
+              },
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  TitleAndFavoriteButton(
+                    placeName: place.name ?? '',
+                    onTap: () {
+                      BlocProvider.of<AddFavoritePlaceCubit>(context)
+                          .addFavoritePlace(place.id ?? 0);
+                    },
                   ),
-                ),
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: place.reviews!.length,
-                  itemBuilder: (context, index) {
-                    print('================================================');
-                    print(place.reviews![index].user?.image);
-                    print('================================================');
-                    return CommentsList(
-                      userProfileImagePath: place.reviews![index].user?.image ??
-                          AppAssets.networkProfileImage,
-                      userName: place.reviews![index].user?.name ?? "",
-                      userEmail: place.reviews![index].user?.email ?? '',
-                      commentImagePath:
-                          place.reviews![index].image ?? place.coverImage ?? '',
-                      commentText: place.reviews![index].content ?? '',
-                      rate: place.reviews![index].userRating ?? 0.0,
-                    );
-                  },
-                ),
-                CustomButton(
-                    text: AppStrings.addCommit,
-                    onPressed: () {
-                      print('place id: ${place.id}');
-                      addCommitPop(context,
-                          placeId: place.id ?? 0,
-                          name: CacheHelper.getData(key: 'name') ?? '',
-                          imageUrl: CacheHelper.getData(key: 'image') ??
-                              AppAssets.networkProfileImage);
-                    }),
-                SizedBox(height: 20.h),
-              ],
+                  RateAndTimeRow(
+                    openAt: place.openAt ?? '',
+                    closeAt: place.closeAt ?? '',
+                    rate: place.rating ?? 0.0,
+                    reviewsCount: place.reviewsCount ?? 0,
+                  ),
+                  MapCardDetails(
+                    restaurantAddress: place.mapDisc ?? '',
+                    arrivalTime: '3',
+                    onTap: () {
+                      context.push(RouterNames.maps, extra: {
+                        'lat': place.latitude,
+                        'lng': place.longitude,
+                        'map_disc': place.mapDisc,
+                      });
+                    },
+                  ),
+                  SizedBox(height: 20.h),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      AppStrings.ratings,
+                      style: AppStyles.s20.copyWith(
+                          color: AppColors.black, fontWeight: FontWeight.w700),
+                    ),
+                  ),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: place.reviews!.length,
+                    itemBuilder: (context, index) {
+                      print('================================================');
+                      print(place.reviews![index].user?.image);
+                      print('================================================');
+                      return CommentsList(
+                        userProfileImagePath:
+                            place.reviews![index].user?.image ??
+                                AppAssets.networkProfileImage,
+                        userName: place.reviews![index].user?.name ?? "",
+                        userEmail: place.reviews![index].user?.email ?? '',
+                        commentImagePath: place.reviews![index].image ??
+                            place.coverImage ??
+                            '',
+                        commentText: place.reviews![index].content ?? '',
+                        rate: place.reviews![index].userRating ?? 0.0,
+                      );
+                    },
+                  ),
+                  CustomButton(
+                      text: AppStrings.addCommit,
+                      onPressed: () {
+                        // print('place id: ${place.id}');
+                        addCommitPop(context,
+                            placeId: place.id ?? 0,
+                            name: CacheHelper.getData(key: 'name') ?? '',
+                            imageUrl: CacheHelper.getData(key: 'image') ??
+                                AppAssets.networkProfileImage);
+
+                        //  await Future.delayed(Duration(seconds: 6));
+                      }),
+                  SizedBox(height: 20.h),
+                ],
+              ),
             ),
           ),
           error: (error) => Center(child: Text(error.message)),

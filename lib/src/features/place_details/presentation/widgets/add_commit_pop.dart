@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:review_app/core/theme/app_colors.dart';
 import 'package:review_app/core/utils/app_strings.dart';
+import 'package:review_app/src/features/place_details/presentation/components/place_details_components.dart';
 import 'package:review_app/src/features/place_details/presentation/logic/cubit/add_commit_cubit.dart';
 import '../../../../../core/common/widgets/custom_btn.dart';
 import '../../../../../core/utils/app_styles.dart';
@@ -14,13 +16,15 @@ import '../../../../../core/utils/main_function.dart';
 import '../logic/place_details/place_details_cubit.dart';
 import 'comment_image_widget.dart';
 
-addCommitPop(BuildContext context,
-    {required int placeId, required String name, required String imageUrl}) {
+Future<bool?> addCommitPop(BuildContext context,
+    {required int placeId,
+    required String name,
+    required String imageUrl}) async {
   TextEditingController controller = TextEditingController();
   double rating = 0.0;
   File? selectedImage;
 
-  customAlertDialog(
+  await customAlertDialog(
       context: context,
       marginHPadding: 20.h,
       marginVPadding: 20.h,
@@ -113,18 +117,15 @@ addCommitPop(BuildContext context,
               SizedBox(height: 20.h),
               CustomButton(
                 text: AppStrings.sendCommit,
-                onPressed: () {
-                  print('placeId: $placeId');
-                  print('rating: $rating');
-                  print('comment: ${controller.text}');
-                  print('image: $selectedImage');
-
+                onPressed: () async {
                   if (rating > 0 && controller.text.isNotEmpty) {
                     context
                         .read<AddCommitCubit>()
                         .addCommit(placeId, controller.text, selectedImage!);
                     context.read<AddCommitCubit>().addRate(placeId, rating);
-                    Navigator.pop(context);
+                    context.read<PlaceDetailsCubit>().getPlaceDetails(placeId);
+                    context.go('placedetailscomponent');
+                    Navigator.pop(context, true);
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
